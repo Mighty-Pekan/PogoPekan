@@ -9,12 +9,12 @@ public class Player : MonoBehaviour
     [SerializeField] float bouncingForce = 5f;
 
     Rigidbody2D rb;
-    CapsuleCollider2D capsuleCollider2D;
+    BoxCollider2D boxCollider2D;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -34,9 +34,16 @@ public class Player : MonoBehaviour
 
     private bool IsGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(capsuleCollider2D.bounds.center, capsuleCollider2D.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
 
         return raycastHit.collider != null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Show BoxCast on the scene
+        Gizmos.color = Color.green;
+        Gizmos.DrawCube(boxCollider2D.bounds.center, boxCollider2D.bounds.size);
     }
 
     void HandleJump()

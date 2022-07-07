@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] float jumpForce = 8f; // RB gravity scale 1
     [SerializeField] float bouncingForce = 5f;
+    [SerializeField] float roundForce = 5f;
+
 
     Rigidbody2D rb;
     BoxCollider2D boxCollider2D;
@@ -19,22 +21,24 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(IsGrounded())
+        HandleMovement();
+
+        if (IsGrounded())
         {
             // Constant bouncing
-            rb.velocity = Vector2.up * bouncingForce;
+            rb.velocity = transform.up * bouncingForce;
+           //rb.AddForce(Vector2.up * bouncingForce, ForceMode2D.Impulse);
 
             if (Input.GetKey(KeyCode.Space))
             {
                 HandleJump();
             }
-            HandleMovement();
         }
     }
 
     private bool IsGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
+       RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Ground")); 
 
         return raycastHit.collider != null;
     }
@@ -49,12 +53,14 @@ public class Player : MonoBehaviour
     void HandleJump()
     {
         rb.velocity = Vector2.up * jumpForce;
+        //rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
     void HandleMovement()
     {
         float inputX = Input.GetAxis("Horizontal");
+        //rb.AddForce(Vector2.up, ForceMode2D.Impulse);
 
-        rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
+        transform.Rotate(new Vector3(0, 0, -inputX * roundForce));
     }
 }

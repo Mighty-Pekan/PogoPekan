@@ -23,8 +23,8 @@ public class Player : MonoBehaviour
         transform.Rotate(new Vector3(0, 0, -rotationDirection * rotationSpeed * Time.deltaTime));
     }
 
-    public void Bounce() {
+    public void Bounce() 
+    {
         myRigidbody.velocity = transform.up * baseBounceSpeed;
-        //myRigidbody.AddForce(transform.up * baseBounceSpeed, ForceMode2D.Impulse);
     }
 }

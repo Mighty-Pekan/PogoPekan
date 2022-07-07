@@ -729,6 +729,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 422765809, guid: d8094cb873b5b2e4d8e0d95a4ad41095, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -633.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 422765809, guid: d8094cb873b5b2e4d8e0d95a4ad41095, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.08
+      objectReference: {fileID: 0}
     - target: {fileID: 422765811, guid: d8094cb873b5b2e4d8e0d95a4ad41095, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -794,10 +802,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8270128307089850662, guid: 2034acfb5d443d442a4b8bf7fd249704, type: 3}
-      propertyPath: rotationSpeed
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 8270128307089850666, guid: 2034acfb5d443d442a4b8bf7fd249704, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -844,10 +848,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8270128307089850669, guid: 2034acfb5d443d442a4b8bf7fd249704, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8270128307089850669, guid: 2034acfb5d443d442a4b8bf7fd249704, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []

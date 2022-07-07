@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(new Vector3(0, 0, -rotationDirection * rotationSpeed));
+        transform.Rotate(new Vector3(0, 0, -rotationDirection * rotationSpeed * Time.deltaTime));
     }
 
     public void Bounce() {

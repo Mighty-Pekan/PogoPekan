@@ -12,12 +12,10 @@ public class Player : MonoBehaviour
     public int rotationDirection { get; set; }
 
     Rigidbody2D myRigidbody;
-    CapsuleCollider2D collider;
 
     private void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-        collider = GetComponent<CapsuleCollider2D>();
     }
 
     private void Update()
@@ -26,8 +24,6 @@ public class Player : MonoBehaviour
     }
 
     public void Bounce() {
-        //myRigidbody.velocity = transform.up * baseBounceSpeed;
         myRigidbody.AddForce(transform.up * baseBounceSpeed, ForceMode2D.Impulse);
     }
-
 }

@@ -4,63 +4,40 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 2f;
-    [SerializeField] float jumpForce = 8f; // RB gravity scale 1
-    [SerializeField] float bouncingForce = 5f;
-    [SerializeField] float roundForce = 5f;
+    [SerializeField] float rotationSpeed = 2f;
+    [SerializeField] float bounceSpeed;
+    Rigidbody2D myRigidbody;
+    CapsuleCollider2D collider;
 
 
-    Rigidbody2D rb;
-    BoxCollider2D boxCollider2D;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
+        myRigidbody = GetComponent<Rigidbody2D>();
+        collider = GetComponent<CapsuleCollider2D>();
     }
 
     private void Update()
     {
-        HandleMovement();
-
-        if (IsGrounded())
-        {
-            // Constant bouncing
-            rb.velocity = transform.up * bouncingForce;
-           //rb.AddForce(Vector2.up * bouncingForce, ForceMode2D.Impulse);
-
-            if (Input.GetKey(KeyCode.Space))
-            {
-                HandleJump();
-            }
-        }
+        HandleMovement(); 
     }
 
-    private bool IsGrounded()
-    {
-       RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Ground")); 
-
-        return raycastHit.collider != null;
-    }
-
-    private void OnDrawGizmos()
-    {
-        // Show BoxCast on the scene
-        Gizmos.color = Color.green;
-        Gizmos.DrawCube(boxCollider2D.bounds.center, boxCollider2D.bounds.size);
-    }
-
-    void HandleJump()
-    {
-        rb.velocity = Vector2.up * jumpForce;
-        //rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-    }
-
+    int rotationDirection = 0;
     void HandleMovement()
     {
-        float inputX = Input.GetAxis("Horizontal");
-        //rb.AddForce(Vector2.up, ForceMode2D.Impulse);
 
-        transform.Rotate(new Vector3(0, 0, -inputX * roundForce));
+        if (Input.GetKey(KeyCode.LeftArrow))
+            rotationDirection = 1;
+        else if(Input.GetKey(KeyCode.RightArrow))
+            rotationDirection = -1;
+        else
+            rotationDirection = 0;
+
+        transform.Rotate(new Vector3(0, 0, rotationDirection * rotationSpeed));
     }
+
+    public void Bounce() {
+        myRigidbody.velocity = transform.up * bounceSpeed;
+    }
+
 }

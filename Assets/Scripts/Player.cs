@@ -26,7 +26,8 @@ public class Player : MonoBehaviour
     }
 
     public void Bounce() {
-        myRigidbody.velocity = transform.up * baseBounceSpeed;
+        //myRigidbody.velocity = transform.up * baseBounceSpeed;
+        myRigidbody.AddForce(transform.up * baseBounceSpeed, ForceMode2D.Impulse);
     }
 
 }

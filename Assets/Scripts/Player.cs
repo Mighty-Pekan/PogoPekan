@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        comandaCharacterConTastiera();
+
         transform.Rotate(new Vector3(0, 0, -rotationDirection * rotationSpeed * Time.deltaTime));
         tricksDetector.registerRotation(transform.rotation.z);
     }
@@ -39,4 +41,11 @@ public class Player : MonoBehaviour
         // could be fun, but can create bugs
         //myRigidbody.AddForce(transform.up * baseBounceSpeed, ForceMode2D.Impulse);
     }
+
+    private void comandaCharacterConTastiera() {
+        if (Input.GetKey(KeyCode.LeftArrow)) rotationDirection = -1;
+        else if (Input.GetKey(KeyCode.RightArrow)) rotationDirection = 1;
+        else rotationDirection = 0;
+    }
+
 }

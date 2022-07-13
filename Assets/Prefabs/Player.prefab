@@ -228,9 +228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bd089ce8b946942a72fd07c4a60023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 200
-  baseBounceSpeed: 10
-  boostBounceSpeed: 15
+  rotationSpeed: 220
+  baseBounceSpeed: 12
+  boostBounceSpeed: 20
 --- !u!50 &8270128307089850665
 Rigidbody2D:
   serializedVersion: 4

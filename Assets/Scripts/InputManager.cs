@@ -32,10 +32,10 @@ public class InputManager : MonoSingleton<InputManager>
 
     private void Update() {
         if (leftPressed && !rightPressed) {
-            player.rotationDirection = -1;
+            player.rotationDirection = 1;
         }
         else if (rightPressed && !leftPressed) {
-            player.rotationDirection = 1;
+            player.rotationDirection = -1;
         }
         else if (!leftPressed && !rightPressed) {
             player.rotationDirection = 0;

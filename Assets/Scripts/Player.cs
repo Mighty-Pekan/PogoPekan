@@ -43,8 +43,8 @@ public class Player : MonoBehaviour
     }
 
     private void comandaCharacterConTastiera() {
-        if (Input.GetKey(KeyCode.LeftArrow)) rotationDirection = -1;
-        else if (Input.GetKey(KeyCode.RightArrow)) rotationDirection = 1;
+        if (Input.GetKey(KeyCode.LeftArrow)) rotationDirection = 1;
+        else if (Input.GetKey(KeyCode.RightArrow)) rotationDirection = -1;
         else rotationDirection = 0;
     }
 

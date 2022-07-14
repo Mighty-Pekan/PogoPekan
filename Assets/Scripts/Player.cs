@@ -9,14 +9,17 @@ public class Player : MonoBehaviour
     [SerializeField] float boostBounceSpeed;
     TricksDetector tricksDetector;
 
+
     //modified by InputManger to determine rotation direction
     public int rotationDirection { get; set; }
 
     Rigidbody2D myRigidbody;
+    Animator animator;
 
     private void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();    
         tricksDetector = new TricksDetector();
     }
 
@@ -30,6 +33,7 @@ public class Player : MonoBehaviour
 
     public void Bounce() {
         if (tricksDetector.TrickDetected()) {
+            animator.SetTrigger("SuperJump");
             myRigidbody.velocity = transform.up * boostBounceSpeed;
         }
         else {

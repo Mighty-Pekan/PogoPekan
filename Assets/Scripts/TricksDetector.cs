@@ -43,6 +43,4 @@ public class TricksDetector
     public bool TrickDetected() {
         return rotationSpots[0] && rotationSpots[1] && rotationSpots[2];
     }
-
-
 }

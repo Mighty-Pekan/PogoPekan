@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        //myRigidbody = null; // delete this row
         myRigidbody = GetComponent<Rigidbody2D>();
         tricksDetector = new TricksDetector();
     }

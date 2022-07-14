@@ -33,11 +33,10 @@ public class Player : MonoBehaviour
 
     public void Bounce() {
         if (tricksDetector.TrickDetected()) {
-            animator.SetBool("SuperJump", true);
+            animator.SetTrigger("SuperJump");
             myRigidbody.velocity = transform.up * boostBounceSpeed;
         }
         else {
-            animator.SetBool("SuperJump", false);
             myRigidbody.velocity = transform.up * baseBounceSpeed;
         }
         
@@ -48,8 +47,8 @@ public class Player : MonoBehaviour
     }
 
     private void comandaCharacterConTastiera() {
-        if (Input.GetKey(KeyCode.LeftArrow)) rotationDirection = 1;
-        else if (Input.GetKey(KeyCode.RightArrow)) rotationDirection = -1;
+        if (Input.GetKey(KeyCode.LeftArrow)) rotationDirection = -1;
+        else if (Input.GetKey(KeyCode.RightArrow)) rotationDirection = 1;
         else rotationDirection = 0;
     }
 

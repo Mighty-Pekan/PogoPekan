@@ -52,4 +52,11 @@ public class Player : MonoBehaviour
         else rotationDirection = 0;
     }
 
+    //private void OnCollisionEnter2D(Collision2D other) {
+
+    //    if(other.collider.gameObject.tag == "Thorns" && other.otherCollider.gameObject.tag == "PlayerBody") {
+    //        GameController.GameOver();
+    //    }
+    //}
+
 }

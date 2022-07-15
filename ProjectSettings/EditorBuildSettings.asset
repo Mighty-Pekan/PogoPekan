@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Level Temeplate.unity
+    path: Assets/Scenes/LevelProva.unity
     guid: e31ad8b7033b806408e7eebdeae65b47
   - enabled: 1
     path: Assets/Scenes/Level2.unity

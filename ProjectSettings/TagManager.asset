@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Camera
+  - Thorns
+  - PlayerBody
   layers:
   - Default
   - TransparentFX
@@ -41,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Thorns
+    uniqueID: 517967915
     locked: 0

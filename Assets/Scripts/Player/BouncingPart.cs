@@ -7,7 +7,6 @@ public class BouncingPart : MonoBehaviour
     [SerializeField] GameObject PlayerObj;
     Player player;
 
-
     private void Awake() {
         player = PlayerObj.GetComponent<Player>();
     }

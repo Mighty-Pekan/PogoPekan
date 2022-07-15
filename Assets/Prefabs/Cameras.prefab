@@ -228,7 +228,11 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   m_CustomBlends: {fileID: 11400000, guid: df4e545a49a99b840976c266e2a8dfae, type: 2}
-  m_ParentHash: []
+  m_ParentHash:
+  - m_Hash: 1432961145
+    m_ParentHash: 756556552
+  - m_Hash: -1519862181
+    m_ParentHash: 756556552
 --- !u!1 &5242227836629390978
 GameObject:
   m_ObjectHideFlags: 0

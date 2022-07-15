@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     {
         transform.Rotate(new Vector3(0, 0, -InputManager.GetRotation() * rotationSpeed * Time.deltaTime));
         tricksDetector.registerRotation(transform.rotation.z);
+
+       
     }
 
     public void Bounce() {

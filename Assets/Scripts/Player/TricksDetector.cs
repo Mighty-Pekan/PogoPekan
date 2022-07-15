@@ -31,7 +31,7 @@ public class TricksDetector
             if (!rotationSpots[2]) rotationSpots[1] = false;
         }
 
-        Debug.Log(rotationSpots[0] + "|" + rotationSpots[1] + "|" + rotationSpots[2]);
+        //Debug.Log(rotationSpots[0] + "|" + rotationSpots[1] + "|" + rotationSpots[2]);
 
     }
 

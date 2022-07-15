@@ -7,12 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField] float rotationSpeed = 2f;
     [SerializeField] float baseBounceSpeed;
     [SerializeField] float boostBounceSpeed;
+
     TricksDetector tricksDetector;
-
-
-    //modified by InputManger to determine rotation direction
-    public int rotationDirection { get; set; }
-
     Rigidbody2D myRigidbody;
     Animator animator;
 
@@ -25,9 +21,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        comandaCharacterConTastiera();
-
-        transform.Rotate(new Vector3(0, 0, -rotationDirection * rotationSpeed * Time.deltaTime));
+        transform.Rotate(new Vector3(0, 0, -InputManager.GetRotation() * rotationSpeed * Time.deltaTime));
         tricksDetector.registerRotation(transform.rotation.z);
     }
 
@@ -45,18 +39,5 @@ public class Player : MonoBehaviour
         // could be fun, but can create bugs
         //myRigidbody.AddForce(transform.up * baseBounceSpeed, ForceMode2D.Impulse);
     }
-
-    private void comandaCharacterConTastiera() {
-        if (Input.GetKey(KeyCode.LeftArrow)) rotationDirection = -1;
-        else if (Input.GetKey(KeyCode.RightArrow)) rotationDirection = 1;
-        else rotationDirection = 0;
-    }
-
-    //private void OnCollisionEnter2D(Collision2D other) {
-
-    //    if(other.collider.gameObject.tag == "Thorns" && other.otherCollider.gameObject.tag == "PlayerBody") {
-    //        GameController.GameOver();
-    //    }
-    //}
 
 }

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class InputManager : MonoSingleton<InputManager>
 {
-    Player player;
-    private void Start() {
-        player = FindObjectOfType<Player>();
-    }
+    [SerializeField] bool touchInputEnabled;
+
+    int rotationDirection = 0;
 
     private bool leftPressed = false;
     private bool rightPressed = false;
@@ -31,19 +30,35 @@ public class InputManager : MonoSingleton<InputManager>
     }
 
     private void Update() {
+        if(touchInputEnabled)
+            ReadTouchInput();
+        else
+            ReadKeyboardInput();
+    }
+
+    private void ReadTouchInput() {
         if (leftPressed && !rightPressed) {
-            player.rotationDirection = -1;
+            rotationDirection = -1;
         }
         else if (rightPressed && !leftPressed) {
-            player.rotationDirection = 1;
+            rotationDirection = 1;
         }
         else if (!leftPressed && !rightPressed) {
-            player.rotationDirection = 0;
+            rotationDirection = 0;
         }
         else {  //both pressed at the same time
-            if (lastPressed == eDirections.left) player.rotationDirection = -1;
-            else player.rotationDirection = 1;
+            if (lastPressed == eDirections.left) rotationDirection = -1;
+            else rotationDirection = 1;
         }
+    }
 
+    private void ReadKeyboardInput() {
+        if (Input.GetKey(KeyCode.LeftArrow)) rotationDirection = -1;
+        else if (Input.GetKey(KeyCode.RightArrow)) rotationDirection = 1;
+        else rotationDirection = 0;
+    }
+
+    public static int GetRotation() {
+        return instance.rotationDirection;
     }
 }

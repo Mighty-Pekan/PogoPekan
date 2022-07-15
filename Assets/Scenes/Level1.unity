@@ -3532,10 +3532,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2671799174498793408, guid: 2034acfb5d443d442a4b8bf7fd249704, type: 3}
-      propertyPath: rotationSpeed
-      value: 300
-      objectReference: {fileID: 0}
     - target: {fileID: 2671799174498793410, guid: 2034acfb5d443d442a4b8bf7fd249704, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -3580,12 +3576,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2671799174916044281, guid: 2034acfb5d443d442a4b8bf7fd249704, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 442f503e87c019846adf06cc7fa4d527, type: 2}
-    m_RemovedComponents:
-    - {fileID: 2671799174916044280, guid: 2034acfb5d443d442a4b8bf7fd249704, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2034acfb5d443d442a4b8bf7fd249704, type: 3}
 --- !u!95 &2671799176182590786 stripped
 Animator:

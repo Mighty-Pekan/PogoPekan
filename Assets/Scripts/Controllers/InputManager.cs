@@ -53,8 +53,8 @@ public class InputManager : MonoSingleton<InputManager>
     }
 
     private void ReadKeyboardInput() {
-        if (Input.GetKey(KeyCode.LeftArrow)) rotationDirection = -1;
-        else if (Input.GetKey(KeyCode.RightArrow)) rotationDirection = 1;
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) rotationDirection = -1;
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) rotationDirection = 1;
         else rotationDirection = 0;
     }
 

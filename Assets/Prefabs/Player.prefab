@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 300
-  baseBounceSpeed: 11.99
+  baseBounceSpeed: 12
   boostBounceSpeed: 18
 --- !u!50 &2671799174498793409
 Rigidbody2D:

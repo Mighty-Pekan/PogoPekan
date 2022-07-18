@@ -26,52 +26,40 @@ public class InputManager : MonoSingleton<InputManager>
         //Checks if is not UI click
         if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
         {
-            if (Input.touchCount == 1)
+            if (Input.touchCount > 0)
             {
                 touch = Input.GetTouch(0);
-                Debug.Log("Sto Premendo");
 
-                Vector3 touchPosition = Input.touches[0].position;
+                for (int i = 0; i < Input.touchCount; i++)
+                {
+                    Vector3 touchPosition = Input.touches[i].position;
 
-                if (touchPosition.x < halfScreenWidth)
-                {
-                    Debug.Log("Sto premendo a Sinistra");
-                    rotationDirection = Vector3.back;
+                    if (touchPosition.x < halfScreenWidth)
+                        rotationDirection = Vector3.forward;
+                    else
+                        rotationDirection = Vector3.back;
+
+                    if (touch.phase == TouchPhase.Ended)
+                        rotationDirection = Vector3.zero;
                 }
-                else
-                {
-                    Debug.Log("Sto premendo a Destra");
-                    rotationDirection = Vector3.forward;
-                }
-              
-                if (touch.phase == TouchPhase.Ended)
-                {
-                    Debug.Log("Rilascio");
-                    rotationDirection = Vector3.zero;
-                }
-            }
-            else
-            {
-                rotationDirection = Vector3.zero;
             }
         }
     }
+
     private void KeyboardInput() {
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            rotationDirection = Vector3.forward;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             rotationDirection = Vector3.back;
 
         }
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            rotationDirection = Vector3.forward;
-
-        }
         else rotationDirection = Vector3.zero;
-
     }
 
-    public static Vector3 GetRotationDirection()
+    public static Vector3 GetRotationDir()
     {
         return instance.rotationDirection;
     }

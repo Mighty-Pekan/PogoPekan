@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         debuggerPanel.SetActive(debuggerIsActive);
-
         ShowFPS();
     }
 

@@ -30,8 +30,9 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(InputManager.GetRotationDirection() * rotationSpeed * Time.deltaTime);
+        transform.Rotate(InputManager.GetRotationDir() * rotationSpeed * Time.deltaTime);
         tricksDetector.registerRotation(transform.rotation.z);
+       
     }
 
     public void Bounce() {

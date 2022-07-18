@@ -1,64 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class InputManager : MonoSingleton<InputManager>
 {
     [SerializeField] bool touchInputEnabled;
 
-    int rotationDirection = 0;
+    float halfScreenWidth = Screen.width / 2;
+    Vector3 rotationDirection;
 
-    private bool leftPressed = false;
-    private bool rightPressed = false;
+    private Touch touch;
 
-    private enum eDirections { left, right }
-    eDirections lastPressed = eDirections.left;
-
-    public static void OnButtonLeftDown() {
-        instance.leftPressed = true;
-        instance.lastPressed = eDirections.left;
-    }
-    public static void OnButtonLeftUp() {
-        instance.leftPressed = false;
-    }
-    public static void OnButtonRightDown() {
-        instance.rightPressed = true;
-        instance.lastPressed = eDirections.right;
-    }
-    public static void OnButtonRighttUp() {
-        instance.rightPressed = false;
-    }
-
-    private void Update() {
+    private void Update()
+    {
         if(touchInputEnabled)
-            ReadTouchInput();
+            MobileInput();
         else
-            ReadKeyboardInput();
+            KeyboardInput();
     }
 
-    private void ReadTouchInput() {
-        if (leftPressed && !rightPressed) {
-            rotationDirection = -1;
-        }
-        else if (rightPressed && !leftPressed) {
-            rotationDirection = 1;
-        }
-        else if (!leftPressed && !rightPressed) {
-            rotationDirection = 0;
-        }
-        else {  //both pressed at the same time
-            if (lastPressed == eDirections.left) rotationDirection = -1;
-            else rotationDirection = 1;
+    private void MobileInput()
+    {
+        //Checks if is not UI click
+        if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+        {
+            if (Input.touchCount > 0)
+            {
+                touch = Input.GetTouch(0);
+
+                for (int i = 0; i < Input.touchCount; i++)
+                {
+                    Vector3 touchPosition = Input.touches[i].position;
+
+                    if (touchPosition.x < halfScreenWidth)
+                        rotationDirection = Vector3.forward;
+                    else
+                        rotationDirection = Vector3.back;
+
+                    if (touch.phase == TouchPhase.Ended)
+                        rotationDirection = Vector3.zero;
+                }
+            }
         }
     }
 
-    private void ReadKeyboardInput() {
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) rotationDirection = -1;
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) rotationDirection = 1;
-        else rotationDirection = 0;
+    private void KeyboardInput() {
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            rotationDirection = Vector3.forward;
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            rotationDirection = Vector3.back;
+        else rotationDirection = Vector3.zero;
     }
 
-    public static int GetRotation() {
+    public static Vector3 RotationDirection()
+    {
         return instance.rotationDirection;
+    }
+
+    public void EnableTouchInput()
+    {
+        touchInputEnabled = !touchInputEnabled;
     }
 }

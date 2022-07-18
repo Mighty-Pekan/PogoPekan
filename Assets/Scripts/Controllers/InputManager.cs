@@ -9,7 +9,7 @@ public class InputManager : MonoSingleton<InputManager>
     [SerializeField] bool touchInputEnabled;
 
     float halfScreenWidth = Screen.width / 2;
-    int rotationDirection = 0;
+    Vector3 rotationDirection;
 
     private Touch touch;
 
@@ -36,41 +36,43 @@ public class InputManager : MonoSingleton<InputManager>
                 if (touchPosition.x < halfScreenWidth)
                 {
                     Debug.Log("Sto premendo a Sinistra");
-                    rotationDirection = -1;
+                    rotationDirection = Vector3.back;
                 }
                 else
                 {
                     Debug.Log("Sto premendo a Destra");
-                    rotationDirection = 1;
+                    rotationDirection = Vector3.forward;
                 }
               
                 if (touch.phase == TouchPhase.Ended)
                 {
                     Debug.Log("Rilascio");
-                    rotationDirection = 0;
+                    rotationDirection = Vector3.zero;
                 }
             }
             else
             {
-                rotationDirection = 0;
+                rotationDirection = Vector3.zero;
             }
         }
     }
     private void KeyboardInput() {
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            Debug.Log("Clicco a sinistra con la tastiera");
-            rotationDirection = -1;
+            rotationDirection = Vector3.back;
+
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            Debug.Log("Clicco a destra con la tastiera");
-            rotationDirection = 1;
+            rotationDirection = Vector3.forward;
+
         }
-        else rotationDirection = 0;
+        else rotationDirection = Vector3.zero;
+
     }
 
-    public static int GetRotation() {
+    public static Vector3 GetRotationDirection()
+    {
         return instance.rotationDirection;
     }
 

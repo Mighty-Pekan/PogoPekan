@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(new Vector3(0, 0, -InputManager.GetRotation() * rotationSpeed * Time.deltaTime));
+        transform.Rotate(InputManager.GetRotationDirection() * rotationSpeed * Time.deltaTime);
         tricksDetector.registerRotation(transform.rotation.z);
     }
 
@@ -39,7 +39,8 @@ public class Player : MonoBehaviour
             animator.SetTrigger("SuperJump");
             myRigidbody.velocity = transform.up * boostBounceSpeed;
         }
-        else {
+        else 
+        {
             myRigidbody.velocity = transform.up * baseBounceSpeed;
         }
         

@@ -29,6 +29,4 @@ public class UIManager : MonoBehaviour
         float fps = 1.0f / deltaTime;
         fpsText.text = "FPS " + Mathf.Ceil(fps) ;
     }
-
-
 }

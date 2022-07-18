@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] float baseBounceSpeed;
     [SerializeField] float boostBounceSpeed;
 
+    float lastRotation;
+
     private Vector3 initialPosition;
 
     TricksDetector tricksDetector;
@@ -52,5 +54,6 @@ public class Player : MonoBehaviour
         transform.position = initialPosition;
         transform.rotation = Quaternion.identity;
         myRigidbody.velocity = Vector3.zero;
+        tricksDetector.Reset();
     }
 }

@@ -48,18 +48,13 @@ public class InputManager : MonoSingleton<InputManager>
 
     private void KeyboardInput() {
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
             rotationDirection = Vector3.forward;
-        }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
             rotationDirection = Vector3.back;
-
-        }
         else rotationDirection = Vector3.zero;
     }
 
-    public static Vector3 GetRotationDir()
+    public static Vector3 RotationDirection()
     {
         return instance.rotationDirection;
     }

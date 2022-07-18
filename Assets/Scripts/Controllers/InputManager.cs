@@ -1,64 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class InputManager : MonoSingleton<InputManager>
 {
     [SerializeField] bool touchInputEnabled;
 
+    float halfScreenWidth = Screen.width / 2;
     int rotationDirection = 0;
 
-    private bool leftPressed = false;
-    private bool rightPressed = false;
+    private Touch touch;
 
-    private enum eDirections { left, right }
-    eDirections lastPressed = eDirections.left;
-
-    public static void OnButtonLeftDown() {
-        instance.leftPressed = true;
-        instance.lastPressed = eDirections.left;
-    }
-    public static void OnButtonLeftUp() {
-        instance.leftPressed = false;
-    }
-    public static void OnButtonRightDown() {
-        instance.rightPressed = true;
-        instance.lastPressed = eDirections.right;
-    }
-    public static void OnButtonRighttUp() {
-        instance.rightPressed = false;
-    }
-
-    private void Update() {
+    private void Update()
+    {
         if(touchInputEnabled)
-            ReadTouchInput();
+            MobileInput();
         else
-            ReadKeyboardInput();
+            KeyboardInput();
     }
 
-    private void ReadTouchInput() {
-        if (leftPressed && !rightPressed) {
+    private void MobileInput()
+    {
+        //Checks if is not UI click
+        if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+        {
+            if (Input.touchCount == 1)
+            {
+                touch = Input.GetTouch(0);
+                Debug.Log("Sto Premendo");
+
+                Vector3 touchPosition = Input.touches[0].position;
+
+                if (touchPosition.x < halfScreenWidth)
+                {
+                    Debug.Log("Sto premendo a Sinistra");
+                    rotationDirection = -1;
+                }
+                else
+                {
+                    Debug.Log("Sto premendo a Destra");
+                    rotationDirection = 1;
+                }
+              
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    Debug.Log("Rilascio");
+                    rotationDirection = 0;
+                }
+            }
+            else
+            {
+                rotationDirection = 0;
+            }
+        }
+    }
+    private void KeyboardInput() {
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            Debug.Log("Clicco a sinistra con la tastiera");
             rotationDirection = -1;
         }
-        else if (rightPressed && !leftPressed) {
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            Debug.Log("Clicco a destra con la tastiera");
             rotationDirection = 1;
         }
-        else if (!leftPressed && !rightPressed) {
-            rotationDirection = 0;
-        }
-        else {  //both pressed at the same time
-            if (lastPressed == eDirections.left) rotationDirection = -1;
-            else rotationDirection = 1;
-        }
-    }
-
-    private void ReadKeyboardInput() {
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) rotationDirection = -1;
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) rotationDirection = 1;
         else rotationDirection = 0;
     }
 
     public static int GetRotation() {
         return instance.rotationDirection;
+    }
+
+    public void EnableTouchInput()
+    {
+        touchInputEnabled = !touchInputEnabled;
     }
 }

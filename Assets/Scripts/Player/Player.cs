@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] float baseBounceSpeed;
     [SerializeField] float boostBounceSpeed;
 
+    private Vector3 initialPosition;
+
     TricksDetector tricksDetector;
     Rigidbody2D myRigidbody;
     Animator animator;
@@ -19,12 +21,15 @@ public class Player : MonoBehaviour
         tricksDetector = new TricksDetector();
     }
 
+    private void Start()
+    {
+        initialPosition = transform.position;
+    }
+
     private void Update()
     {
         transform.Rotate(new Vector3(0, 0, -InputManager.GetRotation() * rotationSpeed * Time.deltaTime));
         tricksDetector.registerRotation(transform.rotation.z);
-
-       
     }
 
     public void Bounce() {
@@ -42,4 +47,10 @@ public class Player : MonoBehaviour
         //myRigidbody.AddForce(transform.up * baseBounceSpeed, ForceMode2D.Impulse);
     }
 
+    public void ResetInitialPosition()
+    {
+        transform.position = initialPosition;
+        transform.rotation = Quaternion.identity;
+        myRigidbody.velocity = Vector3.zero;
+    }
 }

@@ -65,4 +65,14 @@ public class UIManager : MonoSingleton<UIManager>
           
         }
     }
+
+    public void ResetPlayerPosition() {
+        GameController.ResetPlayerPosition();
+    }
+
+    public void EnableTouchInput() {
+        GameController.EnableTouchInput();
+    }
+
+
 }

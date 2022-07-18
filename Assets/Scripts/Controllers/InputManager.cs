@@ -13,6 +13,10 @@ public class InputManager : MonoSingleton<InputManager>
 
     private Touch touch;
 
+    private void Start() {
+        GameController.RegisterInputManager(this);
+    }
+
     private void Update()
     {
         if(touchInputEnabled)
@@ -62,5 +66,6 @@ public class InputManager : MonoSingleton<InputManager>
     public void EnableTouchInput()
     {
         touchInputEnabled = !touchInputEnabled;
+        Debug.Log("touch input: " + touchInputEnabled);
     }
 }

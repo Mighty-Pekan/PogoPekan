@@ -21,23 +21,23 @@ public class GameController : MonoSingleton<GameController>
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
+    //==============================================================registering objects
     public static void RegisterInputManager(InputManager _inputManager)
     {
         instance.inputManager = _inputManager;
     }
-
-    public void EnableMobileInput()
-    {
-        inputManager.EnableTouchInput();
-    }
-
-    public static void RegisterPlayer(Player _player)
-    {
+    public static void RegisterPlayer(Player _player) {
         instance.player = _player;
     }
-    public void ResetPlayerPosition()
+    //==============================================================
+    public static void EnableTouchInput()
     {
-        player.ResetInitialPosition();
+        instance.inputManager.EnableTouchInput();
+    }
+
+    public static void ResetPlayerPosition()
+    {
+        instance.player.ResetInitialPosition();
     }
 
     public static int GetLevelsCount()

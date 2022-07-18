@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         transform.Rotate(new Vector3(0, 0, -InputManager.GetRotation() * rotationSpeed * Time.deltaTime));
-        tricksDetector.registerRotation(transform.rotation.z);
+        tricksDetector.registerRotation(transform.rotation.eulerAngles.z);
 
        
     }

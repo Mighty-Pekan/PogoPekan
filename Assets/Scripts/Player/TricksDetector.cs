@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TricksDetector {
 
-    float TrickTollerance = 30;
+    float TrickTollerance = 80;     //edit this to change how easy it is to make a trick
     float? startingRot;
     float? previousRot;
     float? triggerAngle = null;
@@ -36,7 +36,7 @@ public class TricksDetector {
                 if ((rotationVerse == false && convertedRot < triggerAngle)
                 || (rotationVerse == true && convertedRot > triggerAngle)) {
                     triggerActivated = true;
-                    Debug.Log("trigger activated:");
+                    //Debug.Log("trigger activated:");
                 }
             }
             previousRot = convertedRot;
@@ -48,13 +48,13 @@ public class TricksDetector {
         rotationVerse = true;
         triggerAngle = 360 - TrickTollerance;
         triggerActivated = false;
-        Debug.Log("trigger angle set to:" + triggerAngle);
+        //Debug.Log("trigger angle set to:" + triggerAngle);
     }
     private void SetTriggerOrario() {
         rotationVerse = false;
         triggerAngle = TrickTollerance;
         triggerActivated = false;
-        Debug.Log("trigger angle set to:" + triggerAngle);
+        //Debug.Log("trigger angle set to:" + triggerAngle);
     }
 
     public bool TrickDetected() {

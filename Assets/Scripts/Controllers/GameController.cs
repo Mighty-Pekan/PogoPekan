@@ -19,5 +19,14 @@ public class GameController : MonoSingleton<GameController>
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
+    public static int GetLevelsCount()
+    {
+        return SceneManager.sceneCountInBuildSettings;
+    }
+
+    public static void LoadLevel(int buildIndex)
+    {
+        SceneManager.LoadScene(buildIndex);
+    }
 
 }

@@ -1885,7 +1885,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1189510326}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: ActiveMobileInput
+        m_MethodName: EnableTouchInput
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

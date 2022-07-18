@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoSingleton<GameController>
 {
+
+    private void Start()
+    {
+        Screen.orientation = ScreenOrientation.LandscapeLeft; //or right for right landscape
+    }
+
     public static void GameOver() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

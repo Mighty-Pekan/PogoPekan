@@ -54,4 +54,11 @@ public class Player : MonoBehaviour
         myRigidbody.velocity = Vector3.zero;
         tricksDetector.Reset();
     }
+
+    //                                      used for debug
+    //public void BounceTest() { 
+    //    tricksDetector.Reset();
+    //}
+
+
 }

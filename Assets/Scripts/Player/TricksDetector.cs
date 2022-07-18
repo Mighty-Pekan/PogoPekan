@@ -2,45 +2,71 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TricksDetector
-{
+public class TricksDetector {
 
-    bool [] rotationSpots;
-
+    float TrickTollerance = 30;
+    float? startingRot;
+    float? previousRot;
+    float? triggerAngle = null;
+    bool rotationVerse = true;
+    bool triggerActivated = false;
     public TricksDetector() {
-        rotationSpots = new bool[3];
         Reset();
     }
 
     public void registerRotation(float _rotation) {
-
-        //Debug.Log("received rotation: "+ _rotation);
-
-        int spot;
-        if (_rotation < 0.5 && _rotation > -0.5)
-            spot = 0;
-        else if (_rotation > 0.5)
-            spot = 1;
-        else
-            spot = 2;
-
-        rotationSpots[spot] = true;
-
-       if(spot == 0) {
-            if (!rotationSpots[1]) rotationSpots[2] = false;
-            if (!rotationSpots[2]) rotationSpots[1] = false;
+        if (startingRot == null) {
+            startingRot = _rotation;
+            previousRot = _rotation;
+            SetTriggerAntiorario();
         }
+        else {
+            float convertedRot = _rotation - (float)startingRot;
+            if (convertedRot < 0) {
+                convertedRot = 360 - (float)startingRot + _rotation;
+            }
 
-        //Debug.Log(rotationSpots[0] + "|" + rotationSpots[1] + "|" + rotationSpots[2]);
+            if (!triggerActivated) {
+                if (previousRot < 30 && convertedRot > 330)
+                    SetTriggerOrario();
+
+                else if (previousRot > 330 && convertedRot < 30)
+                    SetTriggerAntiorario();
+
+                if ((rotationVerse == false && convertedRot < triggerAngle)
+                || (rotationVerse == true && convertedRot > triggerAngle)) {
+                    triggerActivated = true;
+                    Debug.Log("trigger activated:");
+                }
+            }
+            previousRot = convertedRot;
+        }
 
     }
 
-    public void Reset() {
-        for(int i = 0; i < rotationSpots.Length; i++)
-            rotationSpots[i] = false;
+    private void SetTriggerAntiorario() {
+        rotationVerse = true;
+        triggerAngle = 360 - TrickTollerance;
+        triggerActivated = false;
+        Debug.Log("trigger angle set to:" + triggerAngle);
+    }
+    private void SetTriggerOrario() {
+        rotationVerse = false;
+        triggerAngle = TrickTollerance;
+        triggerActivated = false;
+        Debug.Log("trigger angle set to:" + triggerAngle);
     }
 
     public bool TrickDetected() {
-        return rotationSpots[0] && rotationSpots[1] && rotationSpots[2];
+        return triggerActivated;
+    }
+
+    public void Reset() {
+        startingRot = null;
+        previousRot = null;
+        triggerAngle = null;
+        rotationVerse = true;
+        rotationVerse = true;
+        triggerActivated=false;
     }
 }

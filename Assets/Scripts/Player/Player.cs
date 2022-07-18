@@ -32,7 +32,6 @@ public class Player : MonoBehaviour
     {
         transform.Rotate(InputManager.RotationDirection() * rotationSpeed * Time.deltaTime);
         tricksDetector.registerRotation(transform.rotation.z);
-       
     }
 
     public void Bounce() {

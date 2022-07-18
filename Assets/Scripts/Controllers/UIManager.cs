@@ -14,13 +14,17 @@ public class UIManager : MonoSingleton<UIManager>
 
     public GameObject selectLevelButtonPrefab;
 
+    Button selectLevelButton;
+
     public TextMeshProUGUI fpsText;
     float deltaTime;
+
 
     private void Start()
     {
         DisplayAllLevels();
     }
+
     private void Update()
     {
         debuggerPanel.SetActive(debuggerIsActive);
@@ -47,16 +51,18 @@ public class UIManager : MonoSingleton<UIManager>
 
     void DisplayAllLevels()
     {
-        for (int i = 0; i < GameController.GetLevelsCount(); i++)
+        for (int i = 1; i < GameController.GetLevelsCount(); i++)
         {
             Debug.Log("Index " + i);
             GameObject buttonInstance = Instantiate(selectLevelButtonPrefab, selectLevelPanel.transform.position, Quaternion.identity);
-            buttonInstance.name = "Level " + i;
+            buttonInstance.name = "Level" + i;
             buttonInstance.transform.parent = selectLevelPanel.transform;
+            buttonInstance.transform.GetChild(0).gameObject.GetComponent<Text>().text = buttonInstance.name;
 
-            buttonInstance.GetComponent<Button>().onClick.AddListener(delegate { GameController.LoadLevel(1); });
-            /*buttonInstance.GetComponent<Button>().onClick.AddListener(() => { GameController.LoadLevel(i); });*/
+            selectLevelButton = buttonInstance.GetComponent<Button>();
+
+            selectLevelButton.onClick.AddListener(() => GameController.LoadLevel(buttonInstance.name));
+          
         }
-
     }
 }

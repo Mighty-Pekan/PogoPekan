@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        GameController.RegisterPlayer(this);
         initialPosition = transform.position;
     }
 

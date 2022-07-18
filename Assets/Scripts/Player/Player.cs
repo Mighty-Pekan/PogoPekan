@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         transform.Rotate(InputManager.RotationDirection() * rotationSpeed * Time.deltaTime);
-        tricksDetector.registerRotation(transform.rotation.z);
+        tricksDetector.registerRotation(transform.rotation.eulerAngles.z);
     }
 
     public void Bounce() {
@@ -45,9 +45,6 @@ public class Player : MonoBehaviour
         }
         
         tricksDetector.Reset();
-
-        // could be fun, but can create bugs
-        //myRigidbody.AddForce(transform.up * baseBounceSpeed, ForceMode2D.Impulse);
     }
 
     public void ResetInitialPosition()

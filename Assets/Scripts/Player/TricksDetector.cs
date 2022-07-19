@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TricksDetector {
 
-    float TrickTollerance = 30;
+    float TrickTollerance = 80;     //edit this to change how easy it is to make a trick
+
     float? startingRot;
     float? previousRot;
     float? triggerAngle = null;
@@ -15,16 +16,18 @@ public class TricksDetector {
     }
 
     public void registerRotation(float _rotation) {
+        //first evaluation after bounce
         if (startingRot == null) {
+
             startingRot = _rotation;
-            previousRot = _rotation;
+            previousRot = convertRotation(_rotation, (float)startingRot);
+
             SetTriggerAntiorario();
+                
         }
+        //successive calculations
         else {
-            float convertedRot = _rotation - (float)startingRot;
-            if (convertedRot < 0) {
-                convertedRot = 360 - (float)startingRot + _rotation;
-            }
+            float convertedRot = convertRotation(_rotation,(float)startingRot);
 
             if (!triggerActivated) {
                 if (previousRot < 30 && convertedRot > 330)
@@ -33,10 +36,10 @@ public class TricksDetector {
                 else if (previousRot > 330 && convertedRot < 30)
                     SetTriggerAntiorario();
 
-                if ((rotationVerse == false && convertedRot < triggerAngle)
+                else if ((rotationVerse == false && convertedRot < triggerAngle)
                 || (rotationVerse == true && convertedRot > triggerAngle)) {
                     triggerActivated = true;
-                    Debug.Log("trigger activated:");
+                    //Debug.Log("TRIGGER ACTIVATED, rotation verse = "+rotationVerse+", trigger angle: "+triggerAngle+",actual angle: "+convertedRot);
                 }
             }
             previousRot = convertedRot;
@@ -44,17 +47,25 @@ public class TricksDetector {
 
     }
 
+    private float convertRotation(float _originalRot, float _startingRot) {
+        float ris = _originalRot - _startingRot;
+        if (ris < 0) {
+            ris = 360 - _startingRot + _originalRot;
+        }
+        return ris;
+    }
+
     private void SetTriggerAntiorario() {
         rotationVerse = true;
         triggerAngle = 360 - TrickTollerance;
         triggerActivated = false;
-        Debug.Log("trigger angle set to:" + triggerAngle);
+        //Debug.Log("trigger angle set to:" + triggerAngle);
     }
     private void SetTriggerOrario() {
         rotationVerse = false;
         triggerAngle = TrickTollerance;
         triggerActivated = false;
-        Debug.Log("trigger angle set to:" + triggerAngle);
+        //Debug.Log("trigger angle set to:" + triggerAngle);
     }
 
     public bool TrickDetected() {
@@ -65,8 +76,7 @@ public class TricksDetector {
         startingRot = null;
         previousRot = null;
         triggerAngle = null;
+        triggerActivated = false;
         rotationVerse = true;
-        rotationVerse = true;
-        triggerActivated=false;
     }
 }

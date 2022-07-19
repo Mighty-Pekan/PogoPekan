@@ -22,7 +22,11 @@ public class Player : MonoBehaviour {
         tricksDetector = new TricksDetector();
     }
 
-    private void Start() {
+
+    private void Start()
+    {
+        GameController.RegisterPlayer(this);
+
         initialPosition = transform.position;
     }
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8525592010118040003}
   - component: {fileID: 8525592010118040000}
   m_Layer: 9
-  m_Name: TraversablePlatform1
+  m_Name: TraversablePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8525592010118040001}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.62, y: 0.31, z: 13.393481}
   m_LocalScale: {x: 4.9368725, y: 0.43071488, z: 1}
   m_Children: []
@@ -136,7 +136,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0011642277, y: -0.020013213}
+  m_Offset: {x: 0.02075231, y: 0.033735096}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -147,5 +147,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0488906, y: 1.653785}
+  m_Size: {x: 1.2167888, y: 3.0442514}
   m_EdgeRadius: 0

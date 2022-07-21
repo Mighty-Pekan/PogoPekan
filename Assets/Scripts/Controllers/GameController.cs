@@ -14,7 +14,7 @@ public class GameController : MonoSingleton<GameController>
     }
 
     public static void GameOver() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(0);
     }
 
     public static void LoadNextLevel() {

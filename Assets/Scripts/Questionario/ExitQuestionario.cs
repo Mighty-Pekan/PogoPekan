@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Exit : MonoBehaviour
+public class ExitQuestionario : MonoBehaviour
 {
-    [SerializeField] GameObject ButtonQuestionario;
+    [SerializeField] GameObject QuestionarioPanel;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player") {

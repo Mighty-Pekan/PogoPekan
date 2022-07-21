@@ -10,7 +10,7 @@ public class ExitQuestionario : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player") {
             Debug.Log("trigger");
-            ButtonQuestionario.SetActive(true);
+            QuestionarioPanel.SetActive(true);
             other.gameObject.SetActive(false);
         }   
     }

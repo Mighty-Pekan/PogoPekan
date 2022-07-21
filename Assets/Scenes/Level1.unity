@@ -1842,6 +1842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExitQuestionario
       objectReference: {fileID: 0}
+    - target: {fileID: 4553124957058384057, guid: bc2f7701dbb1d4c45a24e80a95c8b4b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4553124957058384061, guid: bc2f7701dbb1d4c45a24e80a95c8b4b3, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2236,7 +2240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1194951563
 Transform:
   m_ObjectHideFlags: 0
@@ -3210,6 +3214,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InputManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7079983020454486397, guid: ca87d4e420de3e641b55c7c6b78248fd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca87d4e420de3e641b55c7c6b78248fd, type: 3}
 --- !u!4 &2051340186
@@ -3594,6 +3602,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1841875965890402635}
     m_Modifications:
+    - target: {fileID: 1356544536511086457, guid: 28d18ba235d27d74e99fc2ecaee5a3f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356544536846749020, guid: 28d18ba235d27d74e99fc2ecaee5a3f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356544536985477044, guid: 28d18ba235d27d74e99fc2ecaee5a3f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1356544537227719914, guid: 28d18ba235d27d74e99fc2ecaee5a3f9, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3642,6 +3662,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuestionarioPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 1356544537227719915, guid: 28d18ba235d27d74e99fc2ecaee5a3f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356544537551319268, guid: 28d18ba235d27d74e99fc2ecaee5a3f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28d18ba235d27d74e99fc2ecaee5a3f9, type: 3}
 --- !u!4 &1830853813099241781 stripped
@@ -3656,6 +3684,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2092642763, guid: d8094cb873b5b2e4d8e0d95a4ad41095, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1841875965705490393, guid: d8094cb873b5b2e4d8e0d95a4ad41095, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -3716,6 +3748,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1841875966646105571, guid: d8094cb873b5b2e4d8e0d95a4ad41095, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8094cb873b5b2e4d8e0d95a4ad41095, type: 3}
 --- !u!224 &1841875965890402635 stripped
@@ -3733,6 +3769,10 @@ PrefabInstance:
     - target: {fileID: 2671799174498793279, guid: 2034acfb5d443d442a4b8bf7fd249704, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671799174498793279, guid: 2034acfb5d443d442a4b8bf7fd249704, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2671799174498793409, guid: 2034acfb5d443d442a4b8bf7fd249704, type: 3}
       propertyPath: m_Constraints
@@ -3799,6 +3839,10 @@ PrefabInstance:
     - target: {fileID: 3429155696786291926, guid: 6f2d8ad69d00c48468be034ff1379279, type: 3}
       propertyPath: m_Name
       value: ObjectsOutDetector
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429155696786291926, guid: 6f2d8ad69d00c48468be034ff1379279, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3429155696786291927, guid: 6f2d8ad69d00c48468be034ff1379279, type: 3}
       propertyPath: m_RootOrder
@@ -3913,6 +3957,10 @@ PrefabInstance:
     - target: {fileID: 5242227835413967418, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_Name
       value: Cameras
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242227835413967418, guid: b14515a41713aa141b58de0d00475281, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5242227835413967419, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_RootOrder
@@ -4091,6 +4139,10 @@ PrefabInstance:
     - target: {fileID: 7459935106593307542, guid: 13e270389e336c04496974e2cc78b3d7, type: 3}
       propertyPath: m_Name
       value: GameController
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459935106593307542, guid: 13e270389e336c04496974e2cc78b3d7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7459935106593307543, guid: 13e270389e336c04496974e2cc78b3d7, type: 3}
       propertyPath: m_RootOrder

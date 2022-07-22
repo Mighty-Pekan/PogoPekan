@@ -9,9 +9,10 @@ public class ExitQuestionario : MonoSingleton<ExitQuestionario>
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player") {
-            Debug.Log("trigger");
-            QuestionarioPanel.SetActive(true);
-            other.gameObject.SetActive(false);
+            Application.OpenURL("https://docs.google.com/forms/d/1Jdntp2Cx8-1V-_RIvJqM5gd-JBbO5aWKb7KaBevvvgw/prefill");
+            //Debug.Log("trigger");
+            //QuestionarioPanel.SetActive(true);
+            //other.gameObject.SetActive(false);
         }   
     }
 }

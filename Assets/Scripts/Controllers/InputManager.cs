@@ -19,7 +19,7 @@ public class InputManager : MonoSingleton<InputManager>
 
     private void Update()
     {
-        if(touchInputEnabled)
+        if (touchInputEnabled)
             MobileInput();
         else
             KeyboardInput();
@@ -29,6 +29,7 @@ public class InputManager : MonoSingleton<InputManager>
     {
         //Checks if is not UI click
         if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+        //if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
         {
             if (Input.touchCount > 0)
             {
@@ -66,6 +67,6 @@ public class InputManager : MonoSingleton<InputManager>
     public void ToggleTouchInput()
     {
         touchInputEnabled = !touchInputEnabled;
-        Debug.Log("touch input: " + touchInputEnabled);
+        Debug.Log("touch input switched: " + touchInputEnabled);
     }
 }

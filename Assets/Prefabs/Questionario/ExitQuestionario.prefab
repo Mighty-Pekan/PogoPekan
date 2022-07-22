@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281fb94b913c4284c941c7b1fa849083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuestionarioPanel: {fileID: 0}
+  panelToShow: {fileID: 0}
 --- !u!212 &4553124957058384062
 SpriteRenderer:
   m_ObjectHideFlags: 0

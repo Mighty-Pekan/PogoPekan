@@ -2143,6 +2143,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8825692380037432875, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825692380676944839, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825692381110795737, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
+      propertyPath: m_text
+      value: switch input
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825692381304636294, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: toggleShowMainPanel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
 --- !u!4 &1846375674 stripped
@@ -2155,23 +2171,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4210737322994679928, guid: 5a93466f33b855b4aa1578b593b0ea73, type: 3}
   m_PrefabInstance: {fileID: 1016002953}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1949267530 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7202522559001648489, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
-  m_PrefabInstance: {fileID: 1836790186}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1949267531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949267530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62e15eccfd1ba274caece67835e97496, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1974896752
 GameObject:
   m_ObjectHideFlags: 0

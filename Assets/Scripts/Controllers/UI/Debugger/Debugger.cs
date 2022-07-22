@@ -40,12 +40,12 @@ public class Debugger : MonoSingleton<Debugger>
         ShowFPS();
     }
 
-    public void toggleShowDebuggerPanel()
+    public void toggleShowMainPanel()
     {
         if(MainPanel.activeSelf)
-            MainPanel.SetActive(true);
-        else 
             MainPanel.SetActive(false);
+        else 
+            MainPanel.SetActive(true);
     }
 
     public void toggleShowSelectLevelPanel()

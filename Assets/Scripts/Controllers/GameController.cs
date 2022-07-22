@@ -30,10 +30,10 @@ public class GameController : MonoSingleton<GameController>
         instance.player = _player;
     }
     //==============================================================
-    public static void EnableTouchInput()
-    {
-        instance.inputManager.EnableTouchInput();
-    }
+    
+    public static InputManager GetInputManager() {
+        return instance.inputManager;
+    } 
 
     public static void ResetPlayerPosition()
     {

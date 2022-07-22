@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f803a7523776f6f48bd57a580a1156e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchInputEnabled: 1
+  touchInputEnabled: 0

@@ -63,7 +63,7 @@ public class InputManager : MonoSingleton<InputManager>
         return instance.rotationDirection;
     }
 
-    public void EnableTouchInput()
+    public void ToggleTouchInput()
     {
         touchInputEnabled = !touchInputEnabled;
         Debug.Log("touch input: " + touchInputEnabled);

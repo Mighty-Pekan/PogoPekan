@@ -6,20 +6,20 @@ using TMPro;
 
 public class Debugger : MonoSingleton<Debugger>
 {
-    public GameObject MainPanel;
-    public GameObject selectLevelPanel;
+    [SerializeField] GameObject MainPanel;
+    [SerializeField] GameObject selectLevelPanel;
 
-    public GameObject selectLevelButtonPrefab;
+    [SerializeField] GameObject selectLevelButtonPrefab;
     Button selectLevelButton;
 
-    public TextMeshProUGUI fpsText;
+    [SerializeField] TextMeshProUGUI fpsText;
     float deltaTime;
-
 
     private void Start()
     {
         DisplayAllLevels();
     }
+
     void DisplayAllLevels() {
         for (int i = 1; i < GameController.GetLevelsCount(); i++) {
             Debug.Log("Index " + i);

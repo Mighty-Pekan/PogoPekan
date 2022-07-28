@@ -7,11 +7,14 @@ using UnityEngine.EventSystems;
 public class InputManager : MonoSingleton<InputManager>
 {
     [SerializeField] bool touchInputEnabled;
+    [SerializeField] float butHittStartDelay = 0.1f;    //prevents accidental double hold
 
     float halfScreenWidth = Screen.width / 2;
     Vector3 rotationDirection;
 
     private Touch touch;
+
+    private bool isDoubleHold = false;
 
     private void Start() {
         GameController.RegisterInputManager(this);
@@ -50,18 +53,28 @@ public class InputManager : MonoSingleton<InputManager>
         }
     }
 
+    float? doubleHoldStartTime = null;
     private void KeyboardInput() {
 
+        //---------------------double hold handling
         if( 
             (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) &&
             (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             ) {
             rotationDirection = Vector3.zero;
-            isDoubleHold = true;
-        }
-        else
-            isDoubleHold=false;
 
+            if (doubleHoldStartTime == null) {
+                doubleHoldStartTime = Time.time;
+            }
+            else if(Time.time - doubleHoldStartTime >= butHittStartDelay) {
+                isDoubleHold = true;
+            }
+        }
+        //---------------------rotation handling
+        else {
+            isDoubleHold = false;
+            doubleHoldStartTime = null;          
+        
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             rotationDirection = Vector3.forward;
 
@@ -69,6 +82,7 @@ public class InputManager : MonoSingleton<InputManager>
             rotationDirection = Vector3.back;
 
         else rotationDirection = Vector3.zero;
+        }
     }
 
     public static Vector3 GetRotationDirection()
@@ -76,7 +90,7 @@ public class InputManager : MonoSingleton<InputManager>
         return instance.rotationDirection;
     }
 
-    private bool isDoubleHold = false;
+    
     public static bool IsDoubleHold() {
         return instance.isDoubleHold;
     }

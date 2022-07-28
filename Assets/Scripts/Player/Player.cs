@@ -8,7 +8,6 @@ public class Player : MonoBehaviour {
     [SerializeField] float boostBounceSpeed;
     [SerializeField] float buttHitSpeed = 10f;
 
-    float lastRotation;
     bool superJumpActivatedThisFrame;
 
     private Vector3 initialPosition;
@@ -16,6 +15,9 @@ public class Player : MonoBehaviour {
     TricksDetector tricksDetector;
     Rigidbody2D myRigidbody;
     Animator animator;
+
+    private bool performingButtHit = false;
+    private Vector2 buttHitStartingPos;
 
     private void Awake() {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -30,20 +32,6 @@ public class Player : MonoBehaviour {
 
         initialPosition = transform.position;
     }
-
-    //private void Update() {
-    //    //if (InputManager.IsDoubleHold()) {
-    //    if (InputManager.IsDoubleHold()) {
-    //        //rotateToVertical();
-    //    }
-    //    else {
-    //        //justActivatedDoubleHold = false;
-    //        transform.Rotate(InputManager.GetRotationDirection() * rotationSpeed * Time.deltaTime);
-    //    }
-
-
-    //    tricksDetector.registerRotation(transform.rotation.eulerAngles.z);
-    //}
 
     private void Update() {
         if (InputManager.IsDoubleHold()||performingButtHit) {
@@ -80,48 +68,11 @@ public class Player : MonoBehaviour {
         else {
             if (!buttHitCorStarted) {
                 buttHitCorStarted = true;
-                //StartCoroutine(ButtHitCor());
             }
             else myRigidbody.velocity = new Vector2(0, -buttHitSpeed);
         }
     }
-
-    //private bool justActivatedDoubleHold = false;
-    private bool performingButtHit = false;
-    private Vector2 buttHitStartingPos;
-    //private void rotateToVertical() {
-
-    //    float myRotation = transform.rotation.eulerAngles.z;
-    //    //if (!justActivatedDoubleHold) {
-    //    //    justActivatedDoubleHold = true;
-    //    //    buttHitStartingPos = transform.position;
-    //    //    myRigidbody.velocity = Vector2.zero;
-    //    //}
-
-    //    // DONT USE MATHF.EPSILON !!! its too slow.
-    //    // checks if paddle is in vertical position
-    //    if (myRotation > 0 + 0.1f && myRotation < 360 - 0.1f) {
-
-    //        if (myRotation > 180) transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
-    //        else transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
-    //        transform.position = buttHitStartingPos;
-
-    //    }
-    //    else {
-    //        DoButtHit();
-    //    }
-    //}
-
-    //private void DoButtHit() {
-    //    //if (!performingButtHit) {
-    //    //    performingButtHit = true;
-    //    //    transform.rotation = Quaternion.identity;
-    //    //    myRigidbody.velocity = new Vector2(0, buttHitSpeed);
-    //    //}
-
-    //    transform.rotation = Quaternion.identity;
-    //    myRigidbody.velocity = new Vector2(0, buttHitSpeed);
-    //}
+    public bool isDoingButtHit() { return performingButtHit; }
 
     private void LateUpdate() {
         superJumpActivatedThisFrame = false;

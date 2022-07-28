@@ -53,7 +53,6 @@ MonoBehaviour:
   baseBounceSpeed: 12
   boostBounceSpeed: 18
   buttHitSpeed: 15
-  buttHitDelay: 0.2
 --- !u!50 &2671799174498793409
 Rigidbody2D:
   serializedVersion: 4
@@ -257,7 +256,7 @@ GameObject:
   - component: {fileID: 2671799176576378327}
   m_Layer: 7
   m_Name: BouncingTip
-  m_TagString: Untagged
+  m_TagString: BouncingTip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

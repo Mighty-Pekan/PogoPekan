@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchInputEnabled: 0
+  butHittStartDelay: 0.2

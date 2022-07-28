@@ -43,7 +43,6 @@ public class InputManager : MonoSingleton<InputManager>
                         rotationDirection = Vector3.forward;
                     else
                         rotationDirection = Vector3.back;
-
                     if (touch.phase == TouchPhase.Ended)
                         rotationDirection = Vector3.zero;
                 }
@@ -52,16 +51,34 @@ public class InputManager : MonoSingleton<InputManager>
     }
 
     private void KeyboardInput() {
+
+        if( 
+            (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) &&
+            (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            ) {
+            rotationDirection = Vector3.zero;
+            isDoubleHold = true;
+        }
+        else
+            isDoubleHold=false;
+
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             rotationDirection = Vector3.forward;
+
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             rotationDirection = Vector3.back;
+
         else rotationDirection = Vector3.zero;
     }
 
-    public static Vector3 RotationDirection()
+    public static Vector3 GetRotationDirection()
     {
         return instance.rotationDirection;
+    }
+
+    private bool isDoubleHold = false;
+    public static bool IsDoubleHold() {
+        return instance.isDoubleHold;
     }
 
     public void ToggleTouchInput()

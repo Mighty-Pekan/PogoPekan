@@ -52,6 +52,8 @@ MonoBehaviour:
   rotationSpeed: 300
   baseBounceSpeed: 12
   boostBounceSpeed: 18
+  buttHitSpeed: 15
+  buttHitDelay: 0.2
 --- !u!50 &2671799174498793409
 Rigidbody2D:
   serializedVersion: 4

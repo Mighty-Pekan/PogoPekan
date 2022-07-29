@@ -58,8 +58,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.25084114, y: -0.025035478}
-  m_Size: {x: 0.029422587, y: 0.085580036}
+  m_Offset: {x: -0.26116836, y: 0.004663346}
+  m_Size: {x: 0.03883245, y: 0.06775863}
   m_Direction: 0
 --- !u!1 &1908649215348200677
 GameObject:
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bd089ce8b946942a72fd07c4a60023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 300
+  rotationSpeed: 310
   baseBounceSpeed: 12
   boostBounceSpeed: 18
   buttHitSpeed: 15
@@ -166,8 +166,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02512698, y: 0.09512925}
-  m_Size: {x: 0.19429657, y: 0.38599855}
+  m_Offset: {x: -0.0047473647, y: 0.09309467}
+  m_Size: {x: 0.1983658, y: 0.37107816}
   m_Direction: 0
 --- !u!212 &5019691354407179055
 SpriteRenderer:
@@ -209,7 +209,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7385baf74aa444b4bb3dcc9e6a088969, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d366ecf029af2f44683dc90d37f65692, type: 3}
   m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -29,21 +29,21 @@ public class GameController : MonoSingleton<GameController>
     public static void RegisterPlayer(Player _player) {
         instance.player = _player;
     }
-    //==============================================================
-    
+    //============================================================== getters
+
     public static InputManager GetInputManager() {
         return instance.inputManager;
-    } 
-
+    }
+    public static int GetLevelsCount() {
+        return SceneManager.sceneCountInBuildSettings;
+    }
+    //==============================================================
     public static void ResetPlayerPosition()
     {
         instance.player.ResetInitialPosition();
     }
 
-    public static int GetLevelsCount()
-    {
-        return SceneManager.sceneCountInBuildSettings;
-    }
+
 
     public static void LoadLevel(string levelName)
     {

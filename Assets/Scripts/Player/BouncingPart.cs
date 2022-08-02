@@ -12,6 +12,7 @@ public class BouncingPart : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        player.Bounce();
+        if(collision.gameObject.tag != "Player")
+            player.Bounce();
     }
 }

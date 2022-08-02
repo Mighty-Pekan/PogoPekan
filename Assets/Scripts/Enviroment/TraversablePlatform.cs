@@ -19,14 +19,14 @@ public class TraversablePlatform : MonoBehaviour {
                 else
                     boxCollider.enabled = true;
                 break;
-            case "BouncingTip":
-                Debug.Log(other.gameObject.transform.parent.gameObject.name);
-                if (other.gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y > 0) {
-                    boxCollider.enabled = false;
-                }
-                else
-                    boxCollider.enabled = true;
-                break;
+            //case "BouncingTip":
+            //    Debug.Log(other.gameObject.transform.parent.gameObject.name);
+            //    if (other.gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y > 0) {
+            //        boxCollider.enabled = false;
+            //    }
+            //    else
+            //        boxCollider.enabled = true;
+            //    break;
         }
     }
 

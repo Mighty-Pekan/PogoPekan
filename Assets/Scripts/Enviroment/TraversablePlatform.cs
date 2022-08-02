@@ -9,26 +9,37 @@ public class TraversablePlatform : MonoBehaviour {
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
 
-        switch (other.gameObject.tag) {
-            case "Player":
-                if (other.gameObject.GetComponent<Rigidbody2D>().velocity.y > 0) {
-                    boxCollider.enabled = false;
-                }
-                else
-                    boxCollider.enabled = true;
-                break;
-            //case "BouncingTip":
-            //    Debug.Log(other.gameObject.transform.parent.gameObject.name);
-            //    if (other.gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y > 0) {
-            //        boxCollider.enabled = false;
-            //    }
-            //    else
-            //        boxCollider.enabled = true;
-            //    break;
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.transform.root.GetComponent<Rigidbody2D>().velocity.y > 0)
+        {
+            boxCollider.enabled = false;
         }
+        else
+            boxCollider.enabled = true;
     }
+
+    //private void OnTriggerEnter2D(Collider2D other) {
+
+    //    switch (other.gameObject.tag) {
+    //        case "Player":
+    //            if (other.gameObject.GetComponent<Rigidbody2D>().velocity.y > 0) {
+    //                boxCollider.enabled = false;
+    //            }
+    //            else
+    //                boxCollider.enabled = true;
+    //            break;
+    //        //case "BouncingTip":
+    //        //    Debug.Log(other.gameObject.transform.parent.gameObject.name);
+    //        //    if (other.gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y > 0) {
+    //        //        boxCollider.enabled = false;
+    //        //    }
+    //        //    else
+    //        //        boxCollider.enabled = true;
+    //        //    break;
+    //    }
+    //}
 
 }
 

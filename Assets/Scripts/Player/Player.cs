@@ -7,10 +7,13 @@ public class Player : MonoBehaviour {
     [SerializeField] float baseBounceSpeed;
     [SerializeField] float boostBounceSpeed;
     [SerializeField] float buttHitSpeed = 10f;
+    [SerializeField] Sprite upSprite;
+    [SerializeField] Sprite downSprite;
 
     bool superJumpActivatedThisFrame;
 
     private Vector3 initialPosition;
+    private SpriteRenderer mySpriteRenderer;
 
     TricksDetector tricksDetector;
     Rigidbody2D myRigidbody;
@@ -29,11 +32,17 @@ public class Player : MonoBehaviour {
     private void Start()
     {
         GameController.RegisterPlayer(this);
-
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
         initialPosition = transform.position;
     }
 
     private void Update() {
+
+        if (myRigidbody.velocity.y >0)
+            mySpriteRenderer.sprite = upSprite;
+        else
+            mySpriteRenderer.sprite = downSprite;
+
         if (InputManager.IsDoubleHold()||performingButtHit) {
             DoButtHit();
         }

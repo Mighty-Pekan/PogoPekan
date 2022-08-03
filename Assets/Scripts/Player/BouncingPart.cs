@@ -5,21 +5,15 @@ using UnityEngine;
 public class BouncingPart : MonoBehaviour
 {
     [SerializeField] private Player player;
-    //Player player;
 
     private float resetBounceTime = 0.1f;
     private bool canBounce = true;
 
-    private void Awake() {
-        //player = playerObj.GetComponent<Player>();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        TipBounce(collision.gameObject.tag);   
-    }
-
     private void OnCollisionStay2D(Collision2D collision)
+    {
+        TipBounce(collision.gameObject.tag);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         TipBounce(collision.gameObject.tag);
     }
@@ -28,16 +22,16 @@ public class BouncingPart : MonoBehaviour
     {
         if (otherTag != "Player" && canBounce)
         {
-            canBounce = false;
+            //canBounce = false;
             player.Bounce();
-            StartCoroutine(resetBounce());
+            //StartCoroutine(resetBounce());
         }
         
     }
-    private IEnumerator resetBounce()
-    {
-        yield return new WaitForSeconds(resetBounceTime);
-        canBounce = true;
-    }
+    //private IEnumerator resetBounce()
+    //{
+    //    yield return new WaitForSeconds(resetBounceTime);
+    //    canBounce = true;
+    //}
 
 }

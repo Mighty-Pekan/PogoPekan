@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     [Header("Properties")]
-    [SerializeField] float rotationSpeed = 2f;
-    [SerializeField] float baseBounceSpeed;
-    [SerializeField] float boostBounceSpeed;
-    [SerializeField] float buttHitSpeed = 10f;
+    [SerializeField] private float rotationSpeed = 2f;
+    [SerializeField] private float baseBounceSpeed;
+    [SerializeField] private float boostBounceSpeed;
+    [SerializeField] private float buttHitSpeed = 10f;
 
     [Header("Sprites")]
-    [SerializeField] Sprite upSprite;
-    [SerializeField] Sprite downSprite;
+    [SerializeField] private Sprite upSprite;
+    [SerializeField] private Sprite downSprite;
 
-    bool superJumpActivatedThisFrame;
-
+    private bool superJumpActivatedThisFrame;
     private Vector3 initialPosition;
     private SpriteRenderer mySpriteRenderer;
 
-    TricksDetector tricksDetector;
-    Rigidbody2D myRigidbody;
-    Animator animator;
+    private TricksDetector tricksDetector;
+    private Rigidbody2D myRigidbody;
+    private Animator animator;
 
     private bool performingButtHit = false;
     private Vector2 buttHitStartingPos;
@@ -50,6 +49,7 @@ public class Player : MonoBehaviour {
             DoButtHit();
         }
         else{
+
             transform.Rotate(InputManager.GetRotationDirection() * rotationSpeed * Time.deltaTime);
         }
 

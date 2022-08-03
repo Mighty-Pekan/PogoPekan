@@ -213,18 +213,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5242227836118978131, guid: b14515a41713aa141b58de0d00475281, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.72916245
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242227836118978131, guid: b14515a41713aa141b58de0d00475281, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.745283
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242227836118978131, guid: b14515a41713aa141b58de0d00475281, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.5097454
-      objectReference: {fileID: 0}
     - target: {fileID: 5242227836118978220, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.x
       value: -54.95
@@ -232,42 +220,10 @@ PrefabInstance:
     - target: {fileID: 5242227836118978220, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.y
       value: -2.5999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242227836319701970, guid: b14515a41713aa141b58de0d00475281, type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242227836319701970, guid: b14515a41713aa141b58de0d00475281, type: 3}
-      propertyPath: m_AnimatedTarget
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836319701970, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_ChildCameras.Array.size
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242227836891285560, guid: b14515a41713aa141b58de0d00475281, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -54.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242227836891285560, guid: b14515a41713aa141b58de0d00475281, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.5999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242227836891285567, guid: b14515a41713aa141b58de0d00475281, type: 3}
-      propertyPath: m_Lens.m_SensorSize.x
-      value: 2.5285714
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242227837103126426, guid: b14515a41713aa141b58de0d00475281, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -54.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242227837103126426, guid: b14515a41713aa141b58de0d00475281, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242227837103126427, guid: b14515a41713aa141b58de0d00475281, type: 3}
-      propertyPath: m_Lens.m_SensorSize.x
-      value: 2.5285714
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14515a41713aa141b58de0d00475281, type: 3}

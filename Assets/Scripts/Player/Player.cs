@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    //public
+    public bool PerformingButtHit { get; private set; } = false;
+
+    //serialized fields
     [Header("Properties")]
     [SerializeField] private float rotationSpeed = 2f;
     [SerializeField] private float baseBounceSpeed;
@@ -13,6 +17,8 @@ public class Player : MonoBehaviour {
     [SerializeField] private Sprite upSprite;
     [SerializeField] private Sprite downSprite;
 
+    //private
+
     private bool superJumpActivatedThisFrame;
     private Vector3 initialPosition;
     private SpriteRenderer mySpriteRenderer;
@@ -21,8 +27,9 @@ public class Player : MonoBehaviour {
     private Rigidbody2D myRigidbody;
     private Animator animator;
 
-    private bool performingButtHit = false;
     private Vector2 buttHitStartingPos;
+
+    
 
     private void Awake() {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -40,15 +47,21 @@ public class Player : MonoBehaviour {
 
     private void Update() {
 
-        if (myRigidbody.velocity.y >0)
-            mySpriteRenderer.sprite = upSprite;
-        else
-            mySpriteRenderer.sprite = downSprite;
+        //if (myRigidbody.velocity.y >0)
+        //    mySpriteRenderer.sprite = upSprite;
+        //else
+        //    mySpriteRenderer.sprite = downSprite;
 
-        if (InputManager.IsDoubleHold()||performingButtHit) {
+        if (InputManager.IsDoubleHold()||PerformingButtHit) {
             DoButtHit();
+            mySpriteRenderer.sprite = downSprite;
         }
         else{
+
+            if (myRigidbody.velocity.y > 0)
+                mySpriteRenderer.sprite = upSprite;
+            else
+                mySpriteRenderer.sprite = downSprite;
 
             transform.Rotate(InputManager.GetRotationDirection() * rotationSpeed * Time.deltaTime);
         }
@@ -60,10 +73,10 @@ public class Player : MonoBehaviour {
     private void DoButtHit() {
 
         //done only on first call
-        if (!performingButtHit) {
+        if (!PerformingButtHit) {
             buttHitStartingPos = transform.position;
             myRigidbody.velocity = Vector2.zero;
-            performingButtHit = true;
+            PerformingButtHit = true;
             tricksDetector.Reset();
         }
 
@@ -85,7 +98,6 @@ public class Player : MonoBehaviour {
             else myRigidbody.velocity = new Vector2(0, -buttHitSpeed);
         }
     }
-    public bool isDoingButtHit() { return performingButtHit; }
 
     private void LateUpdate() {
         superJumpActivatedThisFrame = false;
@@ -132,7 +144,7 @@ public class Player : MonoBehaviour {
     }
 
     private void OnCollisionStay2D(Collision2D collision) {
-        performingButtHit = false;
+        PerformingButtHit = false;
         buttHitCorStarted = false;
     }
 

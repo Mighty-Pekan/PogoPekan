@@ -243,6 +243,7 @@ MonoBehaviour:
   baseBounceSpeed: 12
   boostBounceSpeed: 18
   buttHitSpeed: 15
+  bouncingPart: {fileID: 755348568}
   upSprite: {fileID: -8453460545386370777, guid: 4131a5baf63f26e499f2b22b7bd48fa6, type: 3}
   downSprite: {fileID: -7645928061125962244, guid: 4131a5baf63f26e499f2b22b7bd48fa6, type: 3}
 --- !u!50 &1908649215348200475

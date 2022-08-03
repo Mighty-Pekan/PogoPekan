@@ -13,6 +13,9 @@ public class Player : MonoBehaviour {
     [SerializeField] private float boostBounceSpeed;
     [SerializeField] private float buttHitSpeed = 10f;
 
+    [Header("References")]
+    [SerializeField] private BouncingPart bouncingPart;
+
     [Header("Sprites")]
     [SerializeField] private Sprite upSprite;
     [SerializeField] private Sprite downSprite;
@@ -103,16 +106,18 @@ public class Player : MonoBehaviour {
             Debug.Log("trick detected");
             superJumpActivatedThisFrame = true;
             myRigidbody.velocity = transform.up * boostBounceSpeed;
-            StartCoroutine(ShrinkCamera());
+            StartCoroutine(ExpandCamera());
         }
         else {
             myRigidbody.velocity = transform.up * baseBounceSpeed;
+            if(bouncingPart.transform.position.y < transform.position.y)
+                animator.SetBool("SuperJump", false);
             Debug.Log("trick not detected");
         }
         tricksDetector.Reset();
     }
 
-    private IEnumerator ShrinkCamera() {
+    private IEnumerator ExpandCamera() {
         yield return new WaitForEndOfFrame();
         animator.SetBool("SuperJump", true);
     }
@@ -124,18 +129,15 @@ public class Player : MonoBehaviour {
         tricksDetector.Reset();
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (!superJumpActivatedThisFrame && !other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("BouncingTip")) {
-            if (other.contacts[0].point.y < transform.position.y) {
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!superJumpActivatedThisFrame && !other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("BouncingTip"))
+        {
+            if (other.contacts[0].point.y < transform.position.y)
+            {
                 animator.SetBool("SuperJump", false);
-                //Debug.Log("DEACTIVATING SUPERJUMP");
-            }
-            else {
-                //Debug.Log("NO DEACTIVATION: othertag = " + other.gameObject.tag + ", collision Y: " + other.contacts[0].point.y + ", my y:" + transform.position.y);
-
             }
         }
-        //else Debug.Log("NO DEACTIVATION: superjumpThisFrame = " + superJumpActivatedThisFrame + ", othertag = " + other.gameObject.tag);
     }
 
     private void OnCollisionStay2D(Collision2D collision) {

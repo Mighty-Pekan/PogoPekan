@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TraversablePlatform : MonoBehaviour {
 
+    [SerializeField] private GameObject topPosition;
+
     BoxCollider2D boxCollider;
     private void Awake() {
         boxCollider = GetComponent<BoxCollider2D>();
@@ -12,9 +14,10 @@ public class TraversablePlatform : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.transform.position);
         if (other.gameObject.transform.root.GetComponent<Rigidbody2D>() != null && 
             other.gameObject.transform.root.GetComponent<Rigidbody2D>().velocity.y > 0 ||
-            other.transform.position.y < transform.position.y)
+            other.transform.position.y < topPosition.transform.position.y)
             boxCollider.enabled = false;
         else
             boxCollider.enabled = true;

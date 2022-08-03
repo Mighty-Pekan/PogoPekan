@@ -47,11 +47,6 @@ public class Player : MonoBehaviour {
 
     private void Update() {
 
-        //if (myRigidbody.velocity.y >0)
-        //    mySpriteRenderer.sprite = upSprite;
-        //else
-        //    mySpriteRenderer.sprite = downSprite;
-
         if (InputManager.IsDoubleHold()||PerformingButtHit) {
             DoButtHit();
             mySpriteRenderer.sprite = downSprite;

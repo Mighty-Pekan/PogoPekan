@@ -1280,7 +1280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836891285567, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.5995976
+      value: 2.2222223
       objectReference: {fileID: 0}
     - target: {fileID: 5242227837103126426, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1296,7 +1296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242227837103126427, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.5995976
+      value: 2.2222223
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14515a41713aa141b58de0d00475281, type: 3}
@@ -1312,6 +1312,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8401782212646626915}
     m_Modifications:
+    - target: {fileID: 2093821712788630239, guid: ca87d4e420de3e641b55c7c6b78248fd, type: 3}
+      propertyPath: touchInputEnabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7079983020454486396, guid: ca87d4e420de3e641b55c7c6b78248fd, type: 3}
       propertyPath: m_RootOrder
       value: 2

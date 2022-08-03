@@ -7,6 +7,7 @@ TagManager:
   - Camera
   - Thorns
   - BouncingTip
+  - TraversablePlatform
   layers:
   - Default
   - TransparentFX
@@ -41,8 +42,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: back
+    uniqueID: 2184205005
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2762951471
     locked: 0
   - name: Thorns
     uniqueID: 517967915

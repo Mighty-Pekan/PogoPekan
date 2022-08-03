@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class BouncingPart : MonoBehaviour
 {
-    [SerializeField] GameObject PlayerObj;
-    Player player;
+    [SerializeField] private Player player;
 
-    private void Awake() {
-        player = PlayerObj.GetComponent<Player>();
+    private float resetBounceTime = 0.1f;
+    private bool canBounce = true;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        TipBounce(collision);
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        TipBounce(collision);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        player.Bounce();
+    private void TipBounce(Collider2D other)
+    {
+        if(other.gameObject.tag != "Player" && !other.isTrigger)
+        {
+            player.Bounce();
+        }
+        
     }
 }

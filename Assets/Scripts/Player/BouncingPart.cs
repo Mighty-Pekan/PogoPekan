@@ -11,16 +11,16 @@ public class BouncingPart : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        TipBounce(collision.gameObject.tag);
+        TipBounce(collision);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        TipBounce(collision.gameObject.tag);
+        TipBounce(collision);
     }
 
-    private void TipBounce(string otherTag)
+    private void TipBounce(Collider2D other)
     {
-        if(otherTag != "Player")
+        if(other.gameObject.tag != "Player" && !other.isTrigger)
         {
             player.Bounce();
         }

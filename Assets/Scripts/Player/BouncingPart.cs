@@ -22,16 +22,16 @@ public class BouncingPart : MonoBehaviour
     {
         if (otherTag != "Player" && canBounce)
         {
-            //canBounce = false;
+            canBounce = false;
             player.Bounce();
-            //StartCoroutine(resetBounce());
+            StartCoroutine(resetBounce());
         }
         
     }
-    //private IEnumerator resetBounce()
-    //{
-    //    yield return new WaitForSeconds(resetBounceTime);
-    //    canBounce = true;
-    //}
+    private IEnumerator resetBounce()
+    {
+        yield return new WaitForSeconds(resetBounceTime);
+        canBounce = true;
+    }
 
 }

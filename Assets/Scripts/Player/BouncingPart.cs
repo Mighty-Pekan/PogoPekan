@@ -4,21 +4,40 @@ using UnityEngine;
 
 public class BouncingPart : MonoBehaviour
 {
-    [SerializeField] GameObject PlayerObj;
-    Player player;
+    [SerializeField] private Player player;
+    //Player player;
+
+    private float resetBounceTime = 0.1f;
+    private bool canBounce = true;
 
     private void Awake() {
-        player = PlayerObj.GetComponent<Player>();
+        //player = playerObj.GetComponent<Player>();
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision) {
-    //    if(collision.gameObject.tag != "Player")
-    //        player.Bounce();
-    //}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        TipBounce(collision.gameObject.tag);   
+    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag != "Player")
-            player.Bounce();
+        TipBounce(collision.gameObject.tag);
     }
+
+    private void TipBounce(string otherTag)
+    {
+        if (otherTag != "Player" && canBounce)
+        {
+            canBounce = false;
+            player.Bounce();
+            StartCoroutine(resetBounce());
+        }
+        
+    }
+    private IEnumerator resetBounce()
+    {
+        yield return new WaitForSeconds(resetBounceTime);
+        canBounce = true;
+    }
+
 }

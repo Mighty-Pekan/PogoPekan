@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9e554881891ad45b631683a141de12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerObj: {fileID: 1908649215348200677}
+  playerObj: {fileID: 1908649215348200677}
+  resetBounceTime: 0.5
 --- !u!70 &8143956236264321322
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

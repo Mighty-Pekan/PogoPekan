@@ -2090,6 +2090,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundSpeed: {x: 0.4, y: 0.9}
+--- !u!114 &2105399917 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8054603216093718268, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+  m_PrefabInstance: {fileID: 6932784225035073047}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86bd089ce8b946942a72fd07c4a60023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3429155696522381446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21680,6 +21691,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 755348568, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2105399917}
+    - target: {fileID: 755348568, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: resetBounceTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1908649215348200472, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
       propertyPath: m_RootOrder
       value: 4

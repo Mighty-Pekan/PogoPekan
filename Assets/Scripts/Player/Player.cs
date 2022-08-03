@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    [Header("Properties")]
     [SerializeField] float rotationSpeed = 2f;
     [SerializeField] float baseBounceSpeed;
     [SerializeField] float boostBounceSpeed;
     [SerializeField] float buttHitSpeed = 10f;
+
+    [Header("Sprites")]
     [SerializeField] Sprite upSprite;
     [SerializeField] Sprite downSprite;
 
@@ -52,6 +55,7 @@ public class Player : MonoBehaviour {
 
         tricksDetector.registerRotation(transform.rotation.eulerAngles.z);
     }
+
     bool buttHitCorStarted = false;
     private void DoButtHit() {
 
@@ -89,12 +93,14 @@ public class Player : MonoBehaviour {
 
     public void Bounce() {
         if (tricksDetector.TrickDetected()) {
+            Debug.Log("trick detected");
             superJumpActivatedThisFrame = true;
             myRigidbody.velocity = transform.up * boostBounceSpeed;
             StartCoroutine(ShrinkCamera());
         }
         else {
             myRigidbody.velocity = transform.up * baseBounceSpeed;
+            Debug.Log("trick not detected");
         }
         tricksDetector.Reset();
     }

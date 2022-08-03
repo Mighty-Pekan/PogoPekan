@@ -18,25 +18,6 @@ public class BreakablePlatformButtHit : MonoBehaviour
         DecideColor();
     }
 
-    //private void OnTriggerStay2D(Collision2D other) {
-    //    if (canTakeDamage) {
-    //        if (other.contacts[0].collider.gameObject.tag == "BouncingTip") {
-
-    //            if (other.gameObject.GetComponent<Player>().isDoingButtHit()) {
-    //                canTakeDamage = false;
-    //                life -= tickDamage;
-
-    //                DecideColor();
-
-    //                if (life <= 0) {
-    //                    Destroy(gameObject);
-    //                }
-    //                StartCoroutine(EnableTakingDamage());
-    //            }
-    //        }
-    //    }
-    //}
-
     private void OnCollisionStay2D(Collision2D other)
     {
         if (canTakeDamage)

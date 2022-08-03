@@ -7,10 +7,23 @@ public class GameController : MonoSingleton<GameController>
 {
     Player player;
     InputManager inputManager;
+    public bool IsPause;
 
     private void Start()
     {
         Screen.orientation = ScreenOrientation.LandscapeLeft; //or right for right landscape
+    }
+
+    private void Update()
+    {
+        if(IsPause)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 
     public static void GameOver() {
@@ -42,7 +55,6 @@ public class GameController : MonoSingleton<GameController>
     {
         instance.player.ResetInitialPosition();
     }
-
 
 
     public static void LoadLevel(string levelName)

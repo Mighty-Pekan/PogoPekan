@@ -56,6 +56,11 @@ public class InputManager : MonoSingleton<InputManager>
     float? doubleHoldStartTime = null;
     private void KeyboardInput() {
 
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            UIManager.instance.OpenPausePanel(true);
+        }
+
         //---------------------double hold handling
         if( 
             (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) &&

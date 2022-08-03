@@ -12,7 +12,9 @@ public class TraversablePlatform : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.transform.root.GetComponent<Rigidbody2D>().velocity.y > 0 || other.transform.position.y < transform.position.y)
+        if (other.gameObject.transform.root.GetComponent<Rigidbody2D>() != null && 
+            other.gameObject.transform.root.GetComponent<Rigidbody2D>().velocity.y > 0 ||
+            other.transform.position.y < transform.position.y)
             boxCollider.enabled = false;
         else
             boxCollider.enabled = true;

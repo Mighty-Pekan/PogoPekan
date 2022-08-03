@@ -9,11 +9,20 @@ public class BouncingPart : MonoBehaviour
     private float resetBounceTime = 0.1f;
     private bool canBounce = true;
 
-    private void OnCollisionStay2D(Collision2D collision)
+    //private void OnCollisionStay2D(Collision2D collision)
+    //{
+    //    TipBounce(collision.gameObject.tag);
+    //}
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    TipBounce(collision.gameObject.tag);
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         TipBounce(collision.gameObject.tag);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         TipBounce(collision.gameObject.tag);
     }

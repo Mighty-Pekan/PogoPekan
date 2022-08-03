@@ -8,5 +8,13 @@ public class LevelSelector : MonoBehaviour
     {
         SceneManager.LoadScene(levelName);
     }
+
+    public void OnQuitApplication()
+    {
+        #if (UNITY_EDITOR)
+            Debug.Log("Quitting...");
+        #endif
+        Application.Quit();
+    }
     
 }

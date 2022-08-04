@@ -49,7 +49,6 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-
         if (InputManager.IsDoubleHold()||PerformingButtHit) {
             DoButtHit();
             mySpriteRenderer.sprite = downSprite;

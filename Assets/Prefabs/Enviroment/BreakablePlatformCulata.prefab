@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7131643448053666197}
   m_Layer: 6
   m_Name: BreakablePlatformCulata
-  m_TagString: Untagged
+  m_TagString: BreakablePlatformButtHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7131643448053666198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8916125, y: 1.3142318, z: 13.393481}
-  m_LocalScale: {x: 7.742589, y: 0.5994164, z: 1}
+  m_LocalScale: {x: 9.347628, y: 0.5994164, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

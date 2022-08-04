@@ -8,9 +8,9 @@ public class BreakablePlatformButtHit : MonoBehaviour
     [SerializeField] int tickDamage = 1;
     [SerializeField] float tickRateo = 0.5f;
 
-    bool canTakeDamage = true;
-    SpriteRenderer mySpriteRenderer;
-    int quarterOfLife;
+    private bool canTakeDamage = true;
+    private SpriteRenderer mySpriteRenderer;
+    private int quarterOfLife;
 
     private void Start() {
         quarterOfLife = life / 4;
@@ -18,23 +18,20 @@ public class BreakablePlatformButtHit : MonoBehaviour
         DecideColor();
     }
 
-    private void OnCollisionStay2D(Collision2D other)
+    public void TakeDamage()
     {
         if (canTakeDamage)
         {
-            if (other.gameObject.tag == "Player" && other.gameObject.GetComponent<Player>().PerformingButtHit)
+            canTakeDamage = false;
+            life -= tickDamage;
+
+            DecideColor();
+
+            if (life <= 0)
             {
-                canTakeDamage = false;
-                life -= tickDamage;
-
-                DecideColor();
-
-                if (life <= 0)
-                {
-                    Destroy(gameObject);
-                }
-                StartCoroutine(EnableTakingDamage());
+                Destroy(gameObject);
             }
+            StartCoroutine(EnableTakingDamage());
         }
     }
 

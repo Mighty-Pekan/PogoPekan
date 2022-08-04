@@ -14,7 +14,6 @@ public class TraversablePlatform : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.transform.position);
         if (other.gameObject.transform.root.GetComponent<Rigidbody2D>() != null && 
             other.gameObject.transform.root.GetComponent<Rigidbody2D>().velocity.y > 0 ||
             other.transform.position.y < topPosition.transform.position.y)

@@ -103,7 +103,7 @@ public class Player : MonoBehaviour {
 
     public void Bounce() {
         if (tricksDetector.TrickDetected()) {
-            Debug.Log("trick detected");
+            //Debug.Log("trick detected");
             superJumpActivatedThisFrame = true;
             myRigidbody.velocity = transform.up * boostBounceSpeed;
             StartCoroutine(ExpandCamera());
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour {
             myRigidbody.velocity = transform.up * baseBounceSpeed;
             if(bouncingPart.transform.position.y < transform.position.y)
                 animator.SetBool("SuperJump", false);
-            Debug.Log("trick not detected");
+            //Debug.Log("trick not detected");
         }
         tricksDetector.Reset();
     }

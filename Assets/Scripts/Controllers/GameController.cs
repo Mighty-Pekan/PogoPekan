@@ -33,7 +33,10 @@ public class GameController : MonoSingleton<GameController>
     public static void LoadNextLevel() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
-
+    public static Player GetPlayer()
+    {
+        return instance.player;
+    }
     //==============================================================registering objects
     public static void RegisterInputManager(InputManager _inputManager)
     {

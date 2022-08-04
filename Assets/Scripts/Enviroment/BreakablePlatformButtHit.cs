@@ -8,9 +8,9 @@ public class BreakablePlatformButtHit : MonoBehaviour
     [SerializeField] int tickDamage = 1;
     [SerializeField] float tickRateo = 0.5f;
 
-    private bool canTakeDamage = true;
     private SpriteRenderer mySpriteRenderer;
     private int quarterOfLife;
+    private float? lastTimeTookDamage = null;
 
     private void Start() {
         quarterOfLife = life / 4;
@@ -18,11 +18,19 @@ public class BreakablePlatformButtHit : MonoBehaviour
         DecideColor();
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "BouncingTip")
+            TakeDamage();
+    }
+
+
     public void TakeDamage()
     {
-        if (canTakeDamage)
+        if (lastTimeTookDamage == null) lastTimeTookDamage = Time.time;
+        if (Time.time - lastTimeTookDamage > tickRateo)
         {
-            canTakeDamage = false;
+            lastTimeTookDamage = Time.time;
             life -= tickDamage;
 
             DecideColor();
@@ -31,7 +39,6 @@ public class BreakablePlatformButtHit : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            StartCoroutine(EnableTakingDamage());
         }
     }
 
@@ -41,10 +48,4 @@ public class BreakablePlatformButtHit : MonoBehaviour
         else if (life > quarterOfLife) mySpriteRenderer.color = new Color(1, 0.3f, 0, 1); 
         else mySpriteRenderer.color = Color.red;
     }
-
-    private IEnumerator EnableTakingDamage() {
-        yield return new WaitForSeconds(tickRateo);
-        canTakeDamage = true;
-    }
-
 }

@@ -8,7 +8,6 @@ TagManager:
   - Thorns
   - BouncingTip
   - TraversablePlatform
-  - BreakablePlatformButtHit
   layers:
   - Default
   - TransparentFX

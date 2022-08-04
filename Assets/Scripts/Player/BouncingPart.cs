@@ -16,12 +16,6 @@ public class BouncingPart : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         TipBounce(collision);
-        if(collision.gameObject.tag == "BreakablePlatformButtHit")
-        {
-            
-            BreakablePlatformButtHit breakablePlatform = collision.GetComponent<BreakablePlatformButtHit>();
-            breakablePlatform.TakeDamage();
-        }
     }
 
     private void TipBounce(Collider2D other)

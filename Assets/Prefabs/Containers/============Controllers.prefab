@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RETURN
+  m_text: RESUME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
   m_sharedMaterial: {fileID: -5886020581555721959, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
@@ -760,7 +760,7 @@ GameObject:
   - component: {fileID: 1537164882}
   - component: {fileID: 1537164881}
   m_Layer: 5
-  m_Name: BTGBtn
+  m_Name: Resume button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -783,7 +783,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 175.4}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1537164883
@@ -916,7 +916,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -86.8}
   m_SizeDelta: {x: 180, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1729208240
@@ -1174,6 +1174,11 @@ PrefabInstance:
       objectReference: {fileID: 1057051634}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
+--- !u!4 &1688181852508364806 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4025742510656223318, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
+  m_PrefabInstance: {fileID: 2356489850433034320}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1072428586122354065 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3337702877733045697, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
@@ -1190,11 +1195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e15eccfd1ba274caece67835e97496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1688181852508364806 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4025742510656223318, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
-  m_PrefabInstance: {fileID: 2356489850433034320}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4348509222590593770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1280,7 +1280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836891285567, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 2.2222223
+      value: 1.7777778
       objectReference: {fileID: 0}
     - target: {fileID: 5242227837103126426, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1296,7 +1296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242227837103126427, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 2.2222223
+      value: 1.7777778
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14515a41713aa141b58de0d00475281, type: 3}
@@ -1314,7 +1314,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2093821712788630239, guid: ca87d4e420de3e641b55c7c6b78248fd, type: 3}
       propertyPath: touchInputEnabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7079983020454486396, guid: ca87d4e420de3e641b55c7c6b78248fd, type: 3}
       propertyPath: m_RootOrder

@@ -15,6 +15,7 @@ public class InputManager : MonoSingleton<InputManager>
     private Touch touch;
 
     private bool isDoubleHold = false;
+    float? doubleHoldStartTime = null;
 
     private void Start() {
         GameController.RegisterInputManager(this);
@@ -26,7 +27,12 @@ public class InputManager : MonoSingleton<InputManager>
             MobileInput();
         else
             KeyboardInput();
+
+        
     }
+
+    bool leftHold = false;
+    bool rightHold = false;
 
     private void MobileInput()
     {
@@ -34,10 +40,36 @@ public class InputManager : MonoSingleton<InputManager>
         if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
         //if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
         {
-            if (Input.touchCount > 0)
-            {
+            if (Input.touchCount > 0)       //nella vecchia versione qui {tutto il resto}
                 touch = Input.GetTouch(0);
 
+            //---------------------double hold handling
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                Vector3 touchPosition = Input.touches[i].position;
+
+                if (touchPosition.x < halfScreenWidth)
+                    leftHold = true;
+                if (touchPosition.x > halfScreenWidth)
+                    rightHold = true;
+            }
+
+            if (leftHold && rightHold)
+            {
+                rotationDirection = Vector3.zero;
+
+                if (doubleHoldStartTime == null)
+                {
+                    doubleHoldStartTime = Time.time;
+                }
+                else if (Time.time - doubleHoldStartTime >= butHittStartDelay)
+                {
+                    isDoubleHold = true;
+                }
+            }
+            //----------------------rotation handling
+            else
+            {
                 for (int i = 0; i < Input.touchCount; i++)
                 {
                     Vector3 touchPosition = Input.touches[i].position;
@@ -51,9 +83,13 @@ public class InputManager : MonoSingleton<InputManager>
                 }
             }
         }
+        if(!leftHold && !rightHold){
+            isDoubleHold = false;
+            doubleHoldStartTime = null;
+        }
+        leftHold = false;
+        rightHold = false;
     }
-
-    float? doubleHoldStartTime = null;
     private void KeyboardInput() {
 
         if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))

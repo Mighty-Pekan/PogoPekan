@@ -10,14 +10,19 @@ public class UIManager : MonoSingleton<UIManager>
 
     private void Start()
     {
-        PausePanel.SetActive(false);
+        if(PausePanel != null)
+            PausePanel.SetActive(false);
+
+        if(PauseButton != null)
         PauseButton.SetActive(true);
     }
 
     public void OpenPausePanel(bool isOpen)
     {
-        PausePanel.SetActive(isOpen);
-        PauseButton.SetActive(!isOpen);
+        if (PausePanel != null)
+            PausePanel.SetActive(isOpen);
+        if (PausePanel != null)
+            PauseButton.SetActive(!isOpen);
         GameController.Instance.IsPause = isOpen;
     }
 

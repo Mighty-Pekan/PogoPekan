@@ -27,7 +27,7 @@ public class GameController : MonoSingleton<GameController>
     }
 
     public void GameOver() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void LoadNextLevel() {

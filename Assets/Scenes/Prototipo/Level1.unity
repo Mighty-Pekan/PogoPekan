@@ -636,7 +636,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -709441199
   m_SortingLayer: 1
-  m_SortingOrder: -5
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 238822334097e7548ba1cc395b14bb4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -800,7 +800,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -709441199
   m_SortingLayer: 1
-  m_SortingOrder: -5
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3f234e6d0b303004ea6ffa9384d55fba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -25132,11 +25132,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1908649215348200472, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -50.28
+      value: -53.08
       objectReference: {fileID: 0}
     - target: {fileID: 1908649215348200472, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.93
+      value: -4.16
       objectReference: {fileID: 0}
     - target: {fileID: 1908649215348200472, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25187,6 +25187,26 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 4924202355804466248}
+    - target: {fileID: 856977089, guid: 326cd8a68c91cf04183f386ceef7adb5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401782212046327152, guid: 326cd8a68c91cf04183f386ceef7adb5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -67.48401
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401782212046327152, guid: 326cd8a68c91cf04183f386ceef7adb5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.682744
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401782212136301266, guid: 326cd8a68c91cf04183f386ceef7adb5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -67.48401
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401782212136301266, guid: 326cd8a68c91cf04183f386ceef7adb5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.0827436
+      objectReference: {fileID: 0}
     - target: {fileID: 8401782212604284104, guid: 326cd8a68c91cf04183f386ceef7adb5, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
@@ -25254,6 +25274,14 @@ PrefabInstance:
     - target: {fileID: 8401782212839973176, guid: 326cd8a68c91cf04183f386ceef7adb5, type: 3}
       propertyPath: m_ChildCameras.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401782212907562054, guid: 326cd8a68c91cf04183f386ceef7adb5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -60.623047
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401782212907562054, guid: 326cd8a68c91cf04183f386ceef7adb5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.018961
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 326cd8a68c91cf04183f386ceef7adb5, type: 3}

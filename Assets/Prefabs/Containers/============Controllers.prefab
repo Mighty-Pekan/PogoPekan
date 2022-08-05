@@ -1174,11 +1174,6 @@ PrefabInstance:
       objectReference: {fileID: 1057051634}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
---- !u!4 &1688181852508364806 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4025742510656223318, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
-  m_PrefabInstance: {fileID: 2356489850433034320}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1072428586122354065 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3337702877733045697, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
@@ -1195,6 +1190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e15eccfd1ba274caece67835e97496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1688181852508364806 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4025742510656223318, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
+  m_PrefabInstance: {fileID: 2356489850433034320}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4348509222590593770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1252,11 +1252,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836118978220, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -64.684006
+      value: -60.624943
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836118978220, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.852744
+      value: -3.8150063
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836118978220, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1280,7 +1280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836891285567, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7777778
+      value: 2.2222223
       objectReference: {fileID: 0}
     - target: {fileID: 5242227837103126426, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1296,15 +1296,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242227837103126427, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7777778
+      value: 2.2222223
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14515a41713aa141b58de0d00475281, type: 3}
+--- !u!1 &8401782212046327155 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5242227837103126425, guid: b14515a41713aa141b58de0d00475281, type: 3}
+  m_PrefabInstance: {fileID: 4348509222590593770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8401782212136301268 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5242227836891285566, guid: b14515a41713aa141b58de0d00475281, type: 3}
+  m_PrefabInstance: {fileID: 4348509222590593770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8401782211464267985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5242227835413967419, guid: b14515a41713aa141b58de0d00475281, type: 3}
   m_PrefabInstance: {fileID: 4348509222590593770}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &681193768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401782212046327155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 0}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
+--- !u!114 &8401782212604284104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401782212136301268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 0}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!1001 &8401782211404723421
 PrefabInstance:
   m_ObjectHideFlags: 0

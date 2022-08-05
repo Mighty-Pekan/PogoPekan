@@ -94,7 +94,14 @@ public class InputManager : MonoSingleton<InputManager>
 
         if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            UIManager.Instance.OpenPausePanel(true);
+            if(GameController.Instance.IsPause)
+            {
+                UIManager.Instance.OpenPausePanel(false);
+            }
+            else
+            {
+                UIManager.Instance.OpenPausePanel(true);
+            }
         }
 
         //---------------------double hold handling

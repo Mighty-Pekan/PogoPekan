@@ -21,7 +21,7 @@ public class Debugger : MonoSingleton<Debugger>
     }
 
     void DisplayAllLevels() {
-        for (int i = 1; i < GameController.GetLevelsCount(); i++) {
+        for (int i = 1; i < GameController.Instance.GetLevelsCount(); i++) {
             Debug.Log("Index " + i);
             GameObject buttonInstance = Instantiate(selectLevelButtonPrefab, selectLevelPanel.transform.position, Quaternion.identity);
             buttonInstance.name = "Level" + i;
@@ -30,7 +30,7 @@ public class Debugger : MonoSingleton<Debugger>
 
             selectLevelButton = buttonInstance.GetComponent<Button>();
 
-            selectLevelButton.onClick.AddListener(() => GameController.LoadLevel(buttonInstance.name));
+            selectLevelButton.onClick.AddListener(() => GameController.Instance.LoadLevel(buttonInstance.name));
 
         }
     }
@@ -68,10 +68,10 @@ public class Debugger : MonoSingleton<Debugger>
     /// //////////////////
 
     public void toggleInputType() {
-        GameController.GetInputManager().ToggleTouchInput();
+        GameController.Instance.GetInputManager().ToggleTouchInput();
     }
     public void resetPlayerPosition() {
-        GameController.ResetPlayerPosition();
+        GameController.Instance.ResetPlayerPosition();
     }
 
 

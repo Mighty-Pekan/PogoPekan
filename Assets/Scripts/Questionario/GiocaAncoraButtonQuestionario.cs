@@ -5,7 +5,7 @@ using UnityEngine;
 public class GiocaAncoraButtonQuestionario : MonoBehaviour
 {
     public void giocaAncora() {
-        GameController.GameOver();
+        GameController.Instance.GameOver();
         transform.parent.gameObject.SetActive(false);
     }
 }

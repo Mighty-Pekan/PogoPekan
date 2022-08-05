@@ -41,13 +41,13 @@ public class Player : MonoBehaviour {
 
     private void Start()
     {
-        GameController.RegisterPlayer(this);
+        GameController.Instance.RegisterPlayer(this);
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         initialPosition = transform.position;
     }
 
     private void Update() {
-        if (InputManager.IsDoubleHold()||performingButtHit) {
+        if (InputManager.Instance.IsDoubleHold()||performingButtHit) {
             DoButtHit();
             mySpriteRenderer.sprite = downSprite;
         }
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour {
             else
                 mySpriteRenderer.sprite = downSprite;
 
-            transform.Rotate(InputManager.GetRotationDirection() * rotationSpeed * Time.deltaTime);
+            transform.Rotate(InputManager.Instance.GetRotationDirection() * rotationSpeed * Time.deltaTime);
         }
 
         tricksDetector.registerRotation(transform.rotation.eulerAngles.z);

@@ -6,7 +6,7 @@ public class ObjectsOutDetector : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "PlayerBody") {
-            GameController.GameOver();
+            GameController.Instance.GameOver();
         }
     }
 }

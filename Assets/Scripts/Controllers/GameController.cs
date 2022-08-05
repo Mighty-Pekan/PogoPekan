@@ -26,41 +26,41 @@ public class GameController : MonoSingleton<GameController>
         }
     }
 
-    public static void GameOver() {
+    public void GameOver() {
         SceneManager.LoadScene(0);
     }
 
-    public static void LoadNextLevel() {
+    public void LoadNextLevel() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
-    public static Player GetPlayer()
+    public Player GetPlayer()
     {
-        return instance.player;
+        return player;
     }
     //==============================================================registering objects
-    public static void RegisterInputManager(InputManager _inputManager)
+    public void RegisterInputManager(InputManager _inputManager)
     {
-        instance.inputManager = _inputManager;
+        inputManager = _inputManager;
     }
-    public static void RegisterPlayer(Player _player) {
-        instance.player = _player;
+    public void RegisterPlayer(Player _player) {
+        player = _player;
     }
     //============================================================== getters
 
-    public static InputManager GetInputManager() {
-        return instance.inputManager;
+    public InputManager GetInputManager() {
+        return inputManager;
     }
-    public static int GetLevelsCount() {
+    public int GetLevelsCount() {
         return SceneManager.sceneCountInBuildSettings;
     }
     //==============================================================
-    public static void ResetPlayerPosition()
+    public void ResetPlayerPosition()
     {
-        instance.player.ResetInitialPosition();
+        player.ResetInitialPosition();
     }
 
 
-    public static void LoadLevel(string levelName)
+    public void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);
     }

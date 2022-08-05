@@ -18,7 +18,7 @@ public class InputManager : MonoSingleton<InputManager>
     float? doubleHoldStartTime = null;
 
     private void Start() {
-        GameController.RegisterInputManager(this);
+        GameController.Instance.RegisterInputManager(this);
     }
 
     private void Update()
@@ -94,7 +94,7 @@ public class InputManager : MonoSingleton<InputManager>
 
         if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            UIManager.instance.OpenPausePanel(true);
+            UIManager.Instance.OpenPausePanel(true);
         }
 
         //---------------------double hold handling
@@ -126,14 +126,14 @@ public class InputManager : MonoSingleton<InputManager>
         }
     }
 
-    public static Vector3 GetRotationDirection()
+    public Vector3 GetRotationDirection()
     {
-        return instance.rotationDirection;
+        return rotationDirection;
     }
 
     
-    public static bool IsDoubleHold() {
-        return instance.isDoubleHold;
+    public bool IsDoubleHold() {
+        return isDoubleHold;
     }
 
     public void ToggleTouchInput()

@@ -20,7 +20,7 @@ public class BreakablePlatformButtHit : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "BouncingTip" && GameController.GetPlayer().IsPerformingButtHit())
+        if (collision.gameObject.tag == "BouncingTip" && GameController.Instance.GetPlayer().IsPerformingButtHit())
             TakeDamage();
     }
 

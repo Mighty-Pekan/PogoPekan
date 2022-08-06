@@ -20,7 +20,7 @@ public class BouncingPart : MonoBehaviour
 
     private void TipBounce(Collider2D other)
     {
-        if(other.gameObject.tag != "Player" && !other.isTrigger)
+        if(other.gameObject.tag != "Player" && !other.isTrigger && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHit()))
         {
             player.Bounce();
         }

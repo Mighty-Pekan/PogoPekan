@@ -18,6 +18,12 @@ public class BreakablePlatformButtHit : MonoBehaviour
         DecideColor();
     }
 
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "BouncingTip" && GameController.Instance.GetPlayer().IsPerformingButtHit())
+    //        TakeDamage();
+    //}
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "BouncingTip" && GameController.Instance.GetPlayer().IsPerformingButtHit())
@@ -27,6 +33,8 @@ public class BreakablePlatformButtHit : MonoBehaviour
 
     public void TakeDamage()
     {
+        if(tickRateo == 0f)Destroy(gameObject);
+
         if (lastTimeTookDamage == null) lastTimeTookDamage = Time.time;
         if (Time.time - lastTimeTookDamage > tickRateo)
         {

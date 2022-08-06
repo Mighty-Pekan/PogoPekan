@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private float baseBounceSpeed;
     [SerializeField] private float boostBounceSpeed;
     [SerializeField] private float buttHitSpeed = 10f;
+    [SerializeField] private float buttHitTimer = 2f;
 
     [Header("References")]
     [SerializeField] private BouncingPart bouncingPart;
@@ -48,8 +49,7 @@ public class Player : MonoBehaviour {
 
     private void Update() {
         if (InputManager.Instance.IsDoubleHold()||performingButtHit) {
-            DoButtHit();
-            mySpriteRenderer.sprite = downSprite;
+            DoButtHit();  
         }
         else{
 
@@ -64,9 +64,14 @@ public class Player : MonoBehaviour {
         tricksDetector.registerRotation(transform.rotation.eulerAngles.z);
     }
 
+    float lastButtHitEndTime;
+
     private void DoButtHit() {
+        if (Time.time - lastButtHitEndTime < buttHitTimer) return;
+
         //done only on first call
         if (!performingButtHit) {
+            mySpriteRenderer.sprite = downSprite;
             buttHitStartingPos = transform.position;
             myRigidbody.velocity = Vector2.zero;
             performingButtHit = true;
@@ -103,6 +108,11 @@ public class Player : MonoBehaviour {
             if(bouncingPart.transform.position.y < transform.position.y)
                 animator.SetBool("SuperJump", false);
         }
+        if (performingButtHit)
+        {
+            lastButtHitEndTime = Time.time;
+            performingButtHit = false;
+        }
         tricksDetector.Reset();
     }
 
@@ -129,9 +139,9 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision) {
-        performingButtHit = false;
-    }
+    //private void OnCollisionStay2D(Collision2D collision) {
+    //    performingButtHit = false;
+    //}
 
     public bool IsPerformingButtHit()
     {

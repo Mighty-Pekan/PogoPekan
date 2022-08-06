@@ -13,7 +13,9 @@ public class TraversablePlatform : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.transform.root.GetComponent<Rigidbody2D>() != null &&
+        Player otherPlayer = other.transform.root.GetComponent<Player>();
+        if ((otherPlayer != null && otherPlayer.IsPerformingButtHit()) ||
+            other.gameObject.transform.root.GetComponent<Rigidbody2D>() != null &&
             other.gameObject.transform.root.GetComponent<Rigidbody2D>().velocity.y > 0 &&
             other.transform.position.y < topPosition.transform.position.y &&
             canBeDisabled)
@@ -21,7 +23,16 @@ public class TraversablePlatform : MonoBehaviour {
             boxCollider.enabled = false;
         }
         else
-            boxCollider.enabled = true;
+        {
+            if( otherPlayer == null || !otherPlayer.IsPerformingButtHit())
+            {
+                boxCollider.enabled = true;
+                if (otherPlayer == null) Debug.Log("other player is null");
+                else Debug.Log("not performing butt hit");
+            }
+               
+        }
+            
     }
 
     private bool canBeDisabled = true;

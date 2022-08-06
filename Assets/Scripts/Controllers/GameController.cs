@@ -63,6 +63,7 @@ public class GameController : MonoSingleton<GameController>
     public void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);
+        UIManager.Instance.OpenPausePanel(false);
     }
 
 }

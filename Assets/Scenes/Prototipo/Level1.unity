@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 162006424}
   - component: {fileID: 162006423}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: left tap text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 304085490}
   - component: {fileID: 304085489}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: right tap text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -702,7 +702,7 @@ GameObject:
   - component: {fileID: 493579597}
   - component: {fileID: 493579596}
   m_Layer: 5
-  m_Name: Text
+  m_Name: cont jump text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

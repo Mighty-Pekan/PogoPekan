@@ -1712,6 +1712,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 243673765}
     m_Modifications:
+    - target: {fileID: 2093821712788630239, guid: ca87d4e420de3e641b55c7c6b78248fd, type: 3}
+      propertyPath: touchInputEnabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7079983020454486396, guid: ca87d4e420de3e641b55c7c6b78248fd, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -25209,11 +25213,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836118978220, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -65.163185
+      value: -58.462143
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836118978220, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.431389
+      value: -4.4303637
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836319701970, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_Follow

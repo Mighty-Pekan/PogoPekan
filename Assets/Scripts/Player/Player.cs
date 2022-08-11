@@ -49,14 +49,17 @@ public class Player : MonoBehaviour {
 
     private void Update() {
         if (InputManager.Instance.IsDoubleHold()||performingButtHit) {
+            animator.SetBool("GoUp", false);
             DoButtHit();  
         }
         else{
 
             if (myRigidbody.velocity.y > 0)
-                mySpriteRenderer.sprite = upSprite;
+ //               mySpriteRenderer.sprite = upSprite;
+                animator.SetBool("GoUp", true);
             else
-                mySpriteRenderer.sprite = downSprite;
+                //               mySpriteRenderer.sprite = downSprite;
+                animator.SetBool("GoUp", false);
 
             transform.Rotate(InputManager.Instance.GetRotationDirection() * rotationSpeed * Time.deltaTime);
         }
@@ -98,7 +101,8 @@ public class Player : MonoBehaviour {
     }
 
     public void Bounce() {
-        if (tricksDetector.TrickDetected()) {
+        if (tricksDetector.TrickDetected())
+        {
             superJumpActivatedThisFrame = true;
             myRigidbody.velocity = transform.up * boostBounceSpeed;
             StartCoroutine(ExpandCamera());

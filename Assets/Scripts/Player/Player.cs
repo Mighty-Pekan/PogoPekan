@@ -31,12 +31,13 @@ public class Player : MonoBehaviour {
 
     private Vector2 buttHitStartingPos;
 
-    
+    private ParticleSystem particle;
 
     private void Awake() {
         myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         tricksDetector = new TricksDetector();
+        particle = GameObject.Find("Ground").GetComponentInChildren<ParticleSystem>();
     }
 
 
@@ -100,7 +101,11 @@ public class Player : MonoBehaviour {
         superJumpActivatedThisFrame = false;
     }
 
-    public void Bounce() {
+    public void Bounce()
+    {
+        Vector3 tipPos = GameObject.Find("BouncingTip").gameObject.GetComponentInChildren<CapsuleCollider2D>().transform.position;
+        particle.transform.position = new Vector3(tipPos.x, tipPos.y, tipPos.z);
+        particle.Play();
         if (tricksDetector.TrickDetected())
         {
             superJumpActivatedThisFrame = true;

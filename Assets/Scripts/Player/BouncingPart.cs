@@ -5,12 +5,14 @@ using UnityEngine;
 public class BouncingPart : MonoBehaviour
 {
     [SerializeField] private Player player;
+    [SerializeField] private GameObject groundParticles;
 
     private float resetBounceTime = 0.1f;
     private bool canBounce = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Instantiate(groundParticles,transform.position,Quaternion.identity);
         TipBounce(collision);
     }
     private void OnTriggerStay2D(Collider2D collision)

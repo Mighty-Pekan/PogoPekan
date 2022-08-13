@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8054603216093718268}
+  groundParticles: {fileID: 9119047677558808779, guid: 0ab9b7b32870f5943aedc7e23005e621, type: 3}
 --- !u!70 &8143956236264321322
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

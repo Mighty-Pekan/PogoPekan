@@ -7,7 +7,7 @@ public class BouncingPart : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private GameObject groundParticles;
 
-    private float resetBounceTime = 0.1f;
+    private float resetBounceTime = 0.02f;
     private bool canBounce = true;
 
     private void OnCollisionStay2D(Collision2D other) {
@@ -17,6 +17,10 @@ public class BouncingPart : MonoBehaviour
             canBounce = false;
         }
         StartCoroutine(enableBounceCor());
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) {
+        canBounce = true;
     }
 
     private IEnumerator enableBounceCor() {

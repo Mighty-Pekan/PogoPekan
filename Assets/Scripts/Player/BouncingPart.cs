@@ -5,18 +5,30 @@ using UnityEngine;
 public class BouncingPart : MonoBehaviour
 {
     [SerializeField] private Player player;
-    [SerializeField] private GameObject groundParticles;
 
     private float resetBounceTime = 0.02f;
     private bool canBounce = true;
 
     private void OnCollisionStay2D(Collision2D other) {
         if (other.gameObject.tag != "Player" && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHit()) && canBounce) {
+            
             player.Bounce();
-            Instantiate(groundParticles, transform.position, Quaternion.identity);
+
+            HandleParticlesGeneration(other);
+
             canBounce = false;
         }
         StartCoroutine(enableBounceCor());
+    }
+
+    private void HandleParticlesGeneration(Collision2D other) {
+
+        ParticlesEmitterIfHit otherEmitter = other.gameObject.GetComponent<ParticlesEmitterIfHit>();
+        if(otherEmitter != null) {
+            GameObject particles = Instantiate(otherEmitter.getParticles(), transform.position, Quaternion.identity);
+            particles.transform.up = transform.up;
+            particles.GetComponent<ParticleSystem>().Play();
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision) {

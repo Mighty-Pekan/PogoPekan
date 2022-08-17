@@ -116172,10 +116172,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8401782212808158347}
     m_Modifications:
-    - target: {fileID: 2093821712788630239, guid: ca87d4e420de3e641b55c7c6b78248fd, type: 3}
-      propertyPath: touchInputEnabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7079983020454486396, guid: ca87d4e420de3e641b55c7c6b78248fd, type: 3}
       propertyPath: m_RootOrder
       value: 2

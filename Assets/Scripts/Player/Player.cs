@@ -53,17 +53,20 @@ public class Player : MonoBehaviour {
         else{
 
             if (myRigidbody.velocity.y > 0)
- //               mySpriteRenderer.sprite = upSprite;
                 animator.SetBool("GoUp", true);
             else
-                //               mySpriteRenderer.sprite = downSprite;
                 animator.SetBool("GoUp", false);
 
+            //myRigidbody.AddTorque(rotationSpeed, ForceMode2D.Force);
             transform.Rotate(InputManager.Instance.GetRotationDirection() * rotationSpeed * Time.deltaTime);
         }
 
         tricksDetector.registerRotation(transform.rotation.eulerAngles.z);
     }
+
+    //private void FixedUpdate() {
+    //    myRigidbody.AddTorque(rotationSpeed, ForceMode2D.Force);
+    //}
 
     float lastButtHitEndTime;
 

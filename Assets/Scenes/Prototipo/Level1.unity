@@ -24157,6 +24157,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground Particles
       objectReference: {fileID: 0}
+    - target: {fileID: 9119047677558808781, guid: 0ab9b7b32870f5943aedc7e23005e621, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119047677558808781, guid: 0ab9b7b32870f5943aedc7e23005e621, type: 3}
+      propertyPath: autoRandomSeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9119047677558808782, guid: 0ab9b7b32870f5943aedc7e23005e621, type: 3}
       propertyPath: m_RootOrder
       value: 4

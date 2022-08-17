@@ -21,7 +21,6 @@ public class Player : MonoBehaviour {
 
     //private
     private bool performingButtHit = false;
-    private bool superJumpActivatedThisFrame;
     private Vector3 initialPosition;
     private SpriteRenderer mySpriteRenderer;
 
@@ -106,17 +105,12 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void LateUpdate() {
-        superJumpActivatedThisFrame = false;
-    }
-
     public void Bounce()
     {
         Vector3 tipPos = GameObject.Find("BouncingTip").gameObject.GetComponentInChildren<CapsuleCollider2D>().transform.position;
         if (tricksDetector.TrickDetected())
         {
             Debug.Log("superjump");
-            superJumpActivatedThisFrame = true;
             myRigidbody.velocity = transform.up * boostBounceSpeed;
             //StartCoroutine(ExpandCamera());
             animator.SetBool("SuperJump", true);
@@ -147,16 +141,19 @@ public class Player : MonoBehaviour {
         tricksDetector.Reset();
     }
 
-    //private void OnCollisionEnter2D(Collision2D other)
-    //{
-    //    if (!superJumpActivatedThisFrame && !other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("BouncingTip"))
-    //    {
-    //        if (other.contacts[0].point.y < transform.position.y)
-    //        {
-    //            animator.SetBool("SuperJump", false);
-    //        }
-    //    }
-    //}
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        //if the pekan touches the ground
+        if(other.otherCollider.gameObject.tag == "Player")
+        {
+            //preventing collisiions between parts of player 
+            if(other.gameObject.tag != "Player" && other.gameObject.tag != "BouncingTip") {
+                if (other.contacts[0].point.y < transform.position.y) {
+                    animator.SetBool("SuperJump", false);
+                }
+            }
+        }
+    }
 
     //private void OnCollisionStay2D(Collision2D collision) {
     //    performingButtHit = false;

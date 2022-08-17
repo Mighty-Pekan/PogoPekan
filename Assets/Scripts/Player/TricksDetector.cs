@@ -39,7 +39,7 @@ public class TricksDetector {
                 else if ((rotationVerse == false && convertedRot < triggerAngle)
                 || (rotationVerse == true && convertedRot > triggerAngle)) {
                     triggerActivated = true;
-                    //Debug.Log("TRIGGER ACTIVATED, rotation verse = "+rotationVerse+", trigger angle: "+triggerAngle+",actual angle: "+convertedRot);
+                    //Debug.Log("TRIGGER ACTIVATED, rotation verse = " + rotationVerse+", trigger angle: "+triggerAngle+",actual angle: "+convertedRot);
                 }
             }
             previousRot = convertedRot;

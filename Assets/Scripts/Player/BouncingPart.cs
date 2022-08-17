@@ -10,22 +10,17 @@ public class BouncingPart : MonoBehaviour
     private float resetBounceTime = 0.1f;
     private bool canBounce = true;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Instantiate(groundParticles,transform.position,Quaternion.identity);
-        TipBounce(collision);
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        TipBounce(collision);
+    private void OnCollisionStay2D(Collision2D other) {
+        if (other.gameObject.tag != "Player" && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHit()) && canBounce) {
+            player.Bounce();
+            Instantiate(groundParticles, transform.position, Quaternion.identity);
+            canBounce = false;
+        }
+        StartCoroutine(enableBounceCor());
     }
 
-    private void TipBounce(Collider2D other)
-    {
-        if(other.gameObject.tag != "Player" && !other.isTrigger && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHit()))
-        {
-            player.Bounce();
-        }
-        
+    private IEnumerator enableBounceCor() {
+        yield return new WaitForSeconds(resetBounceTime);
+        canBounce = true;
     }
 }

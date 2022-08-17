@@ -46,30 +46,39 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-        if (InputManager.Instance.IsDoubleHold()||performingButtHit) {
+        HandleRotation();
+    }
+
+    private void HandleRotation() {
+        if (InputManager.Instance.IsDoubleHold() || performingButtHit) {
             animator.SetBool("GoUp", false);
-            DoButtHit();  
+            DoButtHit();
         }
-        else{
+        else {
 
             if (myRigidbody.velocity.y > 0)
                 animator.SetBool("GoUp", true);
             else
                 animator.SetBool("GoUp", false);
 
-
-            transform.Rotate(InputManager.Instance.GetRotationDirection() * rotationSpeed * Time.deltaTime * Vector3.back);
+            switch (InputManager.Instance.GetRotationDirection()) {
+                case 1:
+                    myRigidbody.angularVelocity = -rotationSpeed;
+                    break;
+                case -1:
+                    myRigidbody.angularVelocity = rotationSpeed;
+                    break;
+                case 0:
+                default:
+                    myRigidbody.angularVelocity = 0;
+                    break;
+            }
         }
 
         tricksDetector.registerRotation(transform.rotation.eulerAngles.z);
     }
 
-    //private void FixedUpdate() {
-    //    myRigidbody.AddTorque(rotationSpeed, ForceMode2D.Force);
-    //}
-
-    float lastButtHitEndTime;
-
+    private float lastButtHitEndTime;
     private void DoButtHit() {
         if (Time.time - lastButtHitEndTime < buttHitTimer) return;
 
@@ -106,11 +115,14 @@ public class Player : MonoBehaviour {
         Vector3 tipPos = GameObject.Find("BouncingTip").gameObject.GetComponentInChildren<CapsuleCollider2D>().transform.position;
         if (tricksDetector.TrickDetected())
         {
+            Debug.Log("superjump");
             superJumpActivatedThisFrame = true;
             myRigidbody.velocity = transform.up * boostBounceSpeed;
-            StartCoroutine(ExpandCamera());
+            //StartCoroutine(ExpandCamera());
+            animator.SetBool("SuperJump", true);
         }
         else {
+            Debug.Log("normal jump");
             myRigidbody.velocity = transform.up * baseBounceSpeed;
             if(bouncingPart.transform.position.y < transform.position.y)
                 animator.SetBool("SuperJump", false);
@@ -135,16 +147,16 @@ public class Player : MonoBehaviour {
         tricksDetector.Reset();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (!superJumpActivatedThisFrame && !other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("BouncingTip"))
-        {
-            if (other.contacts[0].point.y < transform.position.y)
-            {
-                animator.SetBool("SuperJump", false);
-            }
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    if (!superJumpActivatedThisFrame && !other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("BouncingTip"))
+    //    {
+    //        if (other.contacts[0].point.y < transform.position.y)
+    //        {
+    //            animator.SetBool("SuperJump", false);
+    //        }
+    //    }
+    //}
 
     //private void OnCollisionStay2D(Collision2D collision) {
     //    performingButtHit = false;

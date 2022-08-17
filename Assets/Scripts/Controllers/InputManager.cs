@@ -10,7 +10,7 @@ public class InputManager : MonoSingleton<InputManager>
     [SerializeField] float butHittStartDelay = 0.1f;    //prevents accidental double hold
 
     float halfScreenWidth = Screen.width / 2;
-    Vector3 rotationDirection;
+    int rotationDirection;
 
     private Touch touch;
 
@@ -56,7 +56,7 @@ public class InputManager : MonoSingleton<InputManager>
 
             if (leftHold && rightHold)
             {
-                rotationDirection = Vector3.zero;
+                rotationDirection = 0;
 
                 if (doubleHoldStartTime == null)
                 {
@@ -75,11 +75,11 @@ public class InputManager : MonoSingleton<InputManager>
                     Vector3 touchPosition = Input.touches[i].position;
 
                     if (touchPosition.x < halfScreenWidth)
-                        rotationDirection = Vector3.forward;
+                        rotationDirection = -1;
                     else
-                        rotationDirection = Vector3.back;
+                        rotationDirection = 1;
                     if (touch.phase == TouchPhase.Ended)
-                        rotationDirection = Vector3.zero;
+                        rotationDirection = 0;
                 }
             }
         }
@@ -109,7 +109,7 @@ public class InputManager : MonoSingleton<InputManager>
             (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) &&
             (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             ) {
-            rotationDirection = Vector3.zero;
+            rotationDirection = 0;
 
             if (doubleHoldStartTime == null) {
                 doubleHoldStartTime = Time.time;
@@ -124,16 +124,16 @@ public class InputManager : MonoSingleton<InputManager>
             doubleHoldStartTime = null;          
         
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-            rotationDirection = Vector3.forward;
+            rotationDirection = -1;
 
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-            rotationDirection = Vector3.back;
+            rotationDirection = 1;
 
-        else rotationDirection = Vector3.zero;
+        else rotationDirection = 0;
         }
     }
 
-    public Vector3 GetRotationDirection()
+    public int GetRotationDirection()
     {
         return rotationDirection;
     }

@@ -57,8 +57,8 @@ public class Player : MonoBehaviour {
             else
                 animator.SetBool("GoUp", false);
 
-            //myRigidbody.AddTorque(rotationSpeed, ForceMode2D.Force);
-            transform.Rotate(InputManager.Instance.GetRotationDirection() * rotationSpeed * Time.deltaTime);
+
+            transform.Rotate(InputManager.Instance.GetRotationDirection() * rotationSpeed * Time.deltaTime * Vector3.back);
         }
 
         tricksDetector.registerRotation(transform.rotation.eulerAngles.z);

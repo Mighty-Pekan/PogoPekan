@@ -25334,10 +25334,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8054603216093718268, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
-      propertyPath: superjumpParticlesMinSpeed
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
 --- !u!1001 &7424125607782590029

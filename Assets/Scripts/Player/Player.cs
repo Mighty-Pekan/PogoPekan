@@ -64,7 +64,7 @@ public class Player : MonoBehaviour {
 
             if (rb.velocity.magnitude < superjumpParticlesMinSpeed)
                 superjumpParticles.Stop();
-            else if (superjumpParticles.isStopped) 
+            else if (superjumpParticles.isStopped)
                 superjumpParticles.Play();
         }
     }

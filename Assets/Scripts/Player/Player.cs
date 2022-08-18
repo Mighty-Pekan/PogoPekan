@@ -58,13 +58,14 @@ public class Player : MonoBehaviour {
     }
     private void HandleSuperjumpParticles() {
         if (isSuperjumpActive) {
-            //if (isSuperjumpParticlesActive) {
-                superjumpParticlesObj.transform.position = transform.position + (Vector3)rb.velocity.normalized * superjumpParticlesDistance;
-                superjumpParticlesObj.transform.up = rb.velocity.normalized;
-                if (rb.velocity.magnitude < superjumpParticlesMinSpeed) {
+
+            superjumpParticlesObj.transform.position = transform.position + (Vector3)rb.velocity.normalized * superjumpParticlesDistance;
+            superjumpParticlesObj.transform.up = rb.velocity.normalized;
+
+            if (rb.velocity.magnitude < superjumpParticlesMinSpeed)
                 superjumpParticles.Stop();
-                }
-            //}
+            else if (superjumpParticles.isStopped) 
+                superjumpParticles.Play();
         }
     }
     private void HandleRotation() {

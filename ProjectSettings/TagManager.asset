@@ -52,9 +52,9 @@ TagManager:
   - name: DefaultFront
     uniqueID: 3585526097
     locked: 0
-  - name: Thorns
-    uniqueID: 517967915
-    locked: 0
   - name: Player
     uniqueID: 2762951471
+    locked: 0
+  - name: Front
+    uniqueID: 2064367779
     locked: 0

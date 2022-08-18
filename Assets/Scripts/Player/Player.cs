@@ -12,67 +12,83 @@ public class Player : MonoBehaviour {
     [SerializeField] private float buttHitSpeed = 10f;
     [SerializeField] private float buttHitTimer = 2f;
 
+    [SerializeField] private float superjumpParticlesDistance = 1f;
+    [SerializeField] private float superjumpParticlesMinSpeed = 8;
+
     [Header("References")]
     [SerializeField] private BouncingPart bouncingPart;
-    [SerializeField] private GameObject superjumpParticles;
+    [SerializeField] private GameObject superjumpParticlesObj;
 
     [Header("Sprites")]
     [SerializeField] private Sprite upSprite;
     [SerializeField] private Sprite downSprite;
 
     //private
-    private bool performingButtHit = false;
     private Vector3 initialPosition;
     private SpriteRenderer mySpriteRenderer;
 
     private TricksDetector tricksDetector;
-    private Rigidbody2D myRigidbody;
+    private Rigidbody2D rb;
     private Animator animator;
 
     private Vector2 buttHitStartingPos;
 
+    private bool isPerformingButtHit = false;
+    private bool isSuperjumpActive = false;
+    private ParticleSystem superjumpParticles;
+
     private void Awake() {
-        myRigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         tricksDetector = new TricksDetector();
     }
 
 
-    private void Start()
-    {
+    private void Start() {
         GameController.Instance.RegisterPlayer(this);
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         initialPosition = transform.position;
-        superjumpParticles.SetActive(false);
+        superjumpParticles = superjumpParticlesObj.GetComponent<ParticleSystem>();
+        superjumpParticles.Stop();
     }
 
     private void Update() {
         HandleRotation();
-        superjumpParticles.transform.up = myRigidbody.velocity.normalized;
+        HandleSuperjumpParticles();
     }
-
+    private void HandleSuperjumpParticles() {
+        if (isSuperjumpActive) {
+            //if (isSuperjumpParticlesActive) {
+                superjumpParticlesObj.transform.position = transform.position + (Vector3)rb.velocity.normalized * superjumpParticlesDistance;
+                superjumpParticlesObj.transform.up = rb.velocity.normalized;
+                if (rb.velocity.magnitude < superjumpParticlesMinSpeed) {
+                superjumpParticles.Stop();
+                }
+            //}
+        }
+    }
     private void HandleRotation() {
-        if (InputManager.Instance.IsDoubleHold() || performingButtHit) {
+        if (InputManager.Instance.IsDoubleHold() || isPerformingButtHit) {
             animator.SetBool("GoUp", false);
             DoButtHit();
         }
         else {
 
-            if (myRigidbody.velocity.y > 0)
+            if (rb.velocity.y > 0)
                 animator.SetBool("GoUp", true);
             else
                 animator.SetBool("GoUp", false);
 
             switch (InputManager.Instance.GetRotationDirection()) {
                 case 1:
-                    myRigidbody.angularVelocity = -rotationSpeed;
+                    rb.angularVelocity = -rotationSpeed;
                     break;
                 case -1:
-                    myRigidbody.angularVelocity = rotationSpeed;
+                    rb.angularVelocity = rotationSpeed;
                     break;
                 case 0:
                 default:
-                    myRigidbody.angularVelocity = 0;
+                    rb.angularVelocity = 0;
                     break;
             }
         }
@@ -85,16 +101,16 @@ public class Player : MonoBehaviour {
         if (Time.time - lastButtHitEndTime < buttHitTimer) return;
 
         //done only on first call
-        if (!performingButtHit) {
+        if (!isPerformingButtHit) {
             mySpriteRenderer.sprite = downSprite;
             buttHitStartingPos = transform.position;
-            myRigidbody.velocity = Vector2.zero;
-            performingButtHit = true;
+            rb.velocity = Vector2.zero;
+            isPerformingButtHit = true;
             tricksDetector.Reset();
         }
 
         float myRotation = transform.rotation.eulerAngles.z;
-        
+
         if (myRotation > 2 && myRotation < 358) {
 
             if (myRotation > 180) transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
@@ -104,72 +120,64 @@ public class Player : MonoBehaviour {
         }
         else {
             transform.up = Vector2.up;
-            myRigidbody.velocity = new Vector2(0, -buttHitSpeed);
+            rb.velocity = new Vector2(0, -buttHitSpeed);
         }
     }
 
-    public void Bounce()
-    {
+    public void Bounce() {
         Vector3 tipPos = GameObject.Find("BouncingTip").gameObject.GetComponentInChildren<CapsuleCollider2D>().transform.position;
-        //superjump case
-        if (tricksDetector.TrickDetected())
-        {
-            myRigidbody.velocity = transform.up * boostBounceSpeed;
-            //StartCoroutine(ExpandCamera());
-            superjumpParticles.SetActive(true);
-            animator.SetBool("SuperJump", true);
+        if (tricksDetector.TrickDetected()) {
+            ActivateSuperjump();
         }
-        //normal jump case
         else {
-            myRigidbody.velocity = transform.up * baseBounceSpeed;
-            if(bouncingPart.transform.position.y < transform.position.y) {
-                animator.SetBool("SuperJump", false);
-                superjumpParticles.SetActive(false);
+            rb.velocity = transform.up * baseBounceSpeed;
+            if (bouncingPart.transform.position.y < transform.position.y) {
+                DeactivateSuperjump();
             }
-                
         }
-        if (performingButtHit)
-        {
+        if (isPerformingButtHit) {
             lastButtHitEndTime = Time.time;
-            performingButtHit = false;
+            isPerformingButtHit = false;
         }
         tricksDetector.Reset();
-    }
-
-    private IEnumerator ExpandCamera() {
-        yield return new WaitForEndOfFrame();
-        animator.SetBool("SuperJump", true);
     }
 
     public void ResetInitialPosition() {
         transform.position = initialPosition;
         transform.rotation = Quaternion.identity;
-        myRigidbody.velocity = Vector3.zero;
+        rb.velocity = Vector3.zero;
         tricksDetector.Reset();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
+    private void OnCollisionEnter2D(Collision2D other) {
         //if the pekan touches the ground
-        if(other.otherCollider.gameObject.tag == "Player")
-        {
+        if (other.otherCollider.gameObject.tag == "Player") {
             //preventing collisiions between parts of player 
-            if(other.gameObject.tag != "Player" && other.gameObject.tag != "BouncingTip") {
+            if (other.gameObject.tag != "Player" && other.gameObject.tag != "BouncingTip") {
                 if (other.contacts[0].point.y < transform.position.y) {
-                    animator.SetBool("SuperJump", false);
-                    superjumpParticles.SetActive(false);
+                    DeactivateSuperjump();
                 }
             }
         }
     }
+    public bool IsPerformingButtHit() {
+        return isPerformingButtHit;
+    }
+    //================================================ activations/deactivations
 
-    //private void OnCollisionStay2D(Collision2D collision) {
-    //    performingButtHit = false;
-    //}
-
-    public bool IsPerformingButtHit()
-    {
-        return performingButtHit;
+    private void ActivateSuperjump() {
+        rb.velocity = transform.up * boostBounceSpeed;
+        animator.SetBool("SuperJump", true);
+        isSuperjumpActive = true;
+        superjumpParticles.Play();
+    }
+    private void DeactivateSuperjump() {
+        animator.SetBool("SuperJump", false);
+        isSuperjumpActive = false;
+        superjumpParticles.Stop();
     }
 
 }
+
+
+

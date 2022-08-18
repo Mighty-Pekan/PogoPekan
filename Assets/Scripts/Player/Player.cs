@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
 
     [Header("References")]
     [SerializeField] private BouncingPart bouncingPart;
+    [SerializeField] private GameObject superjumpParticles;
 
     [Header("Sprites")]
     [SerializeField] private Sprite upSprite;
@@ -42,10 +43,12 @@ public class Player : MonoBehaviour {
         GameController.Instance.RegisterPlayer(this);
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         initialPosition = transform.position;
+        superjumpParticles.SetActive(false);
     }
 
     private void Update() {
         HandleRotation();
+        //superjumpParticles.transform.up = myRigidbody.velocity.normalized;
     }
 
     private void HandleRotation() {
@@ -108,18 +111,22 @@ public class Player : MonoBehaviour {
     public void Bounce()
     {
         Vector3 tipPos = GameObject.Find("BouncingTip").gameObject.GetComponentInChildren<CapsuleCollider2D>().transform.position;
+        //superjump case
         if (tricksDetector.TrickDetected())
         {
-            Debug.Log("superjump");
             myRigidbody.velocity = transform.up * boostBounceSpeed;
             //StartCoroutine(ExpandCamera());
+            superjumpParticles.SetActive(true);
             animator.SetBool("SuperJump", true);
         }
+        //normal jump case
         else {
-            Debug.Log("normal jump");
             myRigidbody.velocity = transform.up * baseBounceSpeed;
-            if(bouncingPart.transform.position.y < transform.position.y)
+            if(bouncingPart.transform.position.y < transform.position.y) {
                 animator.SetBool("SuperJump", false);
+                superjumpParticles.SetActive(false);
+            }
+                
         }
         if (performingButtHit)
         {
@@ -150,6 +157,7 @@ public class Player : MonoBehaviour {
             if(other.gameObject.tag != "Player" && other.gameObject.tag != "BouncingTip") {
                 if (other.contacts[0].point.y < transform.position.y) {
                     animator.SetBool("SuperJump", false);
+                    superjumpParticles.SetActive(false);
                 }
             }
         }

@@ -48,7 +48,7 @@ public class Player : MonoBehaviour {
 
     private void Update() {
         HandleRotation();
-        //superjumpParticles.transform.up = myRigidbody.velocity.normalized;
+        superjumpParticles.transform.up = myRigidbody.velocity.normalized;
     }
 
     private void HandleRotation() {

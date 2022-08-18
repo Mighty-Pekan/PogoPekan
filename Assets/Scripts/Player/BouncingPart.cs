@@ -11,7 +11,16 @@ public class BouncingPart : MonoBehaviour
     private float minParticlesIntervalTime = 0.5f;
     private bool canGenerateParticles;
 
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        HandleBounce(other);
+    }
+
     private void OnCollisionStay2D(Collision2D other) {
+        HandleBounce(other);
+    }
+
+    private void HandleBounce(Collision2D other) {
         if (other.gameObject.tag != "Player" && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHit())) {
 
             if (canBounce) {

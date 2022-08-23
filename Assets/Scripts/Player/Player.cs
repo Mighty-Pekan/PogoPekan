@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
     [Header("References")]
     [SerializeField] private BouncingPart bouncingPart;
     [SerializeField] private GameObject superjumpParticlesObj;
+    [SerializeField] private ParticleSystem superjumpActPart1;
 
     [Header("Sprites")]
     [SerializeField] private Sprite upSprite;
@@ -40,7 +41,7 @@ public class Player : MonoBehaviour {
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        tricksDetector = new TricksDetector();
+        tricksDetector = new TricksDetector(this);
     }
 
 
@@ -176,6 +177,10 @@ public class Player : MonoBehaviour {
         animator.SetBool("SuperJump", false);
         isSuperjumpActive = false;
         superjumpParticles.Stop();
+    }
+
+    public void ActivateSuperjumpDetectedParticles() {
+        superjumpActPart1.Play();
     }
 
 }

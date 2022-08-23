@@ -11,7 +11,9 @@ public class TricksDetector {
     float? triggerAngle = null;
     bool rotationVerse = true;
     bool triggerActivated = false;
-    public TricksDetector() {
+    Player owner = null;
+    public TricksDetector(Player _owner) {
+        owner = _owner;
         Reset();
     }
 
@@ -39,6 +41,7 @@ public class TricksDetector {
                 else if ((rotationVerse == false && convertedRot < triggerAngle)
                 || (rotationVerse == true && convertedRot > triggerAngle)) {
                     triggerActivated = true;
+                    owner.ActivateSuperjumpDetectedParticles();
                     //Debug.Log("TRIGGER ACTIVATED, rotation verse = " + rotationVerse+", trigger angle: "+triggerAngle+",actual angle: "+convertedRot);
                 }
             }

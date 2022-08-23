@@ -124,4 +124,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 4
   tickDamage: 1
-  tickRateo: 0.1
+  tickRateo: 0

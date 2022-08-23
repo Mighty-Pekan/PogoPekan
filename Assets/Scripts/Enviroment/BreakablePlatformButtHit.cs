@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BreakablePlatformButtHit : MonoBehaviour
 {
-    [SerializeField] int life = 4;
-    [SerializeField] int tickDamage = 1;
-    [SerializeField] float tickRateo = 0.5f;
+    int life = 4;
+    int tickDamage = 1;
+    float tickRateo = 0f; //increase to break platform slower
 
     private SpriteRenderer mySpriteRenderer;
     private int quarterOfLife;
@@ -18,15 +18,9 @@ public class BreakablePlatformButtHit : MonoBehaviour
         DecideColor();
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.tag == "BouncingTip" && GameController.Instance.GetPlayer().IsPerformingButtHit())
-    //        TakeDamage();
-    //}
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "BouncingTip" && GameController.Instance.GetPlayer().IsPerformingButtHit())
+    private void OnCollisionStay2D(Collision2D collision) {
+        if (collision.collider.gameObject.tag == "BouncingTip" && GameController.Instance.GetPlayer().IsPerformingButtHit())
             TakeDamage();
     }
 

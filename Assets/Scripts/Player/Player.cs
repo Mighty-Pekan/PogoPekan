@@ -19,9 +19,9 @@ public class Player : MonoBehaviour {
     [SerializeField] private BouncingPart bouncingPart;
     [SerializeField] private GameObject superjumpParticlesObj;
     [SerializeField] private GameObject superjumpTray;
-    [SerializeField] private ParticleSystem superjumpActDots;
     [SerializeField] private GameObject superjumpActLight;
     [SerializeField] private ParticleSystem buttHitParticles;
+    [SerializeField] private Animator blinkAnimator;
 
     [Header("Sprites")]
     [SerializeField] private Sprite upSprite;
@@ -30,8 +30,8 @@ public class Player : MonoBehaviour {
     [Header("Settings")]
     [SerializeField] private bool superjumpTrailEnabled;
     [SerializeField] private bool superjumpSpeedEnabled;
-    [SerializeField] private bool superjumpActDotsEnabled;
     [SerializeField] private bool superjumpActLightEnabled;
+    [SerializeField] private bool kevinBlinkAnimationEnabled;
 
     //private
     private Vector3 initialPosition;
@@ -201,8 +201,8 @@ public class Player : MonoBehaviour {
     }
 
     public void ActivateSuperjumpDetectedParticles() {
-        if(superjumpActDotsEnabled)superjumpActDots.Play();
         if (superjumpActLightEnabled) StartCoroutine(blink());
+        if(kevinBlinkAnimationEnabled)blinkAnimator.SetTrigger("Blink");
     }
     private IEnumerator blink() {
         superjumpActLight.SetActive(true);

@@ -24854,7 +24854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836118978220, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -63.805126
+      value: -64.03642
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836118978220, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24905,6 +24905,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 243673765}
     m_Modifications:
+    - target: {fileID: 1353399866, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4025742510656223317, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -25076,6 +25080,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1945342202, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945342202, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945342202, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945342202, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.372
+      objectReference: {fileID: 0}
     - target: {fileID: 1908649215348200472, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
       propertyPath: m_RootOrder
       value: 6

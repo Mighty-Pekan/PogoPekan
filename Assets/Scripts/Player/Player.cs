@@ -18,7 +18,9 @@ public class Player : MonoBehaviour {
     [Header("References")]
     [SerializeField] private BouncingPart bouncingPart;
     [SerializeField] private GameObject superjumpParticlesObj;
+    [SerializeField] private GameObject superjumpTray;
     [SerializeField] private ParticleSystem superjumpActPart1;
+    [SerializeField] private ParticleSystem buttHitParticles;
 
     [Header("Sprites")]
     [SerializeField] private Sprite upSprite;
@@ -50,6 +52,7 @@ public class Player : MonoBehaviour {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         initialPosition = transform.position;
         superjumpParticles = superjumpParticlesObj.GetComponent<ParticleSystem>();
+        superjumpTray.SetActive(false);
         superjumpParticles.Stop();
     }
 
@@ -111,6 +114,7 @@ public class Player : MonoBehaviour {
             buttHitStartingPos = transform.position;
             rb.velocity = Vector2.zero;
             isPerformingButtHit = true;
+            DeactivateSuperjump();
             tricksDetector.Reset();
         }
 
@@ -126,6 +130,7 @@ public class Player : MonoBehaviour {
         else {
             transform.up = Vector2.up;
             rb.velocity = new Vector2(0, -buttHitSpeed);
+            if (!buttHitParticles.isPlaying) buttHitParticles.Play();
         }
     }
 
@@ -143,6 +148,7 @@ public class Player : MonoBehaviour {
         if (isPerformingButtHit) {
             lastButtHitEndTime = Time.time;
             isPerformingButtHit = false;
+            buttHitParticles.Stop();
         }
         tricksDetector.Reset();
     }
@@ -174,11 +180,14 @@ public class Player : MonoBehaviour {
         rb.velocity = transform.up * boostBounceSpeed;
         animator.SetBool("SuperJump", true);
         isSuperjumpActive = true;
+        superjumpTray.SetActive(true);
         superjumpParticles.Play();
+        
     }
     private void DeactivateSuperjump() {
         animator.SetBool("SuperJump", false);
         isSuperjumpActive = false;
+        superjumpTray.SetActive(false);
         superjumpParticles.Stop();
     }
 

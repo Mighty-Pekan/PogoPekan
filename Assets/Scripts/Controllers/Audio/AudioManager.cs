@@ -8,7 +8,7 @@ public class AudioManager : MonoSingleton<AudioManager> {
     [SerializeField] private AudioSource musicAudioSource;
     [SerializeField] private AudioClip menuTrack;
     [SerializeField] private AudioClip[] musicTracks;
-    private int lastMusicPlayed;
+    private int? lastSongIndex = null;
 
     // Start is called before the first frame update
     void Start() {
@@ -27,10 +27,9 @@ public class AudioManager : MonoSingleton<AudioManager> {
 
     private IEnumerator playMusic() {
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
 
         if (GameController.Instance.isStartMenu()) {
-            Debug.Log("is start menu");
             while (true) {
                 yield return new WaitForSeconds(0.2f);
                 if (!musicAudioSource.isPlaying) {
@@ -39,14 +38,21 @@ public class AudioManager : MonoSingleton<AudioManager> {
             }
         }
         else {
-            int random = Random.Range(0, musicTracks.Length);
-            lastMusicPlayed = random;
-            musicAudioSource.PlayOneShot(musicTracks[random], PlayerPrefs.GetFloat("MusicVolume"));
+            if(lastSongIndex!=null)Debug.Log("last song index: " + lastSongIndex);
+
+            int? newSongIndex = null;
+            while(newSongIndex == lastSongIndex || newSongIndex == null) {
+                newSongIndex = Random.Range(0, musicTracks.Length);
+                Debug.Log("random: " + newSongIndex);
+            }
+            Debug.Log("new song index:" + newSongIndex);
+            lastSongIndex = newSongIndex;
+            //musicAudioSource.PlayOneShot(musicTracks[newSongIndex], PlayerPrefs.GetFloat("MusicVolume"));
             while (true) {
-                yield return new WaitForSeconds(0.2f);
                 if (!musicAudioSource.isPlaying) {
-                    musicAudioSource.PlayOneShot(musicTracks[random], PlayerPrefs.GetFloat("MusicVolume"));
+                    musicAudioSource.PlayOneShot(musicTracks[(int)newSongIndex], PlayerPrefs.GetFloat("MusicVolume"));
                 }
+                yield return new WaitForSeconds(0.2f);
             }
         } 
     }

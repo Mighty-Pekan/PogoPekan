@@ -50,6 +50,7 @@ MonoBehaviour:
   menuTrack: {fileID: 8300000, guid: 2ad95c3ddec25e24a9500ed9a26318ee, type: 3}
   musicTracks:
   - {fileID: 8300000, guid: 345bb72f4f3e8a24c9f3c8e5e6164942, type: 3}
+  - {fileID: 8300000, guid: ac39a2ad23f46c44ba93d21d82b2e7d3, type: 3}
 --- !u!1 &117546264139500230
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,10 +63,13 @@ public class Player : MonoBehaviour {
             superjumpParticlesObj.transform.position = transform.position + (Vector3)rb.velocity.normalized * superjumpParticlesDistance;
             superjumpParticlesObj.transform.up = rb.velocity.normalized;
 
-            if (rb.velocity.magnitude < superjumpParticlesMinSpeed)
-                superjumpParticles.Stop();
-            else if (superjumpParticles.isStopped)
-                superjumpParticles.Play();
+            if(rb.velocity.y < superjumpParticlesMinSpeed) superjumpParticles.Stop();
+
+            //PARTICLES ALWAYS ACTIVE
+            //if (rb.velocity.magnitude < superjumpParticlesMinSpeed)
+            //    superjumpParticles.Stop();
+            //else if (superjumpParticles.isStopped)
+            //    superjumpParticles.Play();
         }
     }
     private void HandleRotation() {

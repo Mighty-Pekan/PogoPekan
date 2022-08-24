@@ -19,7 +19,8 @@ public class Player : MonoBehaviour {
     [SerializeField] private BouncingPart bouncingPart;
     [SerializeField] private GameObject superjumpParticlesObj;
     [SerializeField] private GameObject superjumpTray;
-    [SerializeField] private ParticleSystem superjumpActPart1;
+    [SerializeField] private ParticleSystem superjumpActDots;
+    [SerializeField] private GameObject superjumpActLight;
     [SerializeField] private ParticleSystem buttHitParticles;
 
     [Header("Sprites")]
@@ -29,6 +30,8 @@ public class Player : MonoBehaviour {
     [Header("Settings")]
     [SerializeField] private bool superjumpTrailEnabled;
     [SerializeField] private bool superjumpSpeedEnabled;
+    [SerializeField] private bool superjumpActDotsEnabled;
+    [SerializeField] private bool superjumpActLightEnabled;
 
     //private
     private Vector3 initialPosition;
@@ -58,6 +61,7 @@ public class Player : MonoBehaviour {
         superjumpParticles = superjumpParticlesObj.GetComponent<ParticleSystem>();
         superjumpTray.SetActive(false);
         superjumpParticles.Stop();
+        superjumpActLight.SetActive(false);
     }
 
     private void Update() {
@@ -197,7 +201,13 @@ public class Player : MonoBehaviour {
     }
 
     public void ActivateSuperjumpDetectedParticles() {
-        superjumpActPart1.Play();
+        if(superjumpActDotsEnabled)superjumpActDots.Play();
+        if (superjumpActLightEnabled) StartCoroutine(blink());
+    }
+    private IEnumerator blink() {
+        superjumpActLight.SetActive(true);
+        yield return new WaitForSeconds(0.25f);
+        superjumpActLight.SetActive(false);
     }
 
 }

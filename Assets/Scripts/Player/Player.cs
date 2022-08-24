@@ -26,6 +26,10 @@ public class Player : MonoBehaviour {
     [SerializeField] private Sprite upSprite;
     [SerializeField] private Sprite downSprite;
 
+    [Header("Settings")]
+    [SerializeField] private bool superjumpTrailEnabled;
+    [SerializeField] private bool superjumpSpeedEnabled;
+
     //private
     private Vector3 initialPosition;
     private SpriteRenderer mySpriteRenderer;
@@ -180,15 +184,16 @@ public class Player : MonoBehaviour {
         rb.velocity = transform.up * boostBounceSpeed;
         animator.SetBool("SuperJump", true);
         isSuperjumpActive = true;
-        superjumpTray.SetActive(true);
-        superjumpParticles.Play();
+        if (superjumpTrailEnabled) superjumpTray.SetActive(true);
+        if (superjumpSpeedEnabled) superjumpParticles.Play();
         
     }
     private void DeactivateSuperjump() {
         animator.SetBool("SuperJump", false);
         isSuperjumpActive = false;
-        superjumpTray.SetActive(false);
-        superjumpParticles.Stop();
+
+        if(superjumpTrailEnabled)superjumpTray.SetActive(false);
+        if(superjumpSpeedEnabled)superjumpParticles.Stop();
     }
 
     public void ActivateSuperjumpDetectedParticles() {

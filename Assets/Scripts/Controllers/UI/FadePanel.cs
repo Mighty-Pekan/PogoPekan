@@ -19,16 +19,16 @@ public class FadePanel : MonoBehaviour
 
     public IEnumerator Apear() {
         while (canvasGroup.alpha < 1) {
-            canvasGroup.alpha+=fadeSpeed;
-            yield return 0; 
+            canvasGroup.alpha += 0.03f;
+            yield return new WaitForSeconds(1 / fadeSpeed); ;
         }
         canvasGroup.alpha = 1;
     }
 
     public IEnumerator Disapear() {
         while (canvasGroup.alpha > 0) {
-            canvasGroup.alpha -= fadeSpeed;
-            yield return 0;
+            canvasGroup.alpha -= 0.03f;
+            yield return new WaitForSeconds(1/fadeSpeed); ;
         }
         canvasGroup.alpha = 0;
     }

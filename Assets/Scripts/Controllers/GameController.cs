@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoSingleton<GameController> {
-    Player player;
-    InputManager inputManager;
     public bool IsPause;
-    FadePanel fadePanel;
+
+    private Player player;
+    private InputManager inputManager;
+    private FadePanel fadePanel;
+    private Timer timer;
 
     private void Start() {
         Screen.orientation = ScreenOrientation.LandscapeLeft; //or right for right landscape
@@ -39,6 +41,9 @@ public class GameController : MonoSingleton<GameController> {
     public void RegisterFadePanel(FadePanel _fadePanel) { 
         fadePanel = _fadePanel;
     }
+    public void RegisterTimer(Timer _timer) {
+        timer = _timer;
+    }
     //============================================================== getters
 
     public InputManager GetInputManager() {
@@ -57,15 +62,15 @@ public class GameController : MonoSingleton<GameController> {
     public void LoadLevel(string levelName) { StartCoroutine(LoadLevelCor(levelName)); }
     public void LoadLevel(int levelNum) { StartCoroutine(LoadLevelCor(levelNum)); }
 
-
-
     private IEnumerator LoadLevelCor(string levelName) {
         yield return StartCoroutine(fadePanel.Apear());
+        if(timer!=null)timer.Reset();
         SceneManager.LoadScene(levelName);
         if (UIManager.Instance != null) UIManager.Instance.OpenPausePanel(false);
     }
     private IEnumerator LoadLevelCor(int levelNum) {
         yield return StartCoroutine(fadePanel.Apear());
+        if(timer!=null)timer.Reset();
         SceneManager.LoadScene(levelNum);
         if(UIManager.Instance !=null)UIManager.Instance.OpenPausePanel(false);
     }
@@ -74,11 +79,10 @@ public class GameController : MonoSingleton<GameController> {
         return SceneManager.sceneCountInBuildSettings;
     }
 
-    private IEnumerator cor() {
-        yield return null;
-    }
-
     public bool isStartMenu() {
         return SceneManager.GetActiveScene().buildIndex == 0;
     }
+
+
+
 }

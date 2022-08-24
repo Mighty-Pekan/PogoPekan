@@ -1968,7 +1968,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 27.4}
+  m_AnchoredPosition: {x: -171, y: 21}
   m_SizeDelta: {x: 180, y: 40}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8401782210908705654
@@ -2235,7 +2235,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 80.3}
+  m_AnchoredPosition: {x: 171, y: 21}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8401782211923544725
@@ -2751,7 +2751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8401782212318274052
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2772,10 +2772,10 @@ RectTransform:
   m_Father: {fileID: 3337702877733045697}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 374.3077}
+  m_SizeDelta: {x: 600, y: -25.692291}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8401782212318274050
 CanvasRenderer:
@@ -3028,7 +3028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8549398899743812494, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 17
+      value: 9.399994
       objectReference: {fileID: 0}
     - target: {fileID: 8549398899743812494, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3044,23 +3044,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8549398900439595226, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.448
       objectReference: {fileID: 0}
     - target: {fileID: 8549398900439595226, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8549398900984728153, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.448
       objectReference: {fileID: 0}
     - target: {fileID: 8549398900984728153, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8549398900984728153, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.448
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
@@ -3078,7 +3078,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7840836882278074585, guid: 6f082b72b4c29bf4cbe36f5a7c156601, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7840836883370328573, guid: 6f082b72b4c29bf4cbe36f5a7c156601, type: 3}
       propertyPath: m_Name
@@ -3154,7 +3154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7840836883370328574, guid: 6f082b72b4c29bf4cbe36f5a7c156601, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -31.600014
+      value: -39.19998
       objectReference: {fileID: 0}
     - target: {fileID: 7840836883370328574, guid: 6f082b72b4c29bf4cbe36f5a7c156601, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3170,7 +3170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7840836883868188561, guid: 6f082b72b4c29bf4cbe36f5a7c156601, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f082b72b4c29bf4cbe36f5a7c156601, type: 3}

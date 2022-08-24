@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class FadePanel : MonoBehaviour
 {
@@ -20,7 +20,8 @@ public class FadePanel : MonoBehaviour
     public IEnumerator Apear() {
         while (canvasGroup.alpha < 1) {
             canvasGroup.alpha += 0.03f;
-            yield return new WaitForSeconds(1 / fadeSpeed); ;
+            yield return new WaitForSeconds(1 / fadeSpeed);
+            if (canvasGroup == null) yield break;
         }
         canvasGroup.alpha = 1;
     }
@@ -28,7 +29,8 @@ public class FadePanel : MonoBehaviour
     public IEnumerator Disapear() {
         while (canvasGroup.alpha > 0) {
             canvasGroup.alpha -= 0.03f;
-            yield return new WaitForSeconds(1/fadeSpeed); ;
+            yield return new WaitForSeconds(1/fadeSpeed);
+            if (canvasGroup == null) yield break;
         }
         canvasGroup.alpha = 0;
     }

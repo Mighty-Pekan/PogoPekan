@@ -38,7 +38,7 @@ public class GameController : MonoSingleton<GameController> {
     public void RegisterPlayer(Player _player) {
         player = _player;
     }
-    public void RegisterFadePanel(FadePanel _fadePanel) { 
+    public void RegisterFadePanel(FadePanel _fadePanel) {
         fadePanel = _fadePanel;
     }
     public void RegisterTimer(Timer _timer) {

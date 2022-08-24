@@ -77,4 +77,8 @@ public class GameController : MonoSingleton<GameController> {
     private IEnumerator cor() {
         yield return null;
     }
+
+    public bool isStartMenu() {
+        return SceneManager.GetActiveScene().buildIndex == 0;
+    }
 }

@@ -10,8 +10,11 @@ public class FadePanel : MonoBehaviour
     private void Start() {
         GameController.Instance.RegisterFadePanel(this);
         canvasGroup = GetComponent<CanvasGroup>();
-        canvasGroup.alpha = 1;
-        StartCoroutine(Disapear());
+
+        if (!GameController.Instance.isStartMenu()) {
+            canvasGroup.alpha = 1;
+            StartCoroutine(Disapear());
+        }
     }
 
     public IEnumerator Apear() {

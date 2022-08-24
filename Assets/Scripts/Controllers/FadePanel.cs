@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+public class FadePanel : MonoBehaviour
+{
+    [SerializeField] float fadeSpeed = 0.1f;
+    CanvasGroup canvasGroup;
+    private void Start() {
+        GameController.Instance.RegisterFadePanel(this);
+        canvasGroup = GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 1;
+        StartCoroutine(Disapear());
+    }
+
+    public IEnumerator Apear() {
+        while (canvasGroup.alpha < 1) {
+            canvasGroup.alpha+=fadeSpeed;
+            yield return 0; 
+        }
+        canvasGroup.alpha = 1;
+    }
+
+    public IEnumerator Disapear() {
+        while (canvasGroup.alpha > 0) {
+            canvasGroup.alpha -= fadeSpeed;
+            yield return 0;
+        }
+        canvasGroup.alpha = 0;
+    }
+}

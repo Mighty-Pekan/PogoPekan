@@ -444,6 +444,7 @@ Transform:
   - {fileID: 982164699}
   - {fileID: 1423423229}
   - {fileID: 992669030}
+  - {fileID: 508015791}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23247,6 +23248,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500878126}
   m_CullTransparentMesh: 1
+--- !u!4 &508015791 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 117546263259322550, guid: 54864891e928bb64e8302e66491aed63, type: 3}
+  m_PrefabInstance: {fileID: 117546263699303449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &558279071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7868461339166002725, guid: 30198b0365df544ea89b17cc96851559, type: 3}
@@ -24298,6 +24304,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundSpeed: {x: 0.4, y: 0.9}
+--- !u!1001 &117546263699303449
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 243673765}
+    m_Modifications:
+    - target: {fileID: 117546263259322550, guid: 54864891e928bb64e8302e66491aed63, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 117546263259322550, guid: 54864891e928bb64e8302e66491aed63, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -48.255363
+      objectReference: {fileID: 0}
+    - target: {fileID: 117546263259322550, guid: 54864891e928bb64e8302e66491aed63, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.566702
+      objectReference: {fileID: 0}
+    - target: {fileID: 117546263259322550, guid: 54864891e928bb64e8302e66491aed63, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -203.2612
+      objectReference: {fileID: 0}
+    - target: {fileID: 117546263259322550, guid: 54864891e928bb64e8302e66491aed63, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 117546263259322550, guid: 54864891e928bb64e8302e66491aed63, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117546263259322550, guid: 54864891e928bb64e8302e66491aed63, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117546263259322550, guid: 54864891e928bb64e8302e66491aed63, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117546263259322550, guid: 54864891e928bb64e8302e66491aed63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117546263259322550, guid: 54864891e928bb64e8302e66491aed63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117546263259322550, guid: 54864891e928bb64e8302e66491aed63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117546263259322551, guid: 54864891e928bb64e8302e66491aed63, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 54864891e928bb64e8302e66491aed63, type: 3}
 --- !u!4 &220312799146843610
 Transform:
   m_ObjectHideFlags: 0
@@ -29635,11 +29698,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836118978220, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -64.08328
+      value: -62.168125
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836118978220, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.4305067
+      value: -4.4303637
       objectReference: {fileID: 0}
     - target: {fileID: 5242227836319701970, guid: b14515a41713aa141b58de0d00475281, type: 3}
       propertyPath: m_Follow

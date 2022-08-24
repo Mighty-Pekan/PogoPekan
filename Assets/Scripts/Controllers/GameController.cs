@@ -67,12 +67,14 @@ public class GameController : MonoSingleton<GameController> {
         if(timer!=null)timer.Reset();
         SceneManager.LoadScene(levelName);
         if (UIManager.Instance != null) UIManager.Instance.OpenPausePanel(false);
+        AudioManager.Instance.ChangeMusic();
     }
     private IEnumerator LoadLevelCor(int levelNum) {
         yield return StartCoroutine(fadePanel.Apear());
         if(timer!=null)timer.Reset();
         SceneManager.LoadScene(levelNum);
         if(UIManager.Instance !=null)UIManager.Instance.OpenPausePanel(false);
+        AudioManager.Instance.ChangeMusic();
     }
 
     public int GetLevelsCount() {

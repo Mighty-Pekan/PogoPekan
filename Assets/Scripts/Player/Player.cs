@@ -179,6 +179,17 @@ public class Player : MonoBehaviour {
             }
         }
     }
+
+    private void OnCollisionStay2D(Collision2D other) {
+        //prevents superjump charge when touching ground with pekan
+        if (other.otherCollider.gameObject.tag == "Player") {
+            //preventing collisiions between parts of player 
+            if (other.gameObject.tag != "Player" && other.gameObject.tag != "BouncingTip") {
+                tricksDetector.Reset();
+            }
+        }
+    }
+
     public bool IsPerformingButtHit() {
         return isPerformingButtHit;
     }

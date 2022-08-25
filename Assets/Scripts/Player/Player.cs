@@ -22,7 +22,6 @@ public class Player : MonoBehaviour {
     [SerializeField] private GameObject superjumpActLight;
     [SerializeField] private ParticleSystem buttHitParticles;
     [SerializeField] private Animator blinkAnimator;
-    [SerializeField] private ParticleSystem pointParticles;
 
     [Header("Sprites")]
     [SerializeField] private Sprite upSprite;
@@ -33,7 +32,6 @@ public class Player : MonoBehaviour {
     [SerializeField] private bool superjumpSpeedEnabled;
     [SerializeField] private bool superjumpActLightEnabled;
     [SerializeField] private bool kevinBlinkAnimationEnabled;
-    [SerializeField] private bool pointParticlesEnabled;
 
     //private
     private Vector3 initialPosition;
@@ -145,7 +143,6 @@ public class Player : MonoBehaviour {
     }
 
     public void Bounce() {
-        if (pointParticlesEnabled) pointParticles.Stop();
         Vector3 tipPos = GameObject.Find("BouncingTip").gameObject.GetComponentInChildren<CapsuleCollider2D>().transform.position;
         if (tricksDetector.TrickDetected()) {
             ActivateSuperjump();
@@ -206,7 +203,6 @@ public class Player : MonoBehaviour {
     public void ActivateSuperjumpDetectedParticles() {
         if (superjumpActLightEnabled) StartCoroutine(blink());
         if(kevinBlinkAnimationEnabled)blinkAnimator.SetTrigger("Blink");
-        if (pointParticlesEnabled) pointParticles.Play();
     }
     private IEnumerator blink() {
         superjumpActLight.SetActive(true);

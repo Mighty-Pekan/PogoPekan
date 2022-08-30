@@ -31,6 +31,7 @@ public class GameController : MonoSingleton<GameController> {
         else {
             Time.timeScale = 1;
         }
+        
         //Debug.Log("current world: " + GetCurrentWorld());
         //Debug.Log("current level: " + GetCurrentLevel());
     }

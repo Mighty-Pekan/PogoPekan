@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   world: 1
-  level: 1
+  level: 6
 --- !u!1 &5725452603174747647
 GameObject:
   m_ObjectHideFlags: 0

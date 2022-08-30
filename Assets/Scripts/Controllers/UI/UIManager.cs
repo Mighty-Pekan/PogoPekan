@@ -35,9 +35,7 @@ public class UIManager : MonoSingleton<UIManager>
 
     public void ReturnToMainMenu()
     {
-        SceneManager.LoadScene("Menu");
-        OpenPausePanel(false);
-        AudioManager.Instance.ChangeMusic();
+        GameController.Instance.ReturnToMainMenu();
     }
 
     private string GetRandomText()

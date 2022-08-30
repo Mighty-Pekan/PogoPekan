@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Linq;
 using System;
 
 public class GameController : MonoSingleton<GameController> {
@@ -12,6 +11,14 @@ public class GameController : MonoSingleton<GameController> {
     private InputManager inputManager;
     private FadePanel fadePanel;
     private Timer timer;
+
+    public int NumLevelsPerWorld { get => numLevelsPerWorld; }
+    public int NumWorlds { get => numWorlds; }
+
+    [Header("Settings")]
+    [SerializeField] int numLevelsPerWorld;
+    [SerializeField] int numWorlds;
+
 
     private void Start() {
         Screen.orientation = ScreenOrientation.LandscapeLeft; //or right for right landscape
@@ -59,10 +66,21 @@ public class GameController : MonoSingleton<GameController> {
 
     //=============================================================== CUSTOM SCENE MANAGER
     public void LoadNextLevel() {
-        LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+        int[] nextLevel = GetNextLevel();
+        LevelsDataManager.Instance.UnlockLevel(nextLevel[0], nextLevel[1]);
+        LoadLevel(nextLevel[0], nextLevel[1]);
+    }
+
+     
+    public void ReturnToMainMenu() {
+        SceneManager.LoadScene("Menu");
+
+        UIManager.Instance.OpenPausePanel(false);
+        AudioManager.Instance.ChangeMusic();
+
     }
     public void LoadLevel(string levelName) {StartCoroutine(LoadLevelCor(levelName));}
-    public void LoadLevel(int levelNum) { StartCoroutine(LoadLevelCor(levelNum)); }
+    public void LoadLevel(int world, int level) { StartCoroutine(LoadLevelCor(world, level));}
 
     private IEnumerator LoadLevelCor(string levelName) {
         yield return StartCoroutine(fadePanel.Apear());
@@ -71,10 +89,10 @@ public class GameController : MonoSingleton<GameController> {
         if (UIManager.Instance != null) UIManager.Instance.OpenPausePanel(false);
         AudioManager.Instance.ChangeMusic();
     }
-    private IEnumerator LoadLevelCor(int levelNum) {
+    private IEnumerator LoadLevelCor(int world,int level) {
         yield return StartCoroutine(fadePanel.Apear());
         if(timer!=null)timer.Reset();
-        SceneManager.LoadScene(levelNum);
+        SceneManager.LoadScene(world.ToString()+"."+level.ToString());
         if(UIManager.Instance !=null)UIManager.Instance.OpenPausePanel(false);
         AudioManager.Instance.ChangeMusic();
     }
@@ -87,7 +105,7 @@ public class GameController : MonoSingleton<GameController> {
         return SceneManager.GetActiveScene().buildIndex == 0;
     }
 
-    public int getCurrentWorld() {
+    public int GetCurrentWorld() {
         if (isStartMenu()) return -1;
         return (int)Char.GetNumericValue(SceneManager.GetActiveScene().name.ToCharArray()[0]);
     }
@@ -95,6 +113,24 @@ public class GameController : MonoSingleton<GameController> {
     public int GetCurrentLevel() {
         if (isStartMenu()) return -1;
         return (int)Char.GetNumericValue(SceneManager.GetActiveScene().name.ToCharArray()[2]);
+    }
+
+    public int[] GetNextLevel() {
+
+        int[] ris = new int[2]; 
+        
+        int currentLevel = GetCurrentLevel();
+        int currentWorld = GetCurrentWorld();
+
+        if(currentLevel == NumLevelsPerWorld) {
+            ris[0] = currentWorld + 1;
+            ris[1] = 1;
+        }
+        else {
+            ris[0] = currentWorld;
+            ris[1] = currentLevel+1;
+        }
+        return ris;
     }
 
 

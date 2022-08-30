@@ -8,4 +8,6 @@ public class Exit : MonoBehaviour
         if(other.gameObject.tag == "Player")
             GameController.Instance.LoadNextLevel();
     }
+
+
 }

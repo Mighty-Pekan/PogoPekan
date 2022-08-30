@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
+using System;
 
 public class GameController : MonoSingleton<GameController> {
     public bool IsPause;
@@ -22,6 +24,8 @@ public class GameController : MonoSingleton<GameController> {
         else {
             Time.timeScale = 1;
         }
+        Debug.Log("current world: " + getCurrentWorld());
+        Debug.Log("current level: " + GetCurrentLevel());
     }
 
     public void GameOver() {
@@ -59,7 +63,7 @@ public class GameController : MonoSingleton<GameController> {
     public void LoadNextLevel() {
         LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void LoadLevel(string levelName) { Debug.Log("loading level"); StartCoroutine(LoadLevelCor(levelName)); }
+    public void LoadLevel(string levelName) {StartCoroutine(LoadLevelCor(levelName));}
     public void LoadLevel(int levelNum) { StartCoroutine(LoadLevelCor(levelNum)); }
 
     private IEnumerator LoadLevelCor(string levelName) {
@@ -85,6 +89,15 @@ public class GameController : MonoSingleton<GameController> {
         return SceneManager.GetActiveScene().buildIndex == 0;
     }
 
+    public int getCurrentWorld() {
+        if (isStartMenu()) return -1;
+        return (int)Char.GetNumericValue(SceneManager.GetActiveScene().name.ToCharArray()[0]);
+    }
+
+    public int GetCurrentLevel() {
+        if (isStartMenu()) return -1;
+        return (int)Char.GetNumericValue(SceneManager.GetActiveScene().name.ToCharArray()[2]);
+    }
 
 
 }

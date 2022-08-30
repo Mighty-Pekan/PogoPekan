@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Linq;
 using System;
 
 public class GameController : MonoSingleton<GameController> {
@@ -12,6 +11,9 @@ public class GameController : MonoSingleton<GameController> {
     private InputManager inputManager;
     private FadePanel fadePanel;
     private Timer timer;
+
+    public int NumLevelsPerWorld { get => numLevelsPerWorld;}
+    public int NumWorlds { get => numWorlds;}
 
     [Header("Settings")]
     [SerializeField] int numLevelsPerWorld;
@@ -29,8 +31,8 @@ public class GameController : MonoSingleton<GameController> {
         else {
             Time.timeScale = 1;
         }
-        Debug.Log("current world: " + GetCurrentWorld());
-        Debug.Log("current level: " + GetCurrentLevel());
+        //Debug.Log("current world: " + GetCurrentWorld());
+        //Debug.Log("current level: " + GetCurrentLevel());
     }
 
     public void GameOver() {

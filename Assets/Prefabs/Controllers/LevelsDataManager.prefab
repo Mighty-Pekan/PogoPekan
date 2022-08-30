@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1319088616141513064}
   - component: {fileID: 5494195089644347574}
   m_Layer: 0
-  m_Name: DataManager
+  m_Name: LevelsDataManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a1f1794798a6a4fa2b7dd7ea86235e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetDB: 0
+  resetDB: 1
   unlockAllLevels: 0

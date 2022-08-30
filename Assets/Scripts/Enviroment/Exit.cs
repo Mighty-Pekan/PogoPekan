@@ -6,6 +6,8 @@ public class Exit : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player")
-            GameController.Instance.UnlockNextLevel();
+            GameController.Instance.ExitReached();
     }
+
+
 }

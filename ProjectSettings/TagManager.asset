@@ -9,6 +9,8 @@ TagManager:
   - BouncingTip
   - TraversablePlatform
   - BreakablePlatform
+  - LevelsPanel
+  - MainMenuPanel
   layers:
   - Default
   - TransparentFX

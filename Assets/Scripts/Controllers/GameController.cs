@@ -24,8 +24,6 @@ public class GameController : MonoSingleton<GameController> {
         else {
             Time.timeScale = 1;
         }
-        Debug.Log("current world: " + getCurrentWorld());
-        Debug.Log("current level: " + GetCurrentLevel());
     }
 
     public void GameOver() {

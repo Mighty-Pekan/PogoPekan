@@ -110,6 +110,7 @@ public class GameController : MonoSingleton<GameController> {
     public bool isStartMenu() {
         return SceneManager.GetActiveScene().buildIndex == 0;
     }
+    public int GetMaxTimeForFish() { return fishMaxTimeSetter.MaxTimeForFish; }
 
     //note: if you have more than 9 levels per world / worlds you have to modify this
     /// <summary>

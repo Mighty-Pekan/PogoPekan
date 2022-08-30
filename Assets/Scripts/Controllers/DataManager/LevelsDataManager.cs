@@ -7,7 +7,6 @@ using static Fish;
 public class LevelsDataManager : MonoSingleton<LevelsDataManager>
 {
     [SerializeField] bool resetDB = false;
-    [SerializeField] bool unlockAllLevels = false;
 
     private List<LevelData> levelsData;
     private const string DB_FILE_NAME = "db.json";

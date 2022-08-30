@@ -5,14 +5,19 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI maxTimeForFish;
     private float startTime;
     private TextMeshProUGUI timerText;
     private int actualTime;
 
-    private void Start() {
+    private void Awake() {
         GameController.Instance.RegisterTimer(this);
+    }
+
+    private void Start() {
         startTime = Time.time;
         timerText = GetComponent<TextMeshProUGUI>();
+        maxTimeForFish.text = GameController.Instance.GetMaxTimeForFish().ToString();
     }
 
     public void Update() {

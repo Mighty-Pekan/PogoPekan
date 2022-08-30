@@ -7,7 +7,7 @@ public class FishMaxTimeSetter : MonoBehaviour {
     public int MaxTimeForFish {get => maxTimeForFish;}
 
     [SerializeField] int maxTimeForFish;
-    private void Start() {
+    private void Awake() {
         GameController.Instance.RegisterFishTimeSetter(this);
     }
 

@@ -31,7 +31,6 @@ public class GameController : MonoSingleton<GameController> {
         else {
             Time.timeScale = 1;
         }
-
     }
 
     public void GameOver() {

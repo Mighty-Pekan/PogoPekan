@@ -43,9 +43,9 @@ public class AudioManager : MonoSingleton<AudioManager> {
             int? newSongIndex = null;
             while(newSongIndex == lastSongIndex || newSongIndex == null) {
                 newSongIndex = Random.Range(0, musicTracks.Length);
-                Debug.Log("random: " + newSongIndex);
+                //Debug.Log("random: " + newSongIndex);
             }
-            Debug.Log("new song index:" + newSongIndex);
+            //Debug.Log("new song index:" + newSongIndex);
             lastSongIndex = newSongIndex;
             //musicAudioSource.PlayOneShot(musicTracks[newSongIndex], PlayerPrefs.GetFloat("MusicVolume"));
             while (true) {

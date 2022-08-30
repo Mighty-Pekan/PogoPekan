@@ -9,13 +9,19 @@ public class LevelsDataManager : MonoBehaviour
     public List<LevelData> levelsData;
 
     private void Start() {
-        levelsData = new List<LevelData>();
+        levelsData = FileHandler.ReadListFromJSON<LevelData>("prova.json");
 
-        for (int i = 0; i < GameController.Instance.NumWorlds; i++) {
-            for (int j = 0; j < GameController.Instance.NumLevelsPerWorld; j++) {
-                levelsData.Add(new LevelData(i, j));
+        if (levelsData == null) {
+            Debug.Log("levels data is empty, creating a new one");
+            levelsData = new List<LevelData>();
+
+            for (int i = 0; i < GameController.Instance.NumWorlds; i++) {
+                for (int j = 0; j < GameController.Instance.NumLevelsPerWorld; j++) {
+                    levelsData.Add(new LevelData(i, j));
+                }
             }
         }
+        else Debug.Log("levels data already saved");
     }
 
     private void Update() {

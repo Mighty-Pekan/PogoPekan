@@ -16,7 +16,7 @@ public static class FileHandler {
     public static void SaveToJSON<T>(List<T> toSave, string filename) {
         string content = JsonHelper.ToJson<T>(toSave.ToArray());
         WriteFile(GetPath(filename), content);
-        Debug.Log("CONTENT: " + content + "saved to: "+filename);
+        Debug.Log("SAVED: " + content + "\n" + "to: " + GetPath(filename));
     }
     /// <summary>
     /// saves object to json
@@ -27,7 +27,7 @@ public static class FileHandler {
     public static void SaveToJSON<T>(T toSave, string filename) {
         string content = JsonUtility.ToJson(toSave);
         WriteFile(GetPath(filename), content);
-        Debug.Log("CONTENT: " + content + "saved to: " + filename);
+        Debug.Log("SAVED: " + content + "\n"+"to: " + GetPath(filename));
     }
 
     public static List<T> ReadListFromJSON<T>(string filename) {
@@ -39,8 +39,8 @@ public static class FileHandler {
 
         List<T> res = JsonHelper.FromJson<T>(content).ToList();
 
+        Debug.Log("LOADED: " + content + "\n" + "from: " + GetPath(filename));
         return res;
-
     }
 
     public static T ReadFromJSON<T>(string filename) {
@@ -52,6 +52,7 @@ public static class FileHandler {
 
         T res = JsonUtility.FromJson<T>(content);
 
+        Debug.Log("LOADED: " + content + "\n" + "from: " + GetPath(filename));
         return res;
 
     }

@@ -206,8 +206,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1847019941}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+      - m_Target: {fileID: 1529827777}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 5
         m_Arguments:
@@ -964,8 +964,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1847019941}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+      - m_Target: {fileID: 1529827777}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 5
         m_Arguments:
@@ -3360,6 +3360,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492317925}
   m_CullTransparentMesh: 1
+--- !u!1 &1529827776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1529827778}
+  - component: {fileID: 1529827777}
+  m_Layer: 5
+  m_Name: LevelLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1529827777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529827776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04722990af28b774eb4c884f82514558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &1529827778
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529827776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1562149283}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -155}
+  m_SizeDelta: {x: 180, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1562149282
 GameObject:
   m_ObjectHideFlags: 0
@@ -3392,6 +3440,7 @@ RectTransform:
   - {fileID: 1581145791}
   - {fileID: 526487123}
   - {fileID: 1625061058}
+  - {fileID: 1529827778}
   m_Father: {fileID: 1256759606}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3507,8 +3556,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1847019941}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+      - m_Target: {fileID: 1529827777}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 5
         m_Arguments:
@@ -3774,8 +3823,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1847019941}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+      - m_Target: {fileID: 1529827777}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 5
         m_Arguments:
@@ -4794,17 +4843,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13e270389e336c04496974e2cc78b3d7, type: 3}
---- !u!114 &1847019941 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7459935106593307536, guid: 13e270389e336c04496974e2cc78b3d7, type: 3}
-  m_PrefabInstance: {fileID: 1847019939}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25cf21b2a08c85f43957cb9455bf368a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1884537337
 GameObject:
   m_ObjectHideFlags: 0

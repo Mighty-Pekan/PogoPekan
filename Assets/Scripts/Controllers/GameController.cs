@@ -59,7 +59,7 @@ public class GameController : MonoSingleton<GameController> {
     public void LoadNextLevel() {
         LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void LoadLevel(string levelName) { StartCoroutine(LoadLevelCor(levelName)); }
+    public void LoadLevel(string levelName) { Debug.Log("loading level"); StartCoroutine(LoadLevelCor(levelName)); }
     public void LoadLevel(int levelNum) { StartCoroutine(LoadLevelCor(levelNum)); }
 
     private IEnumerator LoadLevelCor(string levelName) {

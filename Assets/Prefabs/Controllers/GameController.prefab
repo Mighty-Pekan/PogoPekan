@@ -43,3 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cf21b2a08c85f43957cb9455bf368a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsPause: 0
+  numLevelsPerWorld: 6
+  numWorlds: 1

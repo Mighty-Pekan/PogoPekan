@@ -13,6 +13,11 @@ public class GameController : MonoSingleton<GameController> {
     private FadePanel fadePanel;
     private Timer timer;
 
+    [Header("Settings")]
+    [SerializeField] int numLevelsPerWorld;
+    [SerializeField] int numWorlds;
+
+
     private void Start() {
         Screen.orientation = ScreenOrientation.LandscapeLeft; //or right for right landscape
     }
@@ -24,7 +29,7 @@ public class GameController : MonoSingleton<GameController> {
         else {
             Time.timeScale = 1;
         }
-        Debug.Log("current world: " + getCurrentWorld());
+        Debug.Log("current world: " + GetCurrentWorld());
         Debug.Log("current level: " + GetCurrentLevel());
     }
 
@@ -60,11 +65,23 @@ public class GameController : MonoSingleton<GameController> {
     }
 
     //=============================================================== CUSTOM SCENE MANAGER
-    public void LoadNextLevel() {
-        LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+    public void UnlockNextLevel() {
+
+        int currentLevel = GetCurrentLevel();
+        int currentWorld = GetCurrentWorld();
+
+        // codice che sblocca il nuovo livello
+        
+
     }
+
+    public void ReturnToMainMenu() {
+        SceneManager.LoadScene("Menu");
+        UIManager.Instance.OpenPausePanel(false);
+        AudioManager.Instance.ChangeMusic();
+    }
+    
     public void LoadLevel(string levelName) {StartCoroutine(LoadLevelCor(levelName));}
-    public void LoadLevel(int levelNum) { StartCoroutine(LoadLevelCor(levelNum)); }
 
     private IEnumerator LoadLevelCor(string levelName) {
         yield return StartCoroutine(fadePanel.Apear());
@@ -89,7 +106,7 @@ public class GameController : MonoSingleton<GameController> {
         return SceneManager.GetActiveScene().buildIndex == 0;
     }
 
-    public int getCurrentWorld() {
+    public int GetCurrentWorld() {
         if (isStartMenu()) return -1;
         return (int)Char.GetNumericValue(SceneManager.GetActiveScene().name.ToCharArray()[0]);
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Fish;
 
 public class LevelsDataManager : MonoSingleton<LevelsDataManager>
 {
@@ -40,6 +41,12 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
     public void SetFishFound(Fish.FishId fishId) {
         int [] currentLevel = GameController.Instance.GetCurrentLevel();
         GetLevelData(currentLevel[0], currentLevel[1]).Fishes[(int)fishId] = true;
+        SaveData();
+    }
+
+    public void SetTimeFishFound() {
+        int[] currentLevel = GameController.Instance.GetCurrentLevel();
+        GetLevelData(currentLevel[0], currentLevel[1]).Fishes[2] = true;
         SaveData();
     }
 

@@ -11,6 +11,7 @@ public class GameController : MonoSingleton<GameController> {
     private InputManager inputManager;
     private FadePanel fadePanel;
     private Timer timer;
+    private FishMaxTimeSetter fishMaxTimeSetter;
 
     public int NumLevelsPerWorld { get => numLevelsPerWorld; }
     public int NumWorlds { get => numWorlds; }
@@ -53,6 +54,9 @@ public class GameController : MonoSingleton<GameController> {
     public void RegisterTimer(Timer _timer) {
         timer = _timer;
     }
+    public void RegisterFishTimeSetter(FishMaxTimeSetter fts) {
+        fishMaxTimeSetter = fts;
+    }
     //============================================================== getters
 
     public InputManager GetInputManager() {
@@ -66,8 +70,10 @@ public class GameController : MonoSingleton<GameController> {
 
     //=============================================================== CUSTOM SCENE MANAGER
     public void LoadNextLevel() {
+
+        if (timer.GetTime() < fishMaxTimeSetter.MaxTimeForFish) LevelsDataManager.Instance.SetTimeFishFound();
         int[] nextLevel = GetNextLevel();
-        LevelsDataManager.Instance.UnlockLevel(nextLevel[0], nextLevel[1]);
+        LevelsDataManager.Instance.UnlockLevel(nextLevel[0], nextLevel[1]);  
         LoadLevel(nextLevel[0], nextLevel[1]);
     }
 

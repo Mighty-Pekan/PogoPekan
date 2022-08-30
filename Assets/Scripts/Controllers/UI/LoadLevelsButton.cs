@@ -13,6 +13,7 @@ public class LoadLevelsButton : MonoBehaviour
     [Header("Settings")]
     [SerializeField] int world = 1;
     [SerializeField] int level = 1;
+    [SerializeField] Image[] fishIndicators;
 
     private void Start() {
 
@@ -23,6 +24,8 @@ public class LoadLevelsButton : MonoBehaviour
             myButton.interactable = true;
             myButton.image.color = Color.white;
             myButton.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+
+            for (int i = 0; i < LevelsDataManager.Instance.GetNumFishFound(world, level); i++) fishIndicators[i].color = Color.white;
         }
     }
 

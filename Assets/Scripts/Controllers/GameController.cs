@@ -105,22 +105,31 @@ public class GameController : MonoSingleton<GameController> {
         return SceneManager.GetActiveScene().buildIndex == 0;
     }
 
-    public int GetCurrentWorld() {
-        if (isStartMenu()) return -1;
-        return (int)Char.GetNumericValue(SceneManager.GetActiveScene().name.ToCharArray()[0]);
+    //note: if you have more than 9 levels per world / worlds you have to modify this
+    /// <summary>
+    /// returns [current world, current level]
+    /// </summary>
+    /// <returns></returns>
+    public int[] GetCurrentLevel() {
+        if (isStartMenu()) return (new int [2] {-1,-1});
+        int[] ris = new int[2] { 
+            (int)Char.GetNumericValue(SceneManager.GetActiveScene().name.ToCharArray()[0]),
+            (int)Char.GetNumericValue(SceneManager.GetActiveScene().name.ToCharArray()[2])
+        };
+        return ris;
     }
 
-    public int GetCurrentLevel() {
-        if (isStartMenu()) return -1;
-        return (int)Char.GetNumericValue(SceneManager.GetActiveScene().name.ToCharArray()[2]);
-    }
-
+    /// <summary>
+    /// returns [next level world, next level]
+    /// </summary>
+    /// <returns></returns>
     public int[] GetNextLevel() {
 
-        int[] ris = new int[2]; 
-        
-        int currentLevel = GetCurrentLevel();
-        int currentWorld = GetCurrentWorld();
+        int[] ris = new int[2];
+
+        int [] currentLevelComlete = GetCurrentLevel();
+        int currentLevel = currentLevelComlete[1];
+        int currentWorld = currentLevelComlete[0];
 
         if(currentLevel == NumLevelsPerWorld) {
             ris[0] = currentWorld + 1;

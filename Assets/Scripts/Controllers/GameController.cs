@@ -70,8 +70,9 @@ public class GameController : MonoSingleton<GameController> {
 
     //=============================================================== CUSTOM SCENE MANAGER
     public void LoadNextLevel() {
-
-        if (timer.GetTime() < fishMaxTimeSetter.MaxTimeForFish) LevelsDataManager.Instance.SetTimeFishFound();
+        if (timer.GetTime() < fishMaxTimeSetter.MaxTimeForFish) {
+            LevelsDataManager.Instance.SetTimeFishFound();
+        }
         int[] nextLevel = GetNextLevel();
         LevelsDataManager.Instance.UnlockLevel(nextLevel[0], nextLevel[1]);  
         LoadLevel(nextLevel[0], nextLevel[1]);

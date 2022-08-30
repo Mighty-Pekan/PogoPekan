@@ -38,6 +38,7 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
     }
 
     public void SetFishFound(Fish.FishId fishId) {
+        Debug.Log("set fish found: "+(int)fishId);  
         int [] currentLevel = GameController.Instance.GetCurrentLevel();
         GetLevelData(currentLevel[0], currentLevel[1]).Fishes[(int)fishId] = true;
         SaveData();
@@ -45,7 +46,7 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
 
     public void SetTimeFishFound() {
         int[] currentLevel = GameController.Instance.GetCurrentLevel();
-        GetLevelData(currentLevel[0], currentLevel[1]).Fishes[2] = true;
+        GetLevelData(currentLevel[0], currentLevel[1]).Fishes[0] = true;
         SaveData();
     }
 

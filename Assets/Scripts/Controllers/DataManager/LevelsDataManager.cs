@@ -32,8 +32,10 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
         if (world <= 0) throw new Exception("world index < 1");
         if (level <= 0) throw new Exception("level < 1");
 
-        levelsData[(GameController.Instance.NumLevelsPerWorld * (world - 1)) + level - 1].Unlocked = true;
-        SaveData(levelsData);
+        if(!levelsData[(GameController.Instance.NumLevelsPerWorld * (world - 1)) + level - 1].Unlocked) {
+            levelsData[(GameController.Instance.NumLevelsPerWorld * (world - 1)) + level - 1].Unlocked = true;
+            SaveData(levelsData);
+        }
     }
 
     // ----------------------------------------------------------------------------------------------------------private methods

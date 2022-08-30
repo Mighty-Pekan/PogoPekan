@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a1f1794798a6a4fa2b7dd7ea86235e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetDB: 1
+  resetDB: 0
   unlockAllLevels: 0

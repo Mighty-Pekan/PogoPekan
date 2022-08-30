@@ -35,7 +35,7 @@ public class UIManager : MonoSingleton<UIManager>
 
     public void ReturnToMainMenu()
     {
-        GameController.Instance.ReturnToMainMenu(true);
+        GameController.Instance.ReturnToMainMenu();
     }
 
     private string GetRandomText()

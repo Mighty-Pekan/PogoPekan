@@ -11,11 +11,9 @@ public class GameController : MonoSingleton<GameController> {
     private InputManager inputManager;
     private FadePanel fadePanel;
     private Timer timer;
-    private LevelsPanel levelsPanel;
-    private MainMenuPanel mainMenuPanel;
 
-    public int NumLevelsPerWorld { get => numLevelsPerWorld;}
-    public int NumWorlds { get => numWorlds;}
+    public int NumLevelsPerWorld { get => numLevelsPerWorld; }
+    public int NumWorlds { get => numWorlds; }
 
     [Header("Settings")]
     [SerializeField] int numLevelsPerWorld;
@@ -33,7 +31,7 @@ public class GameController : MonoSingleton<GameController> {
         else {
             Time.timeScale = 1;
         }
-        
+
     }
 
     public void GameOver() {
@@ -56,12 +54,6 @@ public class GameController : MonoSingleton<GameController> {
     public void RegisterTimer(Timer _timer) {
         timer = _timer;
     }
-    //public void RegisterLevelsPanel(LevelsPanel _levelsPanel) {
-    //    levelsPanel = _levelsPanel;
-    //}
-    //public void RegisterMainMenuPanel(MainMenuPanel _mainMenuPanel) {
-    //    mainMenuPanel = _mainMenuPanel;
-    //}
     //============================================================== getters
 
     public InputManager GetInputManager() {
@@ -74,28 +66,22 @@ public class GameController : MonoSingleton<GameController> {
     }
 
     //=============================================================== CUSTOM SCENE MANAGER
-    public void ExitReached() {
-        int currentLevel = GetCurrentLevel();
-        int currentWorld = GetCurrentWorld();
-
+    public void LoadNextLevel() {
         int[] nextLevel = GetNextLevel();
         LevelsDataManager.Instance.UnlockLevel(nextLevel[0], nextLevel[1]);
-
-        ReturnToMainMenu(true);
+        LoadLevel(nextLevel[0], nextLevel[1]);
     }
 
-    public void ReturnToMainMenu(bool showLevelsMenu) {
+     
+    public void ReturnToMainMenu() {
         SceneManager.LoadScene("Menu");
 
-        if (showLevelsMenu) {
-            FindObjectOfType<LevelsPanel>().gameObject.SetActive(true);
-            FindObjectOfType<MainMenuPanel>().gameObject.SetActive(false);
-        }
         UIManager.Instance.OpenPausePanel(false);
         AudioManager.Instance.ChangeMusic();
+
     }
-    
     public void LoadLevel(string levelName) {StartCoroutine(LoadLevelCor(levelName));}
+    public void LoadLevel(int world, int level) { StartCoroutine(LoadLevelCor(world, level));}
 
     private IEnumerator LoadLevelCor(string levelName) {
         yield return StartCoroutine(fadePanel.Apear());
@@ -104,10 +90,10 @@ public class GameController : MonoSingleton<GameController> {
         if (UIManager.Instance != null) UIManager.Instance.OpenPausePanel(false);
         AudioManager.Instance.ChangeMusic();
     }
-    private IEnumerator LoadLevelCor(int levelNum) {
+    private IEnumerator LoadLevelCor(int world,int level) {
         yield return StartCoroutine(fadePanel.Apear());
         if(timer!=null)timer.Reset();
-        SceneManager.LoadScene(levelNum);
+        SceneManager.LoadScene(world.ToString()+"."+level.ToString());
         if(UIManager.Instance !=null)UIManager.Instance.OpenPausePanel(false);
         AudioManager.Instance.ChangeMusic();
     }

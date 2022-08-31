@@ -92,11 +92,15 @@ public class Player : MonoBehaviour {
         }
     }
     private void HandleRotation() {
-        if (InputManager.Instance.IsDoubleHold() || isPerformingButtHit) {
+        if (InputManager.Instance.IsDoubleHold()) {
             animator.SetBool("GoUp", false);
             DoButtHit();
         }
         else {
+
+            if (isPerformingButtHit) {
+                EndButtHit();
+            }
 
             if (rb.velocity.y > 0)
                 animator.SetBool("GoUp", true);
@@ -126,7 +130,7 @@ public class Player : MonoBehaviour {
 
         //done only on first call
         if (!isPerformingButtHit) {
-            mySpriteRenderer.sprite = downSprite;
+            //mySpriteRenderer.sprite = downSprite;
             buttHitStartingPos = transform.position;
             rb.velocity = Vector2.zero;
             isPerformingButtHit = true;
@@ -150,6 +154,12 @@ public class Player : MonoBehaviour {
         }
     }
 
+    private void EndButtHit() {
+        lastButtHitEndTime = Time.time;
+        isPerformingButtHit = false;
+        buttHitParticles.Stop();
+    }
+
     public void Bounce() {
         Vector3 tipPos = GameObject.Find("BouncingTip").gameObject.GetComponentInChildren<CapsuleCollider2D>().transform.position;
         if (tricksDetector.TrickDetected()) {
@@ -162,9 +172,7 @@ public class Player : MonoBehaviour {
             }
         }
         if (isPerformingButtHit) {
-            lastButtHitEndTime = Time.time;
-            isPerformingButtHit = false;
-            buttHitParticles.Stop();
+            EndButtHit();
         }
         tricksDetector.Reset();
     }

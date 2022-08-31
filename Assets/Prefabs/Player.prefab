@@ -249,7 +249,7 @@ MonoBehaviour:
   baseBounceSpeed: 12
   boostBounceSpeed: 18
   buttHitRotationSpeed: 600
-  buttHitSpeed: 25
+  buttHitSpeed: 20
   buttHitTimer: 1
   superjumpParticlesDistance: 1.5
   superjumpParticlesMinSpeed: 3

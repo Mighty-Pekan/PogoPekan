@@ -71220,22 +71220,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1596016673}
     m_Modifications:
-    - target: {fileID: 628550012, guid: 77cf6532e41fe6f429bdd6dbd594fce0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 628550013, guid: 77cf6532e41fe6f429bdd6dbd594fce0, type: 3}
-      propertyPath: m_Intensity
-      value: 10.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 628550013, guid: 77cf6532e41fe6f429bdd6dbd594fce0, type: 3}
-      propertyPath: m_PointLightInnerRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 628550013, guid: 77cf6532e41fe6f429bdd6dbd594fce0, type: 3}
-      propertyPath: m_PointLightOuterRadius
-      value: 8.8
-      objectReference: {fileID: 0}
     - target: {fileID: 3478045331439683466, guid: 77cf6532e41fe6f429bdd6dbd594fce0, type: 3}
       propertyPath: m_Name
       value: Exit (1)
@@ -71926,7 +71910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8525592010118040005, guid: 06cd6a5f6f60f924bb5c37a5446f47a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.22768
+      value: 6.065
       objectReference: {fileID: 0}
     - target: {fileID: 8525592010118040005, guid: 06cd6a5f6f60f924bb5c37a5446f47a4, type: 3}
       propertyPath: m_LocalPosition.z

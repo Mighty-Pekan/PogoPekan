@@ -6,9 +6,19 @@ public class TraversablePlatform : MonoBehaviour {
 
     [SerializeField] private GameObject topPosition;
 
-    BoxCollider2D boxCollider;
+    BoxCollider2D myCollider;
+    BoxCollider2D myTrigger;
+
     private void Awake() {
-        boxCollider = GetComponent<BoxCollider2D>();
+        BoxCollider2D [] boxColliders = GetComponents<BoxCollider2D>();
+
+        foreach (BoxCollider2D bc in boxColliders) {
+            if (bc.isTrigger) myTrigger = bc;
+            else myCollider = bc;
+        }
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        myCollider.size = new Vector2(spriteRenderer.size.x, spriteRenderer.size.y);
+        myTrigger.size = new Vector2(spriteRenderer.size.x + 0.2f, spriteRenderer.size.y+0.2f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -20,13 +30,13 @@ public class TraversablePlatform : MonoBehaviour {
             other.transform.position.y < topPosition.transform.position.y &&
             canBeDisabled)
         {
-            boxCollider.enabled = false;
+            myCollider.enabled = false;
         }
         else
         {
             if( otherPlayer == null || !otherPlayer.IsPerformingButtHit())
             {
-                boxCollider.enabled = true;
+                myCollider.enabled = true;
                 //if (otherPlayer == null) Debug.Log("other player is null");
                 //else Debug.Log("not performing butt hit");
             }

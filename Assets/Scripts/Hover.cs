@@ -5,11 +5,14 @@ using UnityEngine.EventSystems;
 
 public class Hover : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
+    public bool CanExpand { get; set; } = true;
+
     // Start is called before the first frame update
     [SerializeField] bool isHover;
     [SerializeField] float scaleSpeed = 24;
     [SerializeField]Vector3 scaleFactor = new Vector3(1.3f, 1.3f, 1.3f);
     Vector3 initialScale;
+
     void Start()
     {
         initialScale = transform.localScale;
@@ -20,7 +23,8 @@ public class Hover : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        isHover = true;
+        if(CanExpand)
+            isHover = true;
     }
     public void OnPointerExit(PointerEventData eventData)
     {

@@ -34,6 +34,10 @@ public class Player : MonoBehaviour {
     [SerializeField] private bool superjumpActLightEnabled;
     [SerializeField] private bool kevinBlinkAnimationEnabled;
 
+    [Header("Sounds")]
+    [SerializeField] AudioClip blinkClip;
+    [SerializeField] AudioClip superjumpClip;
+
     //private
     private Vector3 initialPosition;
     private SpriteRenderer mySpriteRenderer;
@@ -203,7 +207,8 @@ public class Player : MonoBehaviour {
         isSuperjumpActive = true;
         if (superjumpTrailEnabled) superjumpTray.SetActive(true);
         if (superjumpSpeedEnabled) superjumpParticles.Play();
-        
+        AudioManager.Instance.PlaySound(superjumpClip);
+
     }
     private void DeactivateSuperjump() {
         animator.SetBool("SuperJump", false);
@@ -215,7 +220,11 @@ public class Player : MonoBehaviour {
 
     public void ActivateSuperjumpDetectedParticles() {
         if (superjumpActLightEnabled) StartCoroutine(blink());
-        if(kevinBlinkAnimationEnabled)blinkAnimator.SetTrigger("Blink");
+        if(kevinBlinkAnimationEnabled)
+        {
+            AudioManager.Instance.PlaySound(blinkClip);
+            blinkAnimator.SetTrigger("Blink");
+        }
     }
     private IEnumerator blink() {
         superjumpActLight.SetActive(true);

@@ -39129,6 +39129,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 980297694384325157, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980297694384325159, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: m_Intensity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 980297694384325159, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 980297694384325159, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 2.69
+      objectReference: {fileID: 0}
     - target: {fileID: 1908649215348200472, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -39176,6 +39192,10 @@ PrefabInstance:
     - target: {fileID: 1908649215348200677, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932784224750485234, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}

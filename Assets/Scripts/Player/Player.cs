@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private GameObject superjumpParticlesObj;
     [SerializeField] private GameObject superjumpTray;
     [SerializeField] private GameObject superjumpActLight;
+    [SerializeField] private GameObject superjumpActBackLight;
     [SerializeField] private ParticleSystem buttHitParticles;
     [SerializeField] private Animator blinkAnimator;
 
@@ -62,6 +63,7 @@ public class Player : MonoBehaviour {
         superjumpTray.SetActive(false);
         superjumpParticles.Stop();
         superjumpActLight.SetActive(false);
+        superjumpActBackLight.SetActive(false);
     }
 
     private void Update() {
@@ -217,8 +219,10 @@ public class Player : MonoBehaviour {
     }
     private IEnumerator blink() {
         superjumpActLight.SetActive(true);
+        superjumpActBackLight.SetActive(true);
         yield return new WaitForSeconds(0.25f);
         superjumpActLight.SetActive(false);
+        superjumpActBackLight.SetActive(false);
     }
 
 }

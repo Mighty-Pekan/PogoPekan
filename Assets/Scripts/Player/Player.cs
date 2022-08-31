@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private float rotationSpeed = 2f;
     [SerializeField] private float baseBounceSpeed;
     [SerializeField] private float boostBounceSpeed;
+    [SerializeField] private float buttHitRotationSpeed = 600f;
     [SerializeField] private float buttHitSpeed = 10f;
     [SerializeField] private float buttHitTimer = 2f;
 
@@ -136,8 +137,8 @@ public class Player : MonoBehaviour {
 
         if (myRotation > 2 && myRotation < 358) {
 
-            if (myRotation > 180) transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
-            else transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
+            if (myRotation > 180) transform.Rotate(Vector3.forward * buttHitRotationSpeed * Time.deltaTime);
+            else transform.Rotate(Vector3.back * buttHitRotationSpeed * Time.deltaTime);
             transform.position = buttHitStartingPos;
 
         }

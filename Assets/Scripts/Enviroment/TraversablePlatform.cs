@@ -27,8 +27,8 @@ public class TraversablePlatform : MonoBehaviour {
             if( otherPlayer == null || !otherPlayer.IsPerformingButtHit())
             {
                 boxCollider.enabled = true;
-                if (otherPlayer == null) Debug.Log("other player is null");
-                else Debug.Log("not performing butt hit");
+                //if (otherPlayer == null) Debug.Log("other player is null");
+                //else Debug.Log("not performing butt hit");
             }
                
         }
@@ -40,13 +40,13 @@ public class TraversablePlatform : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
             canBeDisabled = false;
-        Debug.Log(canBeDisabled);
+        //Debug.Log(canBeDisabled);
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
             canBeDisabled = true;
-        Debug.Log(canBeDisabled);
+        //Debug.Log(canBeDisabled);
     }
 
 }

@@ -9,7 +9,7 @@ public class SoundEmitter : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.tag == "Player") {
             int r = Random.Range(0, possibleSounds.Length);
-            Debug.Log(r);
+            //Debug.Log(r);
             AudioManager.Instance.PlaySound(possibleSounds[r]);
         }
     }

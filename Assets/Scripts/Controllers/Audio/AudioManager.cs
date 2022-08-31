@@ -6,6 +6,7 @@ public class AudioManager : MonoSingleton<AudioManager> {
 
     [SerializeField] private AudioSource sfxAudioSource;
     [SerializeField] private AudioSource musicAudioSource;
+    [SerializeField] private AudioSource superjumpAudioSource;
     [SerializeField] private AudioClip menuTrack;
     [SerializeField] private AudioClip[] musicTracks;
     private int? lastSongIndex = null;
@@ -17,6 +18,14 @@ public class AudioManager : MonoSingleton<AudioManager> {
 
     public void PlaySound(AudioClip _audio) {
         sfxAudioSource.PlayOneShot(_audio, PlayerPrefs.GetFloat("SfxVolume"));
+    }
+
+    public void PlaySuperjumpSound(AudioClip _audio) {
+        superjumpAudioSource.PlayOneShot(_audio, PlayerPrefs.GetFloat("SfxVolume"));
+    }
+    public void StopSuperjumpSound() {
+        Debug.Log("superjump audio stopped");
+        superjumpAudioSource.Stop();
     }
 
     public void ChangeMusic() {

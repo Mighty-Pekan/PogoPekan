@@ -20,12 +20,16 @@ public class AudioManager : MonoSingleton<AudioManager> {
         sfxAudioSource.PlayOneShot(_audio, PlayerPrefs.GetFloat("SfxVolume"));
     }
 
+    public void initSuperjumpAudioClip(AudioClip _audio) {
+        superjumpAudioSource.clip = _audio;
+    }
     public void PlaySuperjumpSound(AudioClip _audio) {
-        superjumpAudioSource.PlayOneShot(_audio, PlayerPrefs.GetFloat("SfxVolume"));
+        superjumpAudioSource.volume = PlayerPrefs.GetFloat("SfxVolume");
+        superjumpAudioSource.Play();
     }
     public void StopSuperjumpSound() {
         Debug.Log("superjump audio stopped");
-        superjumpAudioSource.Stop();
+        superjumpAudioSource.Stop();        
     }
 
     public void ChangeMusic() {

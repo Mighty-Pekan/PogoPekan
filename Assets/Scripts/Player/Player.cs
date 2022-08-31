@@ -208,7 +208,6 @@ public class Player : MonoBehaviour {
         if (superjumpTrailEnabled) superjumpTray.SetActive(true);
         if (superjumpSpeedEnabled) superjumpParticles.Play();
         AudioManager.Instance.PlaySound(superjumpClip);
-
     }
     private void DeactivateSuperjump() {
         animator.SetBool("SuperJump", false);

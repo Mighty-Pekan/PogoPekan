@@ -265,6 +265,8 @@ MonoBehaviour:
   superjumpSpeedEnabled: 1
   superjumpActLightEnabled: 1
   kevinBlinkAnimationEnabled: 1
+  blinkClip: {fileID: 8300000, guid: 24cd1ed9dbfe4b54398c24f788d493ee, type: 3}
+  superjumpClip: {fileID: 8300000, guid: 779bbf6ed2d47bf47a6204fafee5b1e9, type: 3}
 --- !u!50 &1908649215348200475
 Rigidbody2D:
   serializedVersion: 4

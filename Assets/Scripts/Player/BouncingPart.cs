@@ -24,7 +24,7 @@ public class BouncingPart : MonoBehaviour
         if (other.gameObject.tag != "Player" && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHit())) {
 
             if (canBounce) {
-                player.Bounce();
+                player.Bounce(other);
                 canBounce = false;
                 StartCoroutine(enableBounceCor());
             }
@@ -37,7 +37,6 @@ public class BouncingPart : MonoBehaviour
     }
 
     private void HandleParticlesGeneration(Collision2D other) {
-
         ParticlesEmitterIfHit otherEmitter = other.gameObject.GetComponent<ParticlesEmitterIfHit>();
         if(otherEmitter != null) {
             GameObject particles = Instantiate(otherEmitter.getParticles(), transform.position, Quaternion.identity);

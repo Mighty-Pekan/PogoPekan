@@ -160,13 +160,22 @@ public class Player : MonoBehaviour {
         buttHitParticles.Stop();
     }
 
-    public void Bounce() {
-        Vector3 tipPos = GameObject.Find("BouncingTip").gameObject.GetComponentInChildren<CapsuleCollider2D>().transform.position;
+    public void Bounce(Collision2D other) {
+
+        // handling mushrooms bounciness directly
+        float mushroomBounceForce;
+        if (other.gameObject.tag == "Mushroom")
+            mushroomBounceForce = other.gameObject.GetComponent<Mushroom>().GetBounciness();
+        else 
+            mushroomBounceForce = 1f;
+        
+        //============================================================================
+        
         if (tricksDetector.TrickDetected()) {
-            ActivateSuperjump();
+            ActivateSuperjump(mushroomBounceForce);
         }
         else {
-            rb.velocity = transform.up * baseBounceSpeed;
+            rb.velocity = transform.up * (baseBounceSpeed + mushroomBounceForce);
             if (bouncingPart.transform.position.y < transform.position.y) {
                 DeactivateSuperjump();
             }
@@ -211,8 +220,8 @@ public class Player : MonoBehaviour {
     }
     //================================================ activations/deactivations
 
-    private void ActivateSuperjump() {
-        rb.velocity = transform.up * boostBounceSpeed;
+    private void ActivateSuperjump(float speedupFactor = 1f) {
+        rb.velocity = transform.up * (boostBounceSpeed + speedupFactor);
         animator.SetBool("SuperJump", true);
         isSuperjumpActive = true;
         if (superjumpTrailEnabled) superjumpTray.SetActive(true);

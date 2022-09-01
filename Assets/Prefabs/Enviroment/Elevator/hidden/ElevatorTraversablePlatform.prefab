@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5656055490605142003
+--- !u!1001 &1857876116591093048
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8525592010118040001, guid: 06cd6a5f6f60f924bb5c37a5446f47a4, type: 3}
       propertyPath: m_Name
-      value: TraversablePlatform
+      value: TraversablePlatform Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8525592010118040005, guid: 06cd6a5f6f60f924bb5c37a5446f47a4, type: 3}
       propertyPath: m_RootOrder
@@ -57,3 +57,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06cd6a5f6f60f924bb5c37a5446f47a4, type: 3}
+--- !u!1 &8041314295271042297 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8525592010118040001, guid: 06cd6a5f6f60f924bb5c37a5446f47a4, type: 3}
+  m_PrefabInstance: {fileID: 1857876116591093048}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2102490215918934216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8041314295271042297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35fe0cd3855c8964ea829508663af331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WayPoint1: {fileID: 0}
+  WayPoint2: {fileID: 0}
+  Speed: 0

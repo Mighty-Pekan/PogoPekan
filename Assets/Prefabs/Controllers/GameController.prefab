@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPause: 0
-  numLevelsPerWorld: 6
+  numLevelsPerWorld: 8
   numWorlds: 1

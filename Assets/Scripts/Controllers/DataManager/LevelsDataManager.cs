@@ -12,7 +12,8 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
     private const string DB_FILE_NAME = "db.json";
 
 
-    private void Start() {
+    protected override void Awake() {
+        base.Awake();   
         LoadData();
         if (isDBNull() || resetDB ) {
             Debug.Log("creating new db");
@@ -20,13 +21,7 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
         }
         else Debug.Log("existing db loaded");
     }
-
-    public bool isLevelUnlocked(int world, int level) {
-        if (world <= 0) throw new Exception("world index < 1");
-        if(level <=0) throw new Exception("level < 1");
-        return GetLevelData(world,level).Unlocked;
-    }
-
+    //==============================================================================setter
     public void UnlockLevel(int world, int level) {
         if (world <= 0) throw new Exception("world index < 1");
         if (level <= 0) throw new Exception("level < 1");
@@ -50,6 +45,21 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
         SaveData();
     }
 
+    public void RegisterNewTime(int newTime) {
+        int[] currentLevel = GameController.Instance.GetCurrentLevel();
+        int oldTime = GetLevelData(currentLevel[0], currentLevel[1]).BestTime;
+        if (oldTime == -1 || newTime < oldTime) {
+            GetLevelData(currentLevel[0], currentLevel[1]).BestTime = newTime;
+        }
+        SaveData();
+    }
+
+    //==============================================================================getter
+    public bool IsLevelUnlocked(int world, int level) {
+        if (world <= 0) throw new Exception("world index < 1");
+        if (level <= 0) throw new Exception("level < 1");
+        return GetLevelData(world, level).Unlocked;
+    }
     public bool IsFishFound(Fish.FishId fishId) {
         int[] currentLevel = GameController.Instance.GetCurrentLevel();
         return GetLevelData(currentLevel[0], currentLevel[1]).Fishes[(int)fishId];
@@ -60,6 +70,10 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
         bool[] fishesFound = GetLevelData(world, level).Fishes;
         for (int i = 0; i < fishesFound.Length; i++) if (fishesFound[i]) ris++;
         return ris;
+    }
+
+    public int GetBestTime(int world, int level) {
+        return GetLevelData(world, level).BestTime;
     }
 
     // ----------------------------------------------------------------------------------------------------------private methods
@@ -81,6 +95,7 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
         FileHandler.SaveToJSON<LevelData>(levelsData, DB_FILE_NAME);
     }
     private LevelData GetLevelData(int world, int level) {
+        //Debug.Log("get level data called with world: "+ world + " level: "+level);
         return levelsData[(GameController.Instance.NumLevelsPerWorld * (world - 1)) + level - 1];
     }
     private bool isDBNull() { return levelsData == null; }
@@ -91,12 +106,14 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
         public int Level;
         public bool Unlocked;
         public bool[] Fishes;
+        public int BestTime;
 
         public LevelData(int _world, int _level) {
             World = _world;
             Level = _level;
             Unlocked = false;
             Fishes = new bool[3] { false, false, false };
+            BestTime = -1;
         }
     }
 }

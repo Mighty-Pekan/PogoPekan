@@ -73,6 +73,7 @@ public class GameController : MonoSingleton<GameController> {
         if (timer.GetTime() < fishMaxTimeSetter.MaxTimeForFish) {
             LevelsDataManager.Instance.SetTimeFishFound();
         }
+        LevelsDataManager.Instance.RegisterNewTime(timer.GetTime());
         int[] nextLevel = GetNextLevel();
         LevelsDataManager.Instance.UnlockLevel(nextLevel[0], nextLevel[1]);  
         LoadLevel(nextLevel[0], nextLevel[1]);

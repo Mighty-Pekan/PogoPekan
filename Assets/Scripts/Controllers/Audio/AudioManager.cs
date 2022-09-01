@@ -28,7 +28,7 @@ public class AudioManager : MonoSingleton<AudioManager> {
         superjumpAudioSource.Play();
     }
     public void StopSuperjumpSound() {
-        Debug.Log("superjump audio stopped");
+        //Debug.Log("superjump audio stopped");
         superjumpAudioSource.Stop();        
     }
 

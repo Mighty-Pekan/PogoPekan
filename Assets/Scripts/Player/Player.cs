@@ -51,6 +51,7 @@ public class Player : MonoBehaviour {
 
     private Vector2 buttHitStartingPos;
 
+    private bool isPerformingButtHitRotation = false;
     private bool isPerformingButtHit = false;
     private bool isSuperjumpActive = false;
     private ParticleSystem superjumpParticles;
@@ -129,13 +130,13 @@ public class Player : MonoBehaviour {
     private float lastButtHitEndTime;
     private void DoButtHit() {
         if (Time.time - lastButtHitEndTime < buttHitTimer) return;
+        Debug.Log("DoingButtHit");
 
         //done only on first call
-        if (!isPerformingButtHit) {
-            //mySpriteRenderer.sprite = downSprite;
+        if (!isPerformingButtHit && !isPerformingButtHitRotation) {
+            isPerformingButtHitRotation = true;
             buttHitStartingPos = transform.position;
             rb.velocity = Vector2.zero;
-            isPerformingButtHit = true;
             DeactivateSuperjump();
             tricksDetector.Reset();
         }
@@ -143,22 +144,25 @@ public class Player : MonoBehaviour {
         float myRotation = transform.rotation.eulerAngles.z;
 
         if (myRotation > 2 && myRotation < 358) {
-
             if (myRotation > 180) transform.Rotate(Vector3.forward * buttHitRotationSpeed * Time.deltaTime);
             else transform.Rotate(Vector3.back * buttHitRotationSpeed * Time.deltaTime);
             transform.position = buttHitStartingPos;
-
         }
         else {
+            isPerformingButtHit = true;
+            isPerformingButtHitRotation = false;
             transform.up = Vector2.up;
             rb.velocity = new Vector2(0, -buttHitSpeed);
+            rb.angularVelocity = 0;
             if (!buttHitParticles.isPlaying) buttHitParticles.Play();
         }
     }
 
     private void EndButtHit() {
+        rb.angularVelocity = 0;
         lastButtHitEndTime = Time.time;
         isPerformingButtHit = false;
+        isPerformingButtHitRotation = false;
         buttHitParticles.Stop();
     }
 
@@ -173,7 +177,7 @@ public class Player : MonoBehaviour {
         }
         else
         {
-            mushroomBounceForce = 1f;
+            mushroomBounceForce = 0f;
         }
         
         //============================================================================
@@ -187,6 +191,7 @@ public class Player : MonoBehaviour {
                 DeactivateSuperjump();
             }
         }
+
         if (isPerformingButtHit) {
             EndButtHit();
         }
@@ -223,7 +228,7 @@ public class Player : MonoBehaviour {
     }
 
     public bool IsPerformingButtHit() {
-        return isPerformingButtHit;
+        return isPerformingButtHit || isPerformingButtHitRotation;
     }
     //================================================ activations/deactivations
 

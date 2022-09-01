@@ -24,25 +24,31 @@ public class TraversablePlatform : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other)
     {
         Player otherPlayer = other.transform.root.GetComponent<Player>();
-        if ((otherPlayer != null && otherPlayer.IsPerformingButtHit()) ||
-            other.gameObject.transform.root.GetComponent<Rigidbody2D>() != null &&
+        if ((otherPlayer != null && otherPlayer.IsPerformingButtHit())
+            ||
+            (other.gameObject.transform.root.GetComponent<Rigidbody2D>() != null &&
             other.gameObject.transform.root.GetComponent<Rigidbody2D>().velocity.y > 0 &&
             other.transform.position.y < topPosition.transform.position.y &&
             canBeDisabled)
+            )
         {
             myCollider.enabled = false;
         }
-        else
-        {
-            if( otherPlayer == null || !otherPlayer.IsPerformingButtHit())
-            {
-                myCollider.enabled = true;
-                //if (otherPlayer == null) Debug.Log("other player is null");
-                //else Debug.Log("not performing butt hit");
+        else {
+            myCollider.enabled = true;
+            //if (otherPlayer == null) Debug.Log("other player is null");
+            //else Debug.Log("not performing butt hit");
+        }  
+    }
+
+    //prevents pekan block on bars
+    private void OnCollisionStay2D(Collision2D collision) {
+        Player player = collision.gameObject.GetComponent<Player>();
+        if (player) {
+            foreach(ContactPoint2D c in collision.contacts) {
+                if (c.point.y < transform.position.y) myCollider.enabled = false;
             }
-               
         }
-            
     }
 
     private bool canBeDisabled = true;
@@ -50,13 +56,11 @@ public class TraversablePlatform : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
             canBeDisabled = false;
-        //Debug.Log(canBeDisabled);
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
             canBeDisabled = true;
-        //Debug.Log(canBeDisabled);
     }
 
 }

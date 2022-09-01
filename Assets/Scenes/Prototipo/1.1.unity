@@ -37609,6 +37609,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1596016673}
     m_Modifications:
+    - target: {fileID: 628550011, guid: 77cf6532e41fe6f429bdd6dbd594fce0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3478045331439683466, guid: 77cf6532e41fe6f429bdd6dbd594fce0, type: 3}
       propertyPath: m_Name
       value: Exit (1)
@@ -37664,6 +37668,14 @@ PrefabInstance:
     - target: {fileID: 4902326341076805996, guid: 77cf6532e41fe6f429bdd6dbd594fce0, type: 3}
       propertyPath: m_SortingLayerID
       value: -2110762291
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958054634044268836, guid: 77cf6532e41fe6f429bdd6dbd594fce0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299664509951579141, guid: 77cf6532e41fe6f429bdd6dbd594fce0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77cf6532e41fe6f429bdd6dbd594fce0, type: 3}

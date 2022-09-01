@@ -69,17 +69,24 @@ public class GameController : MonoSingleton<GameController> {
     }
 
     //=============================================================== CUSTOM SCENE MANAGER
-    public void LoadNextLevel() {
+    public void ExitReached() {
         if (timer.GetTime() < fishMaxTimeSetter.MaxTimeForFish) {
             LevelsDataManager.Instance.SetTimeFishFound();
         }
         LevelsDataManager.Instance.RegisterNewTime(timer.GetTime());
         int[] nextLevel = GetNextLevel();
-        LevelsDataManager.Instance.UnlockLevel(nextLevel[0], nextLevel[1]);  
+        LevelsDataManager.Instance.UnlockLevel(nextLevel[0], nextLevel[1]);
+
+        Destroy(player.gameObject);
+        UIManager.Instance.ShowLevelCompletedPanel(timer.GetTime());
+    }
+
+    public void LoadNextLevel() {
+        int[] nextLevel = GetNextLevel();
         LoadLevel(nextLevel[0], nextLevel[1]);
     }
 
-     
+
     public void ReturnToMainMenu() {
         SceneManager.LoadScene("Menu");
 
@@ -88,20 +95,16 @@ public class GameController : MonoSingleton<GameController> {
 
     }
     public void LoadLevel(string levelName) {StartCoroutine(LoadLevelCor(levelName));}
-    public void LoadLevel(int world, int level) { StartCoroutine(LoadLevelCor(world, level));}
+    public void LoadLevel(int world, int level) {StartCoroutine(LoadLevelCor(world.ToString() + "." + level.ToString()));}
 
     private IEnumerator LoadLevelCor(string levelName) {
         yield return StartCoroutine(fadePanel.Apear());
         if(timer!=null)timer.Reset();
         SceneManager.LoadScene(levelName);
-        if (UIManager.Instance != null) UIManager.Instance.OpenPausePanel(false);
-        AudioManager.Instance.ChangeMusic();
-    }
-    private IEnumerator LoadLevelCor(int world,int level) {
-        yield return StartCoroutine(fadePanel.Apear());
-        if(timer!=null)timer.Reset();
-        SceneManager.LoadScene(world.ToString()+"."+level.ToString());
-        if(UIManager.Instance !=null)UIManager.Instance.OpenPausePanel(false);
+        if (UIManager.Instance != null) {
+            UIManager.Instance.OpenPausePanel(false);
+            UIManager.Instance.HideLevelCompletedPanel();
+        }
         AudioManager.Instance.ChangeMusic();
     }
 

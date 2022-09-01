@@ -39,6 +39,8 @@ public class Player : MonoBehaviour {
     [SerializeField] AudioClip blinkAudioClip;
     [SerializeField] AudioClip superjumpAudioClip;
 
+    [SerializeField] Animator MushroomAnim;
+
     //private
     private Vector3 initialPosition;
     private SpriteRenderer mySpriteRenderer;
@@ -165,9 +167,14 @@ public class Player : MonoBehaviour {
         // handling mushrooms bounciness directly
         float mushroomBounceForce;
         if (other.gameObject.tag == "Mushroom")
+        {
             mushroomBounceForce = other.gameObject.GetComponent<Mushroom>().GetBounciness();
-        else 
+            MushroomAnim.SetTrigger("Bounce");
+        }
+        else
+        {
             mushroomBounceForce = 1f;
+        }
         
         //============================================================================
         

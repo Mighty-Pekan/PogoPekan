@@ -62,8 +62,6 @@ public class GameController : MonoSingleton<GameController> {
     public InputManager GetInputManager() {
         return inputManager;
     }
-
-    //==============================================================
     public void ResetPlayerPosition() {
         player.ResetInitialPosition();
     }
@@ -94,6 +92,15 @@ public class GameController : MonoSingleton<GameController> {
         AudioManager.Instance.ChangeMusic();
 
     }
+
+    public void ReturnToLevelSelection() {
+        SceneManager.LoadScene("Menu");
+
+        UIManager.Instance.OpenPausePanel(false);
+        AudioManager.Instance.ChangeMusic();
+        
+    }
+
     public void LoadLevel(string levelName) {StartCoroutine(LoadLevelCor(levelName));}
     public void LoadLevel(int world, int level) {StartCoroutine(LoadLevelCor(world.ToString() + "." + level.ToString()));}
 

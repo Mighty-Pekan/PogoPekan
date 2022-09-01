@@ -35,7 +35,7 @@ public class GameController : MonoSingleton<GameController> {
     }
 
     public void GameOver() {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public Player GetPlayer() {

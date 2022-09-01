@@ -2173,6 +2173,7 @@ GameObject:
   - component: {fileID: 960747214}
   - component: {fileID: 960747212}
   - component: {fileID: 960747211}
+  - component: {fileID: 960747215}
   m_Layer: 5
   m_Name: PlaceHolderPlay
   m_TagString: Untagged
@@ -2268,6 +2269,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 960747215}
+        m_TargetAssemblyTypeName: GoToLevelSelectionButton, Assembly-CSharp
+        m_MethodName: GoToLevelSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &960747212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2321,6 +2334,18 @@ MonoBehaviour:
   isHover: 0
   scaleSpeed: 24
   scaleFactor: {x: 1.3, y: 1.3, z: 1.3}
+--- !u!114 &960747215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960747209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efc409ab0d4fa647a3ed2323ed9c87b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1105161464
 GameObject:
   m_ObjectHideFlags: 0
@@ -2864,6 +2889,7 @@ GameObject:
   - component: {fileID: 1340833480}
   - component: {fileID: 1340833479}
   - component: {fileID: 1340833478}
+  - component: {fileID: 1340833482}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2958,6 +2984,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1340833482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340833477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f0ef887284fa14fad94ec04ae698fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenuPanel: {fileID: 400185741}
+  LevelsSelectionPanel: {fileID: 1815727622}
 --- !u!1001 &1432136952
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -84,22 +84,15 @@ public class GameController : MonoSingleton<GameController> {
         LoadLevel(nextLevel[0], nextLevel[1]);
     }
 
-
-    public void ReturnToMainMenu() {
+    public void ReturnToMainMenu(bool _ShowLevelsPanel = false) {
+        Debug.Log("return to main menu called with value: "+_ShowLevelsPanel);
+        ShowLevelsPanel = _ShowLevelsPanel;
         SceneManager.LoadScene("Menu");
-
         UIManager.Instance.OpenPausePanel(false);
         AudioManager.Instance.ChangeMusic();
-
     }
 
-    public void ReturnToLevelSelection() {
-        SceneManager.LoadScene("Menu");
-
-        UIManager.Instance.OpenPausePanel(false);
-        AudioManager.Instance.ChangeMusic();
-        
-    }
+    public bool ShowLevelsPanel = false;
 
     public void LoadLevel(string levelName) {StartCoroutine(LoadLevelCor(levelName));}
     public void LoadLevel(int world, int level) {StartCoroutine(LoadLevelCor(world.ToString() + "." + level.ToString()));}

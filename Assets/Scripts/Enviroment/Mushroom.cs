@@ -34,7 +34,6 @@ public class Mushroom : MonoBehaviour
             DoingAnimation = true;
 
             while(transform.localScale.x < animationMaxScale) {
-                Debug.Log("transform local scale: "+transform.localScale.x);
                 float newVal = transform.localScale.x + animationSpeed;
                 transform.localScale = new Vector3(newVal,newVal,newVal);
                 yield return 0;

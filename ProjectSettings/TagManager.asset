@@ -12,6 +12,7 @@ TagManager:
   - LevelsPanel
   - MainMenuPanel
   - Mushroom
+  - PlayerHeadSpotter
   layers:
   - Default
   - TransparentFX

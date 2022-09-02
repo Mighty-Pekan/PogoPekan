@@ -187,3 +187,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   fishCatchSound: {fileID: 8300000, guid: ee3d642b593fd664c9c385b70035f97e, type: 3}
+  fishParticle: {fileID: 5613222764432102430, guid: 18d53d4166107cd44be258a5a7ee2418, type: 3}

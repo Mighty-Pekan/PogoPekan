@@ -5230,6 +5230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelsDataManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5494195089644347574, guid: e5f0893927c0a114583821f9e131026d, type: 3}
+      propertyPath: resetDB
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5f0893927c0a114583821f9e131026d, type: 3}
 --- !u!1001 &7840836883569292320

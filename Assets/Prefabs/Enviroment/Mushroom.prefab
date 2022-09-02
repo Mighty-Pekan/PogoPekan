@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounciness: 4
+  BounceSound: {fileID: 8300000, guid: 5d25b3b1b7430fe4c8e6511e9b46833d, type: 3}
 --- !u!70 &4496252313302948987
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

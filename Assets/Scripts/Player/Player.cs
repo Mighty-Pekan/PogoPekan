@@ -173,7 +173,6 @@ public class Player : MonoBehaviour {
         if (other.gameObject.tag == "Mushroom")
         {
             mushroomBounceForce = other.gameObject.GetComponent<Mushroom>().GetBounciness();
-            MushroomAnim.SetTrigger("Bounce");
         }
         else
         {

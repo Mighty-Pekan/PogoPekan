@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToKill: 0.3
   WhaterParticle: {fileID: 9119047677558808779, guid: 0631abdb95ce2a74399bf051bffeebb3, type: 3}
+  WhaterSound: {fileID: 8300000, guid: 5c3a02f5270060d448d0c0a245aa10c0, type: 3}
 --- !u!114 &3776945503345134275
 MonoBehaviour:
   m_ObjectHideFlags: 0

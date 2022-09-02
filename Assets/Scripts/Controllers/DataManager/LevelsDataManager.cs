@@ -12,8 +12,7 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
     private const string DB_FILE_NAME = "db.json";
 
 
-    protected override void Awake() {
-        base.Awake();   
+    private void Start() {
         LoadData();
         if (isDBNull() || resetDB ) {
             Debug.Log("creating new db");

@@ -22201,6 +22201,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8994152, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8994152, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: m_Name
+      value: PlayerHeadSpotter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8994152, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1908649215348200472, guid: 2ab526550c601fa43bd5db1209c061a7, type: 3}
       propertyPath: m_RootOrder
       value: 6

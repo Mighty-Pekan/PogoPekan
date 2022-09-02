@@ -185,6 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185f21ba7b6ddf74c87c89b5de698480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
-  fishCatchSound: {fileID: 8300000, guid: ee3d642b593fd664c9c385b70035f97e, type: 3}
+  id: 2
+  fishCatchSound: {fileID: 8300000, guid: 2d39195d20be5c042b156ec634e48f3d, type: 3}
   fishParticle: {fileID: 5613222764432102430, guid: 18d53d4166107cd44be258a5a7ee2418, type: 3}

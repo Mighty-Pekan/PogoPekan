@@ -20,6 +20,9 @@ public class GameController : MonoSingleton<GameController> {
     [SerializeField] int numLevelsPerWorld;
     [SerializeField] int numWorlds;
 
+    [Header("Sounds")]
+    [SerializeField] AudioClip gameOverSound;
+
 
     private void Start() {
         Screen.orientation = ScreenOrientation.LandscapeLeft; //or right for right landscape
@@ -33,9 +36,21 @@ public class GameController : MonoSingleton<GameController> {
             Time.timeScale = 1;
         }
     }
-
+    private bool wasGameoverCalled = false;
     public void GameOver() {
+        if (!wasGameoverCalled) {
+            wasGameoverCalled = true;
+            StartCoroutine(GameOverCor());
+        }
+            
+    }
+    private IEnumerator GameOverCor() {
+        AudioManager.Instance.StopMusic();
+        AudioManager.Instance.PlaySound(gameOverSound);
+        player.isAlive = false;
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        wasGameoverCalled=false;
     }
 
     public Player GetPlayer() {

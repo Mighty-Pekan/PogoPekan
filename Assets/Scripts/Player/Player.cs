@@ -38,8 +38,7 @@ public class Player : MonoBehaviour {
     [Header("Sounds")]
     [SerializeField] AudioClip blinkAudioClip;
     [SerializeField] AudioClip superjumpAudioClip;
-
-    [SerializeField] Animator MushroomAnim;
+    [SerializeField] AudioClip culataSound;
 
     //private
     private Vector3 initialPosition;
@@ -72,9 +71,10 @@ public class Player : MonoBehaviour {
         superjumpParticles.Stop();
         superjumpActLight.SetActive(false);
         superjumpActBackLight.SetActive(false);
-        AudioManager.Instance.initSuperjumpAudioClip(superjumpAudioClip);
+        //AudioManager.Instance.initSuperjumpAudioClip(superjumpAudioClip);
     }
 
+    public bool isAlive { get; set; } = true;
     private void Update() {
         HandleRotation();
         HandleSuperjumpParticles();
@@ -95,36 +95,38 @@ public class Player : MonoBehaviour {
         }
     }
     private void HandleRotation() {
-        if (InputManager.Instance.IsDoubleHold()) {
-            animator.SetBool("GoUp", false);
-            DoButtHit();
-        }
-        else {
-
-            if (isPerformingButtHit) {
-                EndButtHit();
-            }
-
-            if (rb.velocity.y > 0)
-                animator.SetBool("GoUp", true);
-            else
+        if (isAlive) {
+            if (InputManager.Instance.IsDoubleHold()) {
                 animator.SetBool("GoUp", false);
-
-            switch (InputManager.Instance.GetRotationDirection()) {
-                case 1:
-                    rb.angularVelocity = -rotationSpeed;
-                    break;
-                case -1:
-                    rb.angularVelocity = rotationSpeed;
-                    break;
-                case 0:
-                default:
-                    rb.angularVelocity = 0;
-                    break;
+                DoButtHit();
             }
-        }
+            else {
 
-        tricksDetector.registerRotation(transform.rotation.eulerAngles.z);
+                if (isPerformingButtHit) {
+                    EndButtHit();
+                }
+
+                if (rb.velocity.y > 0)
+                    animator.SetBool("GoUp", true);
+                else
+                    animator.SetBool("GoUp", false);
+
+                switch (InputManager.Instance.GetRotationDirection()) {
+                    case 1:
+                        rb.angularVelocity = -rotationSpeed;
+                        break;
+                    case -1:
+                        rb.angularVelocity = rotationSpeed;
+                        break;
+                    case 0:
+                    default:
+                        rb.angularVelocity = 0;
+                        break;
+                }
+            }
+
+            tricksDetector.registerRotation(transform.rotation.eulerAngles.z);
+        }
     }
 
     private float lastButtHitEndTime;
@@ -149,8 +151,12 @@ public class Player : MonoBehaviour {
             transform.position = buttHitStartingPos;
         }
         else {
-            isPerformingButtHit = true;
-            isPerformingButtHitRotation = false;
+            if (!isPerformingButtHit) {
+                isPerformingButtHit = true;
+                isPerformingButtHitRotation = false;
+                AudioManager.Instance.StopInterruptableSound();
+                AudioManager.Instance.PlayInterruptableSound(culataSound);
+            }
             transform.up = Vector2.up;
             rb.velocity = new Vector2(0, -buttHitSpeed);
             rb.angularVelocity = 0;
@@ -167,34 +173,33 @@ public class Player : MonoBehaviour {
     }
 
     public void Bounce(Collision2D other) {
-
-        // handling mushrooms bounciness directly
-        float mushroomBounceForce;
-        if (other.gameObject.tag == "Mushroom")
-        {
-            mushroomBounceForce = other.gameObject.GetComponent<Mushroom>().GetBounciness();
-        }
-        else
-        {
-            mushroomBounceForce = 0f;
-        }
-        
-        //============================================================================
-        
-        if (tricksDetector.TrickDetected()) {
-            ActivateSuperjump(mushroomBounceForce);
-        }
-        else {
-            rb.velocity = transform.up * (baseBounceSpeed + mushroomBounceForce);
-            if (bouncingPart.transform.position.y < transform.position.y) {
-                DeactivateSuperjump();
+        if (isAlive) {
+            // handling mushrooms bounciness directly
+            float mushroomBounceForce;
+            if (other.gameObject.tag == "Mushroom") {
+                mushroomBounceForce = other.gameObject.GetComponent<Mushroom>().GetBounciness();
             }
-        }
+            else {
+                mushroomBounceForce = 0f;
+            }
 
-        if (isPerformingButtHit) {
-            EndButtHit();
+            //============================================================================
+
+            if (tricksDetector.TrickDetected()) {
+                ActivateSuperjump(mushroomBounceForce);
+            }
+            else {
+                rb.velocity = transform.up * (baseBounceSpeed + mushroomBounceForce);
+                if (bouncingPart.transform.position.y < transform.position.y) {
+                    DeactivateSuperjump();
+                }
+            }
+
+            if (isPerformingButtHit) {
+                EndButtHit();
+            }
+            tricksDetector.Reset();
         }
-        tricksDetector.Reset();
     }
 
     public void ResetInitialPosition() {
@@ -237,11 +242,11 @@ public class Player : MonoBehaviour {
         isSuperjumpActive = true;
         if (superjumpTrailEnabled) superjumpTray.SetActive(true);
         if (superjumpSpeedEnabled) superjumpParticles.Play();
-        AudioManager.Instance.PlaySuperjumpSound(superjumpAudioClip);
+        AudioManager.Instance.PlayInterruptableSound(superjumpAudioClip);
     }
     private void DeactivateSuperjump() {
         animator.SetBool("SuperJump", false);
-        AudioManager.Instance.StopSuperjumpSound();
+        AudioManager.Instance.StopInterruptableSound();
         isSuperjumpActive = false;
 
         if(superjumpTrailEnabled)superjumpTray.SetActive(false);

@@ -27,6 +27,11 @@ public class AudioManager : MonoSingleton<AudioManager> {
         StartCoroutine(playMusic());
     }
 
+    public void StopMusic() {
+        StopAllCoroutines();
+        musicAudioSource.Stop();
+    }
+
     private IEnumerator playMusic() {
 
         yield return new WaitForSeconds(0.1f);
@@ -61,14 +66,15 @@ public class AudioManager : MonoSingleton<AudioManager> {
     }
 
     //================================================================================== superjump sound
-    public void initSuperjumpAudioClip(AudioClip _audio) {
+    //public void initSuperjumpAudioClip(AudioClip _audio) {
+    //    superjumpAudioSource.clip = _audio;
+    //}
+    public void PlayInterruptableSound(AudioClip _audio) {
         superjumpAudioSource.clip = _audio;
-    }
-    public void PlaySuperjumpSound(AudioClip _audio) {
         superjumpAudioSource.volume = PlayerPrefs.GetFloat("SfxVolume");
         superjumpAudioSource.Play();
     }
-    public void StopSuperjumpSound() {
+    public void StopInterruptableSound() {
         //Debug.Log("superjump audio stopped");
         superjumpAudioSource.Stop();
     }

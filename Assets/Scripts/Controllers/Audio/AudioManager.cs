@@ -9,7 +9,8 @@ public class AudioManager : MonoSingleton<AudioManager> {
     [SerializeField] private AudioSource superjumpAudioSource;
     [SerializeField] private AudioClip menuTrack;
     [SerializeField] private AudioClip[] musicTracks;
-    private int? lastSongIndex = null;
+    [SerializeField] int? lastSongIndex = null;
+    [SerializeField] int? currentSongIndex = null;
 
     // Start is called before the first frame update
     void Start() {
@@ -20,18 +21,6 @@ public class AudioManager : MonoSingleton<AudioManager> {
         sfxAudioSource.PlayOneShot(_audio, PlayerPrefs.GetFloat("SfxVolume"));
     }
 
-    public void initSuperjumpAudioClip(AudioClip _audio) {
-        superjumpAudioSource.clip = _audio;
-    }
-    public void PlaySuperjumpSound(AudioClip _audio) {
-        superjumpAudioSource.volume = PlayerPrefs.GetFloat("SfxVolume");
-        superjumpAudioSource.Play();
-    }
-    public void StopSuperjumpSound() {
-        //Debug.Log("superjump audio stopped");
-        superjumpAudioSource.Stop();        
-    }
-
     public void ChangeMusic() {
         StopAllCoroutines();
         musicAudioSource.Stop();
@@ -40,7 +29,7 @@ public class AudioManager : MonoSingleton<AudioManager> {
 
     private IEnumerator playMusic() {
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
 
         if (GameController.Instance.isStartMenu()) {
             while (true) {
@@ -51,19 +40,16 @@ public class AudioManager : MonoSingleton<AudioManager> {
             }
         }
         else {
-            if(lastSongIndex!=null)Debug.Log("last song index: " + lastSongIndex);
-
-            int? newSongIndex = null;
-            while(newSongIndex == lastSongIndex || newSongIndex == null) {
-                newSongIndex = Random.Range(0, musicTracks.Length);
+            while(currentSongIndex == lastSongIndex || currentSongIndex == null) {
+                currentSongIndex = Random.Range(0, musicTracks.Length);
                 //Debug.Log("random: " + newSongIndex);
             }
             //Debug.Log("new song index:" + newSongIndex);
-            lastSongIndex = newSongIndex;
+            lastSongIndex = currentSongIndex;
             //musicAudioSource.PlayOneShot(musicTracks[newSongIndex], PlayerPrefs.GetFloat("MusicVolume"));
             while (true) {
                 if (!musicAudioSource.isPlaying) {
-                    musicAudioSource.PlayOneShot(musicTracks[(int)newSongIndex], PlayerPrefs.GetFloat("MusicVolume"));
+                    musicAudioSource.PlayOneShot(musicTracks[(int)currentSongIndex], PlayerPrefs.GetFloat("MusicVolume"));
                 }
                 yield return new WaitForSeconds(0.2f);
             }
@@ -72,5 +58,18 @@ public class AudioManager : MonoSingleton<AudioManager> {
 
     public void refreshMusicVolume() {
         musicAudioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
+    }
+
+    //================================================================================== superjump sound
+    public void initSuperjumpAudioClip(AudioClip _audio) {
+        superjumpAudioSource.clip = _audio;
+    }
+    public void PlaySuperjumpSound(AudioClip _audio) {
+        superjumpAudioSource.volume = PlayerPrefs.GetFloat("SfxVolume");
+        superjumpAudioSource.Play();
+    }
+    public void StopSuperjumpSound() {
+        //Debug.Log("superjump audio stopped");
+        superjumpAudioSource.Stop();
     }
 }

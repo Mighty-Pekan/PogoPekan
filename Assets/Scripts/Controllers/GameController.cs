@@ -48,7 +48,7 @@ public class GameController : MonoSingleton<GameController> {
         AudioManager.Instance.StopMusic();
         AudioManager.Instance.PlaySound(gameOverSound);
         player.isAlive = false;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.5f);
         ReloadLevel();
         wasGameoverCalled=false;
     }

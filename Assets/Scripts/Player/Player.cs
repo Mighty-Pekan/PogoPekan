@@ -75,7 +75,8 @@ public class Player : MonoBehaviour {
     }
 
     public bool isAlive { get; set; } = true;
-    private void Update() {
+    private void Update()
+    {
         HandleRotation();
         HandleSuperjumpParticles();
     }

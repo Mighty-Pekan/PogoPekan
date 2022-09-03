@@ -49,8 +49,14 @@ public class GameController : MonoSingleton<GameController> {
         AudioManager.Instance.PlaySound(gameOverSound);
         player.isAlive = false;
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ReloadLevel();
         wasGameoverCalled=false;
+    }
+    public void ReloadLevel() {
+        UIManager.Instance.OpenPausePanel(false);
+        IsPause = false;
+        int[] level = GetCurrentLevel();
+        LoadLevel(level[0], level[1]);
     }
 
     public Player GetPlayer() {

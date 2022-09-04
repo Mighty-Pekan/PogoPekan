@@ -13,8 +13,10 @@ public class GameController : MonoSingleton<GameController> {
     private Timer timer;
     private FishMaxTimeSetter fishMaxTimeSetter;
 
+
     public int NumLevelsPerWorld { get => numLevelsPerWorld; }
     public int NumWorlds { get => numWorlds; }
+    public int SelectedWorld { get; set; }
 
     [Header("Settings")]
     [SerializeField] int numLevelsPerWorld;

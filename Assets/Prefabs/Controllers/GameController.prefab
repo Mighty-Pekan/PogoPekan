@@ -45,6 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPause: 0
   numLevelsPerWorld: 8
-  numWorlds: 1
+  numWorlds: 4
   gameOverSound: {fileID: 8300000, guid: 90f840b2363078d48a6e78443d00a4a6, type: 3}
   ShowLevelsPanel: 0

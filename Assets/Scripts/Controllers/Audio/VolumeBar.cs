@@ -38,16 +38,11 @@ public class VolumeBar : MonoBehaviour {
     }
 
     private void LoadVolume() {
-        if (barType == BarType.MASTER) Debug.Log("loading bar value");
-            slider.value = PlayerPrefs.GetFloat(volumeKey);
-        if (barType == BarType.MASTER) Debug.Log("loading bar value completed");
+        slider.value = PlayerPrefs.GetFloat(volumeKey);
     }
 
     public void SetVolume() {
-        if(barType == BarType.MASTER)Debug.Log("set volume called");
         PlayerPrefs.SetFloat(volumeKey, slider.value);
-        if (barType == BarType.MASTER) Debug.Log("player pref set");
         AudioManager.Instance.SetVolume(volumeKey, slider.value);
-        if (barType == BarType.MASTER) Debug.Log("set volume called");
     }
 }

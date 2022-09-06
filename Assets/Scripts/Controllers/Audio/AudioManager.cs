@@ -20,8 +20,7 @@ public class AudioManager : MonoSingleton<AudioManager> {
     }
 
     public void PlaySound(AudioClip _audio) {
-
-        sfxAudioSource.PlayOneShot(_audio, PlayerPrefs.GetFloat("SfxVolume"));
+        sfxAudioSource.PlayOneShot(_audio, 0.5f);
     }
 
     public void ChangeMusic() {
@@ -43,7 +42,7 @@ public class AudioManager : MonoSingleton<AudioManager> {
             while (true) {
                 yield return new WaitForSeconds(0.2f);
                 if (!musicAudioSource.isPlaying) {
-                    musicAudioSource.PlayOneShot(menuTrack, PlayerPrefs.GetFloat("MusicVolume"));
+                    musicAudioSource.PlayOneShot(menuTrack,0.5f);
                 }
             }
         }
@@ -57,7 +56,7 @@ public class AudioManager : MonoSingleton<AudioManager> {
             //musicAudioSource.PlayOneShot(musicTracks[newSongIndex], PlayerPrefs.GetFloat("MusicVolume"));
             while (true) {
                 if (!musicAudioSource.isPlaying) {
-                    musicAudioSource.PlayOneShot(musicTracks[(int)currentSongIndex], PlayerPrefs.GetFloat("MusicVolume"));
+                    musicAudioSource.PlayOneShot(musicTracks[(int)currentSongIndex],0.5f);
                 }
                 yield return new WaitForSeconds(0.2f);
             }
@@ -69,13 +68,10 @@ public class AudioManager : MonoSingleton<AudioManager> {
     }
 
     public void SetVolume(string volumeKey, float value) {
+        Debug.Log("setting volume: "+volumeKey+": "+value);
         audioMixer.SetFloat(volumeKey, Mathf.Log10(value) * 20);
     }
 
-    //================================================================================== superjump sound
-    //public void initSuperjumpAudioClip(AudioClip _audio) {
-    //    superjumpAudioSource.clip = _audio;
-    //}
     public void PlayInterruptableSound(AudioClip _audio) {
         superjumpAudioSource.clip = _audio;
         superjumpAudioSource.volume = PlayerPrefs.GetFloat("SfxVolume");

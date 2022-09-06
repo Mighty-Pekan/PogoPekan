@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487674fe65ac32043858d91256a004cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeKey: 
   barType: 2
 --- !u!114 &7840836883370328575
 MonoBehaviour:
@@ -293,7 +294,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7840836883370328512}
         m_TargetAssemblyTypeName: VolumeBar, Assembly-CSharp
-        m_MethodName: Save
+        m_MethodName: SetVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -18,6 +18,7 @@ public class AudioManager : MonoSingleton<AudioManager> {
     }
 
     public void PlaySound(AudioClip _audio) {
+
         sfxAudioSource.PlayOneShot(_audio, PlayerPrefs.GetFloat("SfxVolume"));
     }
 

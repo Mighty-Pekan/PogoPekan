@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7131643448053666196}
   - component: {fileID: 7131643448053666199}
   - component: {fileID: 7131643448053666197}
+  - component: {fileID: 1329993593}
   m_Layer: 6
   m_Name: BreakablePlatformCulata
   m_TagString: BreakablePlatform
@@ -122,4 +123,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40ebd9defe8e894ebc313320ba7a140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BreakSound: {fileID: 8300000, guid: fb06058d1a446834484e57f833fbfcea, type: 3}
   destructionParticles: {fileID: 9119047677558808779, guid: 2cf60da9dd49f96428011581defa791e, type: 3}
+--- !u!114 &1329993593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7131643448053666198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2929d6f71a809847ae9bd62ceb8063c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleSounds:
+  - {fileID: 8300000, guid: 931337b8d018d8442928a3e14bba08ba, type: 3}
+  - {fileID: 8300000, guid: 366948bce879b454db2f400b58f9101d, type: 3}
+  - {fileID: 8300000, guid: dd2e34a61db2a754eb334a9ed30e81a2, type: 3}

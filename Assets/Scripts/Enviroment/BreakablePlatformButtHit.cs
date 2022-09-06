@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BreakablePlatformButtHit : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] AudioClip BreakSound;
+
     int life = 4;
     int tickDamage = 1;
     //float tickRateo = 0f; //increase to break platform slower
@@ -26,6 +29,7 @@ public class BreakablePlatformButtHit : MonoBehaviour
         if (collision.collider.gameObject.tag == "BouncingTip" && GameController.Instance.GetPlayer().IsPerformingButtHit()) {
             //TakeDamage();
             Instantiate(destructionParticles, collision.contacts[0].point,Quaternion.identity);
+            AudioManager.Instance.PlaySound(BreakSound);
             Destroy(gameObject);
         }
 

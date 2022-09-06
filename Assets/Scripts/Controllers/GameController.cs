@@ -49,7 +49,7 @@ public class GameController : MonoSingleton<GameController> {
     private IEnumerator GameOverCor() {
         AudioManager.Instance.StopMusic();
         AudioManager.Instance.PlaySound(gameOverSound);
-        player.isAlive = false;
+        player.IsAlive = false;
         yield return new WaitForSeconds(1.5f);
         ReloadLevel();
         wasGameoverCalled=false;

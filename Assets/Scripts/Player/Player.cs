@@ -55,6 +55,18 @@ public class Player : MonoBehaviour {
     private bool isSuperjumpActive = false;
     private ParticleSystem superjumpParticles;
 
+    private bool isAlive;
+    public bool IsAlive {
+        get {
+            return isAlive;
+        }
+        set {
+            Debug.Log("setter called");
+            isAlive = value;
+            bouncingPart.isAlive = value;
+        }
+    }
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -63,6 +75,7 @@ public class Player : MonoBehaviour {
 
 
     private void Start() {
+        IsAlive = true;
         GameController.Instance.RegisterPlayer(this);
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         initialPosition = transform.position;
@@ -74,7 +87,7 @@ public class Player : MonoBehaviour {
         //AudioManager.Instance.initSuperjumpAudioClip(superjumpAudioClip);
     }
 
-    public bool isAlive { get; set; } = true;
+
     private void Update() {
         HandleRotation();
         HandleSuperjumpParticles();
@@ -95,7 +108,7 @@ public class Player : MonoBehaviour {
         }
     }
     private void HandleRotation() {
-        if (isAlive) {
+        if (IsAlive) {
             if (InputManager.Instance.IsDoubleHold()) {
                 animator.SetBool("GoUp", false);
                 DoButtHit();
@@ -173,7 +186,7 @@ public class Player : MonoBehaviour {
     }
 
     public void Bounce(Collision2D other) {
-        if (isAlive) {
+        if (IsAlive) {
             // handling mushrooms bounciness directly
             float mushroomBounceForce;
             if (other.gameObject.tag == "Mushroom") {

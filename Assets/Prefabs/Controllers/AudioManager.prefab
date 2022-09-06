@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3906117035949891314}
   - component: {fileID: 3375046001515212865}
   m_Layer: 0
-  m_Name: Audiosource 3
+  m_Name: abilities as
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ AudioSource:
   m_GameObject: {fileID: 54200375023968574}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8924039838365878716, guid: 31dcede3342633444a15de4fa43fec74, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -176,12 +176,13 @@ MonoBehaviour:
   sfxAudioSource: {fileID: 117546264139500281}
   musicAudioSource: {fileID: 117546264568727383}
   superjumpAudioSource: {fileID: 3375046001515212865}
-  menuTrack: {fileID: 8300000, guid: 239df71ac6a61b34f8fdde061d1654ff, type: 3}
+  menuTrack: {fileID: 8300000, guid: 742d2c34f5e5bba42a345e8a2aa662a5, type: 3}
   musicTracks:
   - {fileID: 8300000, guid: cb3ce9a58ffd5da4d8f23efc1b530e2c, type: 3}
   - {fileID: 8300000, guid: 7fb2e1d1180dec542bfe222649b7aa16, type: 3}
   - {fileID: 8300000, guid: 58870c4619e37d1459bb553e5fb4a4cd, type: 3}
   - {fileID: 8300000, guid: ab9d34f5c9ebbfb43b1fd10e67143126, type: 3}
+  audioMixer: {fileID: 24100000, guid: 31dcede3342633444a15de4fa43fec74, type: 2}
 --- !u!1 &117546264139500230
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +194,7 @@ GameObject:
   - component: {fileID: 117546264139500280}
   - component: {fileID: 117546264139500281}
   m_Layer: 0
-  m_Name: Audiosource 1
+  m_Name: sfx as
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +223,7 @@ AudioSource:
   m_GameObject: {fileID: 117546264139500230}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8924039838365878716, guid: 31dcede3342633444a15de4fa43fec74, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -320,7 +321,7 @@ GameObject:
   - component: {fileID: 117546264568727382}
   - component: {fileID: 117546264568727383}
   m_Layer: 0
-  m_Name: Audiosource 2
+  m_Name: music as
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -349,7 +350,7 @@ AudioSource:
   m_GameObject: {fileID: 117546264568727380}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3445664592109146150, guid: 31dcede3342633444a15de4fa43fec74, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

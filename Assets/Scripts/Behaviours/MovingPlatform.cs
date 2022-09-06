@@ -31,8 +31,6 @@ public class MovingPlatform : MonoBehaviour
             if (nextWayPoint == WayPoint1)
                 nextWayPoint = WayPoint2;
             else nextWayPoint = WayPoint1;
-
-            Debug.Log("waypoint reached");
         }
     }
 }

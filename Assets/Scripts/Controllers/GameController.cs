@@ -18,6 +18,10 @@ public class GameController : MonoSingleton<GameController> {
     public int NumWorlds { get => numWorlds; }
     public int SelectedWorld { get; set; }
 
+    public string SFX_VOLUME_KEY = "SfxVolume";
+    public string MASTER_VOLUME_KEY = "MasterVolume";
+    public string MUSIC_VOLUME_KEY = "MusicVolume";
+
     [Header("Settings")]
     [SerializeField] int numLevelsPerWorld;
     [SerializeField] int numWorlds;

@@ -61,7 +61,6 @@ public class Player : MonoBehaviour {
             return isAlive;
         }
         set {
-            Debug.Log("setter called");
             isAlive = value;
             bouncingPart.isAlive = value;
         }

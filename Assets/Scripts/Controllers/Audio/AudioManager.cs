@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoSingleton<AudioManager> {
 
@@ -11,6 +12,7 @@ public class AudioManager : MonoSingleton<AudioManager> {
     [SerializeField] private AudioClip[] musicTracks;
     [SerializeField] int? lastSongIndex = null;
     [SerializeField] int? currentSongIndex = null;
+    [SerializeField] AudioMixer audioMixer;
 
     // Start is called before the first frame update
     void Start() {
@@ -64,6 +66,10 @@ public class AudioManager : MonoSingleton<AudioManager> {
 
     public void refreshMusicVolume() {
         musicAudioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
+    }
+
+    public void SetVolume(string volumeKey, float value) {
+        audioMixer.SetFloat(volumeKey, Mathf.Log10(value) * 20);
     }
 
     //================================================================================== superjump sound

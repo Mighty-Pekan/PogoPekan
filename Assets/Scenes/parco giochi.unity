@@ -21243,10 +21243,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2490312887463561526, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 7967351684752322570, guid: d4c866fd6f4939a4ca214936e08f0130, type: 3}
     - target: {fileID: 4025742510656223317, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -21299,10 +21295,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4105858969063666982, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 7967351684752322570, guid: d4c866fd6f4939a4ca214936e08f0130, type: 3}
     - target: {fileID: 4105858970687439469, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -21315,10 +21307,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8497400375355065946, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 7967351684752322570, guid: d4c866fd6f4939a4ca214936e08f0130, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9830c80864917f2418c62b4d5f5a41ca, type: 3}
 --- !u!1001 &6110174809675726009

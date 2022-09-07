@@ -85,7 +85,6 @@ public class Player : MonoBehaviour {
         superjumpParticles.Stop();
         superjumpActLight.SetActive(false);
         superjumpActBackLight.SetActive(false);
-        superjumpAudioSource.Play();
     }
 
 

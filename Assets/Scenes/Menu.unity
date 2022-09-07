@@ -5775,18 +5775,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'NICOLO'' BERTOLI (gameplay, DBsystem, sound system)
+  m_text: 'NICOLO'' BERTOLI (gameplay, UI , DB and sound system)
 
 
-    PIETRO A. DI
-    GIOVANNI (UI, cameras, background handling)
+    PIETRO A.
+    DI GIOVANNI (UI, cameras and background handling)
 
 
-    ENRICO LIN (UI, UI animations)
+    ENRICO LIN (UI interface
+    and animations)
 
 
-    ALESSANDRO
-    GIACOMINI (bug fixing, testing)'
+    ALESSANDRO GIACOMINI (bug fixing, testing)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
   m_sharedMaterial: {fileID: -5886020581555721959, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}

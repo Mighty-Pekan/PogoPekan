@@ -5779,14 +5779,14 @@ MonoBehaviour:
 
 
     PIETRO A. DI
-    GIOVANNI (gameplay, cameras and background handling)
+    GIOVANNI (UI, cameras, background handling)
 
 
-    ENRICO LIN (UI inteface
-    and animations)
+    ENRICO LIN (UI, UI animations)
 
 
-    ALESSANDRO GIACOMINI (bug fixing, testing)'
+    ALESSANDRO
+    GIACOMINI (bug fixing, testing)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
   m_sharedMaterial: {fileID: -5886020581555721959, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}

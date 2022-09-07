@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class VolumeBar : MonoBehaviour {
     Slider slider;
     private enum BarType {MASTER,MUSIC,SFX };
-    [SerializeField] string volumeKey;
+    string volumeKey;
 
     [SerializeField] private BarType barType = BarType.MASTER;
 
@@ -43,6 +43,6 @@ public class VolumeBar : MonoBehaviour {
 
     public void SetVolume() {
         PlayerPrefs.SetFloat(volumeKey, slider.value);
-        AudioManager.Instance.SetVolume(volumeKey, slider.value);
+        AudioManager.Instance.SetMixerVolume(volumeKey, slider.value);
     }
 }

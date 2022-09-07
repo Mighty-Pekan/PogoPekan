@@ -26,10 +26,6 @@ public class GameController : MonoSingleton<GameController> {
     [SerializeField] int numLevelsPerWorld;
     [SerializeField] int numWorlds;
 
-    [Header("Sounds")]
-    [SerializeField] AudioClip gameOverSound;
-
-
     private void Start() {
         Screen.orientation = ScreenOrientation.LandscapeLeft; //or right for right landscape
     }
@@ -52,7 +48,7 @@ public class GameController : MonoSingleton<GameController> {
     }
     private IEnumerator GameOverCor() {
         AudioManager.Instance.StopMusic();
-        AudioManager.Instance.PlaySound(gameOverSound);
+        AudioManager.Instance.GameoverAudioSource.Play();
         player.IsAlive = false;
         yield return new WaitForSeconds(1.5f);
         ReloadLevel();

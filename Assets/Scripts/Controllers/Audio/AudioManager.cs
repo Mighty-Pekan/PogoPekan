@@ -14,14 +14,18 @@ public class AudioManager : MonoSingleton<AudioManager> {
     [SerializeField] int? currentSongIndex = null;
     [SerializeField] AudioMixer audioMixer;
 
+    [Header("Audiosources")]
+    [SerializeField] public GenericAudioSource GameoverAudioSource;
+    [SerializeField] public GenericAudioSource ConcreteBreakAudioSource;
+
     // Start is called before the first frame update
     void Start() {
         StartCoroutine(playMusic());
     }
 
-    public void PlaySound(AudioClip _audio) {
-        sfxAudioSource.PlayOneShot(_audio, 0.5f);
-    }
+    //public void PlaySound(AudioClip _audio) {
+    //    sfxAudioSource.PlayOneShot(_audio, 0.5f);
+    //}
 
     public void ChangeMusic() {
         StopAllCoroutines();
@@ -67,18 +71,20 @@ public class AudioManager : MonoSingleton<AudioManager> {
         musicAudioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
     }
 
-    public void SetVolume(string volumeKey, float value) {
-        Debug.Log("setting volume: "+volumeKey+": "+value);
-        audioMixer.SetFloat(volumeKey, Mathf.Log10(value) * 20);
+    public void SetMixerVolume(string volumeKey, float value) {
+        if(volumeKey == GameController.Instance.SFX_VOLUME_KEY)
+            audioMixer.SetFloat(volumeKey, Mathf.Log10(value) * 20 +20);
+        else 
+            audioMixer.SetFloat(volumeKey, Mathf.Log10(value) * 20);
     }
 
-    public void PlayInterruptableSound(AudioClip _audio) {
-        superjumpAudioSource.clip = _audio;
-        superjumpAudioSource.volume = PlayerPrefs.GetFloat("SfxVolume");
-        superjumpAudioSource.Play();
-    }
-    public void StopInterruptableSound() {
-        //Debug.Log("superjump audio stopped");
-        superjumpAudioSource.Stop();
-    }
+    //public void PlayInterruptableSound(AudioClip _audio) {
+    //    superjumpAudioSource.clip = _audio;
+    //    superjumpAudioSource.volume = PlayerPrefs.GetFloat("SfxVolume");
+    //    superjumpAudioSource.Play();
+    //}
+    //public void StopInterruptableSound() {
+    //    //Debug.Log("superjump audio stopped");
+    //    superjumpAudioSource.Stop();
+    //}
 }

@@ -5,16 +5,20 @@ using UnityEngine;
 public class Whater : MonoBehaviour
 {
     [SerializeField] private GameObject WhaterParticle;
-    [SerializeField] private AudioClip WhaterSound;
+    AudioSource audioSource;
 
     private bool playerHeadEntered;
     private bool playerBottomEntered;
+
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision) {
 
         if(collision.gameObject.tag == "PlayerHeadSpotter" || collision.gameObject.tag == "BouncingTip") {
             Instantiate(WhaterParticle, collision.gameObject.transform.position, Quaternion.identity);
-            AudioManager.Instance.PlaySound(WhaterSound);
+            audioSource.Play();
             if(collision.gameObject.tag == "PlayerHeadSpotter")
                 playerHeadEntered = true;
             else

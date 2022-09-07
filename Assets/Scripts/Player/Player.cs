@@ -35,10 +35,12 @@ public class Player : MonoBehaviour {
     [SerializeField] private bool superjumpActLightEnabled;
     [SerializeField] private bool kevinBlinkAnimationEnabled;
 
-    [Header("Sounds")]
-    [SerializeField] AudioClip blinkAudioClip;
-    [SerializeField] AudioClip superjumpAudioClip;
-    [SerializeField] AudioClip culataSound;
+
+
+    [Header("AudioSources")]
+    [SerializeField] GenericAudioSource superjumpAudioSource;
+    [SerializeField] GenericAudioSource culataAudioSource;
+    [SerializeField] GenericAudioSource blinkAudioSource;
 
     //private
     private Vector3 initialPosition;
@@ -83,7 +85,7 @@ public class Player : MonoBehaviour {
         superjumpParticles.Stop();
         superjumpActLight.SetActive(false);
         superjumpActBackLight.SetActive(false);
-        //AudioManager.Instance.initSuperjumpAudioClip(superjumpAudioClip);
+        superjumpAudioSource.Play();
     }
 
 
@@ -166,14 +168,20 @@ public class Player : MonoBehaviour {
             if (!isPerformingButtHit) {
                 isPerformingButtHit = true;
                 isPerformingButtHitRotation = false;
-                AudioManager.Instance.StopInterruptableSound();
-                AudioManager.Instance.PlayInterruptableSound(culataSound);
+
+                stopAllSounds();
+                culataAudioSource.Play();
             }
             transform.up = Vector2.up;
             rb.velocity = new Vector2(0, -buttHitSpeed);
             rb.angularVelocity = 0;
             if (!buttHitParticles.isPlaying) buttHitParticles.Play();
         }
+    }
+
+    private void stopAllSounds() {
+        superjumpAudioSource.Stop();
+        culataAudioSource.Stop();
     }
 
     private void EndButtHit() {
@@ -254,11 +262,11 @@ public class Player : MonoBehaviour {
         isSuperjumpActive = true;
         if (superjumpTrailEnabled) superjumpTray.SetActive(true);
         if (superjumpSpeedEnabled) superjumpParticles.Play();
-        AudioManager.Instance.PlayInterruptableSound(superjumpAudioClip);
+        superjumpAudioSource.Play();
     }
     private void DeactivateSuperjump() {
         animator.SetBool("SuperJump", false);
-        AudioManager.Instance.StopInterruptableSound();
+        stopAllSounds();
         isSuperjumpActive = false;
 
         if(superjumpTrailEnabled)superjumpTray.SetActive(false);
@@ -269,7 +277,7 @@ public class Player : MonoBehaviour {
         if (superjumpActLightEnabled) StartCoroutine(blink());
         if(kevinBlinkAnimationEnabled)
         {
-            AudioManager.Instance.PlaySound(blinkAudioClip);
+            blinkAudioSource.Play();
             blinkAnimator.SetTrigger("Blink");
         }
     }

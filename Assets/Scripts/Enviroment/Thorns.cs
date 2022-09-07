@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Thorns : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.collider.gameObject.tag == "Player") GameController.Instance.GameOver();
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+
+        if (collision.gameObject.tag == "Player") {
+            if (collision.GetComponent<BouncingPart>() == null) {
+                GameController.Instance.GameOver();
+            }
+        }
+
     }
 }

@@ -66,6 +66,11 @@ public class Player : MonoBehaviour {
         set {
             isAlive = value;
             bouncingPart.isAlive = value;
+            if(value == false) {
+                stopAllSounds();
+                DeactivateSuperjump();
+                EndButtHit();
+            }
         }
     }
 

@@ -151,8 +151,6 @@ public class Player : MonoBehaviour {
     private void DoButtHit() {
         if (Time.time - lastButtHitEndTime < buttHitTimer || !touchedGroundAfterButtHit) return;
 
-        rb.angularVelocity = 0;
-         
         // ============================rotation
         // done only first time
         if (!isPerformingButtHit && !isPerformingButtHitRotation) {
@@ -165,10 +163,18 @@ public class Player : MonoBehaviour {
 
         float myRotation = transform.rotation.eulerAngles.z;
         if (myRotation > 2 && myRotation < 358) {
+
+            float rotationSpeed = buttHitRotationSpeed;
+            if (myRotation < 20 || myRotation > 340) rotationSpeed = buttHitRotationSpeed / 4;
+
+            Debug.Log("rotation: " + myRotation);
             if (myRotation > 180)
-                transform.Rotate(Vector3.forward * buttHitRotationSpeed * Time.deltaTime);
-            else 
-                transform.Rotate(Vector3.back * buttHitRotationSpeed * Time.deltaTime);
+                rb.angularVelocity = rotationSpeed;
+            //transform.Rotate(Vector3.forward * buttHitRotationSpeed * Time.deltaTime);
+
+            else
+                rb.angularVelocity = -rotationSpeed;
+                //transform.Rotate(Vector3.back * buttHitRotationSpeed * Time.deltaTime);
 
             if(buttHitStartingPos != null)
                 transform.position = (Vector2)buttHitStartingPos;
@@ -183,6 +189,7 @@ public class Player : MonoBehaviour {
                 stopAllSounds();
                 culataAudioSource.Play();
                 buttHitStartingPos = null;
+                rb.angularVelocity = 0;
             }
             transform.up = Vector2.up;
             rb.velocity = new Vector2(0, -buttHitSpeed);

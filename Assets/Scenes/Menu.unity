@@ -1328,7 +1328,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1262789485}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -4083,7 +4083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8549398899743812494, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -7.9312134
+      value: -7.9311523
       objectReference: {fileID: 0}
     - target: {fileID: 8549398899743812494, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6330,7 +6330,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1262789485}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -7508,7 +7508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 574817294883438828, guid: e27b3166f813a514eae3b2952e70ecd8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.404755
+      value: -13.404724
       objectReference: {fileID: 0}
     - target: {fileID: 574817294883438828, guid: e27b3166f813a514eae3b2952e70ecd8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

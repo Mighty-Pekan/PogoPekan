@@ -192,9 +192,16 @@ public class Player : MonoBehaviour {
                 rb.angularVelocity = 0;
             }
             transform.up = Vector2.up;
+            rb.angularVelocity = 0;
             rb.velocity = new Vector2(0, -buttHitSpeed);
             if (!buttHitParticles.isPlaying) buttHitParticles.Play();
         }
+    }
+
+    public void ContinueDive() {
+        transform.up = Vector2.up;
+        rb.angularVelocity = 0;
+        rb.velocity = new Vector2(0, -buttHitSpeed);
     }
 
     private void stopAllSounds() {

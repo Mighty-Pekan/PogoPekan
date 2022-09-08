@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 using System;
 
 public class GameController : MonoSingleton<GameController> {
-    public bool IsPause;
+    
+
 
     private Player player;
     private InputManager inputManager;
@@ -13,18 +14,21 @@ public class GameController : MonoSingleton<GameController> {
     private Timer timer;
     private FishMaxTimeSetter fishMaxTimeSetter;
 
-
+    
     public int NumLevelsPerWorld { get => numLevelsPerWorld; }
     public int NumWorlds { get => numWorlds; }
     public int SelectedWorld { get; set; } = 1;
 
-    public string SFX_VOLUME_KEY = "SfxVolume";
-    public string MASTER_VOLUME_KEY = "MasterVolume";
-    public string MUSIC_VOLUME_KEY = "MusicVolume";
+    [HideInInspector] public string SFX_VOLUME_KEY = "SfxVolume";
+    [HideInInspector] public string MASTER_VOLUME_KEY = "MasterVolume";
+    [HideInInspector] public string MUSIC_VOLUME_KEY = "MusicVolume";
+    [HideInInspector] public bool IsPause;
+    [HideInInspector] public bool ShowLevelsPanel = false;
 
     [Header("Settings")]
     [SerializeField] int numLevelsPerWorld;
     [SerializeField] int numWorlds;
+    [SerializeField] public bool isMobileBuild;
 
     private void Start() {
 
@@ -116,7 +120,7 @@ public class GameController : MonoSingleton<GameController> {
         AudioManager.Instance.ChangeMusic();
     }
 
-    public bool ShowLevelsPanel = false;
+    
 
     public void LoadLevel(string levelName) {StartCoroutine(LoadLevelCor(levelName));}
     public void LoadLevel(int world, int level) {StartCoroutine(LoadLevelCor(world.ToString() + "." + level.ToString()));}

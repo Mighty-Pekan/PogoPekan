@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class InputManager : MonoSingleton<InputManager>
 {
-    [SerializeField] bool touchInputEnabled;
+    //[SerializeField] bool touchInputEnabled;
     [SerializeField] float butHittStartDelay = 0.1f;    //prevents accidental double hold
 
     float halfScreenWidth = Screen.width / 2;
@@ -23,12 +23,10 @@ public class InputManager : MonoSingleton<InputManager>
 
     private void Update()
     {
-        if (touchInputEnabled)
+        if (GameController.Instance.isMobileBuild)
             MobileInput();
         else
             KeyboardInput();
-
-        
     }
 
     bool leftHold = false;
@@ -143,9 +141,9 @@ public class InputManager : MonoSingleton<InputManager>
         return isDoubleHold;
     }
 
-    public void ToggleTouchInput()
-    {
-        touchInputEnabled = !touchInputEnabled;
-        Debug.Log("touch input switched: " + touchInputEnabled);
-    }
+    //public void ToggleTouchInput()
+    //{
+    //    touchInputEnabled = !touchInputEnabled;
+    //    Debug.Log("touch input switched: " + touchInputEnabled);
+    //}
 }

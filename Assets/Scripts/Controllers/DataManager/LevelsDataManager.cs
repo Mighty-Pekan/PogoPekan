@@ -2,19 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Fish;
 
 public class LevelsDataManager : MonoSingleton<LevelsDataManager>
 {
-    [SerializeField] bool resetDB = false;
-
     private List<LevelData> levelsData;
     private const string DB_FILE_NAME = "db.json";
 
 
     private void Start() {
         LoadData();
-        if (isDBNull() || resetDB ) {
+        if (isDBNull()) {
             Debug.Log("creating new db");
             CreateNewDB();
         }
@@ -77,6 +74,8 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
 
     // ----------------------------------------------------------------------------------------------------------private methods
     private void CreateNewDB() {
+        Debug.Log("a");
+        DebugText.Instance.Log("started creating db");
         levelsData = new List<LevelData>();
 
         for (int i = 0; i < GameController.Instance.NumWorlds; i++) {
@@ -86,6 +85,7 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
         }
         levelsData[0].Unlocked = true;
         FileHandler.SaveToJSON<LevelData>(levelsData, DB_FILE_NAME);
+        DebugText.Instance.Log("db created");
     }
     private void LoadData() {
         levelsData = FileHandler.ReadListFromJSON<LevelData>(DB_FILE_NAME);
@@ -97,7 +97,15 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
         //Debug.Log("get level data called with world: "+ world + " level: "+level);
         return levelsData[(GameController.Instance.NumLevelsPerWorld * (world - 1)) + level - 1];
     }
-    private bool isDBNull() { return levelsData == null; }
+    private bool isDBNull() {
+        if (PlayerPrefs.HasKey("FirstLaunch")) {
+            return false;
+        }
+        else {
+            PlayerPrefs.SetInt("FirstLaunch", 1);
+            return true;
+        }
+    }
 
     [Serializable]
     private class LevelData {
@@ -116,18 +124,3 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
         }
     }
 }
-
-//[Serializable]
-//private class LevelData {
-//    public int World;
-//    public int Level;
-//    public bool Unlocked;
-//    public bool[] Fishes;
-
-//    public LevelData(int _world, int _level) {
-//        World = _world;
-//        Level = _level;
-//        Unlocked = false;
-//        Fishes = new bool[3] { false, false, false };
-//    }
-//}

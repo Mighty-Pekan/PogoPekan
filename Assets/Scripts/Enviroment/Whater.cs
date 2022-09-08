@@ -4,26 +4,35 @@ using UnityEngine;
 
 public class Whater : MonoBehaviour
 {
-    [SerializeField] private float timeToKill = 0.5f;
     [SerializeField] private GameObject WhaterParticle;
-    [SerializeField] private AudioClip WhaterSound;
-    private float? enterTime = null;
+    AudioSource audioSource;
+
+    private bool playerHeadEntered;
+    private bool playerBottomEntered;
+
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.gameObject.tag == "Player") {
-            enterTime = Time.time;
+
+        if(collision.gameObject.tag == "PlayerHeadSpotter" || collision.gameObject.tag == "BouncingTip") {
             Instantiate(WhaterParticle, collision.gameObject.transform.position, Quaternion.identity);
-            AudioManager.Instance.PlaySound(WhaterSound);
+            audioSource.Play();
+            if(collision.gameObject.tag == "PlayerHeadSpotter")
+                playerHeadEntered = true;
+            else
+                playerBottomEntered = true;
+
+            if (playerHeadEntered && playerBottomEntered) GameController.Instance.GameOver();
         }
     }
     private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Player") {
-            enterTime = null;
-        }
+        if (collision.gameObject.tag == "PlayerHeadSpotter")
+            playerHeadEntered = false;
+        else if (collision.gameObject.tag == "BouncingTip")
+            playerBottomEntered = false;
     }
-    private void OnTriggerStay2D(Collider2D collision) {
-        if(collision.gameObject.tag == "Player" && (Time.time - enterTime > timeToKill)) {
-            GameController.Instance.GameOver();
-        }
-    }
+
+
 }

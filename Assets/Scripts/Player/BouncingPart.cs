@@ -10,7 +10,7 @@ public class BouncingPart : MonoBehaviour
     private bool canBounce = true;
     private float minParticlesIntervalTime = 0.5f;
     private bool canGenerateParticles;
-
+    public bool isAlive = true;
 
     private void OnCollisionEnter2D(Collision2D other) {
         HandleBounce(other);
@@ -21,7 +21,7 @@ public class BouncingPart : MonoBehaviour
     }
 
     private void HandleBounce(Collision2D other) {
-        if (other.gameObject.tag != "Player" && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHit())) {
+        if (other.gameObject.tag != "Player" && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHit()) && isAlive) {
 
             if (canBounce) {
                 player.Bounce(other);

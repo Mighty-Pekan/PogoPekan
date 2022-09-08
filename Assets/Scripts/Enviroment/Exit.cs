@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Exit : MonoBehaviour
 {
-    [SerializeField] AudioClip ExitReachedSound;
+    AudioSource audioSource;
+
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player") {
-            AudioManager.Instance.PlaySound(ExitReachedSound);
+            audioSource.Play();
             GameController.Instance.ExitReached();
         }
             

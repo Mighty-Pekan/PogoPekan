@@ -11,11 +11,12 @@ public class LoadLevelsButton : MonoBehaviour
     private Button myButton;
 
     [Header("Settings")]
-    [SerializeField] int world = 1;
     [SerializeField] int level = 1;
     [SerializeField] Image[] fishIndicators;
     [SerializeField] Image bestTimePanel;
     [SerializeField] TextMeshProUGUI bestTimeText;
+
+    private  int world;
 
     private void Start() {
 
@@ -39,6 +40,10 @@ public class LoadLevelsButton : MonoBehaviour
         else {
             GetComponent<Hover>().CanExpand = false;
         }
+    }
+
+    private void OnEnable() {
+        world = GameController.Instance.SelectedWorld;
     }
 
     public void LoadLevel() {

@@ -13,16 +13,18 @@ public class GameController : MonoSingleton<GameController> {
     private Timer timer;
     private FishMaxTimeSetter fishMaxTimeSetter;
 
+
     public int NumLevelsPerWorld { get => numLevelsPerWorld; }
     public int NumWorlds { get => numWorlds; }
+    public int SelectedWorld { get; set; }
+
+    public string SFX_VOLUME_KEY = "SfxVolume";
+    public string MASTER_VOLUME_KEY = "MasterVolume";
+    public string MUSIC_VOLUME_KEY = "MusicVolume";
 
     [Header("Settings")]
     [SerializeField] int numLevelsPerWorld;
     [SerializeField] int numWorlds;
-
-    [Header("Sounds")]
-    [SerializeField] AudioClip gameOverSound;
-
 
     private void Start() {
         Screen.orientation = ScreenOrientation.LandscapeLeft; //or right for right landscape
@@ -46,8 +48,8 @@ public class GameController : MonoSingleton<GameController> {
     }
     private IEnumerator GameOverCor() {
         AudioManager.Instance.StopMusic();
-        AudioManager.Instance.PlaySound(gameOverSound);
-        player.isAlive = false;
+        AudioManager.Instance.GameoverAudioSource.Play();
+        player.IsAlive = false;
         yield return new WaitForSeconds(1.5f);
         ReloadLevel();
         wasGameoverCalled=false;

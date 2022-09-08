@@ -1,24 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoSingleton<AudioManager> {
 
-    [SerializeField] private AudioSource sfxAudioSource;
     [SerializeField] private AudioSource musicAudioSource;
-    [SerializeField] private AudioSource superjumpAudioSource;
     [SerializeField] private AudioClip menuTrack;
     [SerializeField] private AudioClip[] musicTracks;
     [SerializeField] int? lastSongIndex = null;
     [SerializeField] int? currentSongIndex = null;
+    [SerializeField] AudioMixer audioMixer;
+
+    [Header("Audiosources")]
+    [SerializeField] public GenericAudioSource GameoverAudioSource;
+    [SerializeField] public GenericAudioSource ConcreteBreakAudioSource;
 
     // Start is called before the first frame update
     void Start() {
+        InitMixerVolume();
         StartCoroutine(playMusic());
-    }
-
-    public void PlaySound(AudioClip _audio) {
-        sfxAudioSource.PlayOneShot(_audio, PlayerPrefs.GetFloat("SfxVolume"));
     }
 
     public void ChangeMusic() {
@@ -40,7 +41,7 @@ public class AudioManager : MonoSingleton<AudioManager> {
             while (true) {
                 yield return new WaitForSeconds(0.2f);
                 if (!musicAudioSource.isPlaying) {
-                    musicAudioSource.PlayOneShot(menuTrack, PlayerPrefs.GetFloat("MusicVolume"));
+                    musicAudioSource.PlayOneShot(menuTrack,0.5f);
                 }
             }
         }
@@ -54,7 +55,7 @@ public class AudioManager : MonoSingleton<AudioManager> {
             //musicAudioSource.PlayOneShot(musicTracks[newSongIndex], PlayerPrefs.GetFloat("MusicVolume"));
             while (true) {
                 if (!musicAudioSource.isPlaying) {
-                    musicAudioSource.PlayOneShot(musicTracks[(int)currentSongIndex], PlayerPrefs.GetFloat("MusicVolume"));
+                    musicAudioSource.PlayOneShot(musicTracks[(int)currentSongIndex],0.5f);
                 }
                 yield return new WaitForSeconds(0.2f);
             }
@@ -65,17 +66,24 @@ public class AudioManager : MonoSingleton<AudioManager> {
         musicAudioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
     }
 
-    //================================================================================== superjump sound
-    //public void initSuperjumpAudioClip(AudioClip _audio) {
-    //    superjumpAudioSource.clip = _audio;
-    //}
-    public void PlayInterruptableSound(AudioClip _audio) {
-        superjumpAudioSource.clip = _audio;
-        superjumpAudioSource.volume = PlayerPrefs.GetFloat("SfxVolume");
-        superjumpAudioSource.Play();
+    public void SetMixerVolume(string volumeKey, float value) {
+        if(volumeKey == GameController.Instance.SFX_VOLUME_KEY)
+            audioMixer.SetFloat(volumeKey, Mathf.Log10(value) * 20 +20);
+        else 
+            audioMixer.SetFloat(volumeKey, Mathf.Log10(value) * 20);
     }
-    public void StopInterruptableSound() {
-        //Debug.Log("superjump audio stopped");
-        superjumpAudioSource.Stop();
+
+    private void InitMixerVolume() {
+
+        List<string> keys = new List<string>();
+        keys.Add(GameController.Instance.MASTER_VOLUME_KEY);
+        keys.Add(GameController.Instance.MUSIC_VOLUME_KEY);
+        keys.Add(GameController.Instance.SFX_VOLUME_KEY);
+
+        foreach (string key in keys) {
+            float value = PlayerPrefs.GetFloat(key);
+            SetMixerVolume(key, value);
+        }
     }
+
 }

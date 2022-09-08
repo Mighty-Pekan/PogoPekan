@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPause: 0
+  SFX_VOLUME_KEY: SfxVolume
+  MASTER_VOLUME_KEY: MasterVolume
+  MUSIC_VOLUME_KEY: MusicVolume
   numLevelsPerWorld: 8
-  numWorlds: 1
-  gameOverSound: {fileID: 8300000, guid: 90f840b2363078d48a6e78443d00a4a6, type: 3}
+  numWorlds: 4
+  gameoverAudioSource: {fileID: 0}
   ShowLevelsPanel: 0

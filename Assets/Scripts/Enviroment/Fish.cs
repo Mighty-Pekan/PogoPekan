@@ -8,6 +8,11 @@ public class Fish : MonoBehaviour
     [SerializeField] FishId id = FishId.ONE;
     [SerializeField] AudioClip fishCatchSound;
     [SerializeField] GameObject fishParticle;
+    AudioSource audioSource;
+
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Start() {
         if(LevelsDataManager.Instance.IsFishFound(id))Destroy(gameObject);
@@ -15,7 +20,7 @@ public class Fish : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         LevelsDataManager.Instance.SetFishFound(id);
-        AudioManager.Instance.PlaySound(fishCatchSound);
+        audioSource.Play();
         Instantiate(fishParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

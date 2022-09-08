@@ -23,6 +23,8 @@ public class TraversablePlatform : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.tag == "PlayerHeadSpotter") return;
+
         Player otherPlayer = other.transform.root.GetComponent<Player>();
         if ((otherPlayer != null && otherPlayer.IsPerformingButtHit())
             ||

@@ -5,12 +5,16 @@ using UnityEngine;
 public class Mushroom : MonoBehaviour
 {
     [SerializeField] float bounciness;
-    [SerializeField] AudioClip BounceSound;
     [SerializeField] float animationMaxScale = 12;
     [SerializeField] float animationSpeed = 1f;
 
     private bool DoingAnimation = false;
     private float originalScale;
+    private AudioSource audioSource;
+
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Start() {
         originalScale = transform.localScale.x;
@@ -25,7 +29,7 @@ public class Mushroom : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.tag == "Player") {
-            AudioManager.Instance.PlaySound(BounceSound);
+            audioSource.Play();
             StartCoroutine(DoAnimation());
         }
     }

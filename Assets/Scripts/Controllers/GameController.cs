@@ -16,7 +16,7 @@ public class GameController : MonoSingleton<GameController> {
 
     public int NumLevelsPerWorld { get => numLevelsPerWorld; }
     public int NumWorlds { get => numWorlds; }
-    public int SelectedWorld { get; set; }
+    public int SelectedWorld { get; set; } = 1;
 
     public string SFX_VOLUME_KEY = "SfxVolume";
     public string MASTER_VOLUME_KEY = "MasterVolume";
@@ -27,6 +27,7 @@ public class GameController : MonoSingleton<GameController> {
     [SerializeField] int numWorlds;
 
     private void Start() {
+
         Screen.orientation = ScreenOrientation.LandscapeLeft; //or right for right landscape
     }
 

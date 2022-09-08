@@ -11,7 +11,6 @@ public class SelectWorldButton : MonoBehaviour
 
     private Button myButton;
 
-
     private void Start() {
         myButton = GetComponent<Button>();
         myButton.GetComponentInChildren<TextMeshProUGUI>().text = "World " + world;
@@ -29,6 +28,5 @@ public class SelectWorldButton : MonoBehaviour
 
     public void SelectWorld() {
         GameController.Instance.SelectedWorld = world;
-
     }
 }

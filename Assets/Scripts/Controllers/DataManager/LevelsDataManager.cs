@@ -82,6 +82,11 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
             }
         }
         levelsData[0].Unlocked = true;
+
+        if (GameController.Instance.unlockAllLevels) {
+            foreach (LevelData l in levelsData) l.Unlocked = true;
+        }
+
         FileHandler.SaveToJSON<LevelData>(levelsData, DB_FILE_NAME);
     }
     private void LoadData() {

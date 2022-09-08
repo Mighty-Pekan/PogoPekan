@@ -817,7 +817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &294293833
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6185,18 +6185,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'NICOLO'' BERTOLI (gameplay, UI, input sys, DB and sound systems)
+  m_text: 'NICOLO'' BERTOLI (gameplay, UI, input, DB and sound systems)
 
 
     PIETRO
-    A. DI GIOVANNI (UI, input sys, cameras and background handling)
+    A. DI GIOVANNI (UI, input system, cameras and background handling)
 
 
     ENRICO
     LIN (UI interface, UI animations)
 
 
-    ALESSANDRO GIACOMINI (bug fixing, testing)'
+    ALESSANDRO GIACOMINI (bug fixing, testing,
+    pekan sprite and animations)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
   m_sharedMaterial: {fileID: -5886020581555721959, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}

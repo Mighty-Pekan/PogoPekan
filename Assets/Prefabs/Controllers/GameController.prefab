@@ -51,3 +51,4 @@ MonoBehaviour:
   numLevelsPerWorld: 8
   numWorlds: 4
   isMobileBuild: 1
+  unlockAllLevels: 1

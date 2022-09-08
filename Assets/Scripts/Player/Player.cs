@@ -45,13 +45,12 @@ public class Player : MonoBehaviour {
 
     //private
     private Vector3 initialPosition;
-    private SpriteRenderer mySpriteRenderer;
 
     private TricksDetector tricksDetector;
     private Rigidbody2D rb;
     private Animator animator;
 
-    private Vector2 buttHitStartingPos;
+    private Vector2? buttHitStartingPos = null;
 
     private bool isPerformingButtHitRotation = false;
     private bool isPerformingButtHit = false;
@@ -84,7 +83,6 @@ public class Player : MonoBehaviour {
     private void Start() {
         IsAlive = true;
         GameController.Instance.RegisterPlayer(this);
-        mySpriteRenderer = GetComponent<SpriteRenderer>();
         initialPosition = transform.position;
         superjumpParticles = superjumpParticlesObj.GetComponent<ParticleSystem>();
         superjumpTray.SetActive(false);
@@ -121,7 +119,7 @@ public class Player : MonoBehaviour {
             }
             else {
 
-                if (isPerformingButtHit) {
+                if (isPerformingButtHit || isPerformingButtHitRotation) {
                     EndButtHit();
                 }
 
@@ -149,11 +147,14 @@ public class Player : MonoBehaviour {
     }
 
     private float lastButtHitEndTime;
+    private bool touchedGroundAfterButtHit = true;
     private void DoButtHit() {
-        if (Time.time - lastButtHitEndTime < buttHitTimer) return;
-        Debug.Log("DoingButtHit");
+        if (Time.time - lastButtHitEndTime < buttHitTimer || !touchedGroundAfterButtHit) return;
 
-        //done only on first call
+        rb.angularVelocity = 0;
+         
+        // ============================rotation
+        // done only first time
         if (!isPerformingButtHit && !isPerformingButtHitRotation) {
             isPerformingButtHitRotation = true;
             buttHitStartingPos = transform.position;
@@ -163,23 +164,28 @@ public class Player : MonoBehaviour {
         }
 
         float myRotation = transform.rotation.eulerAngles.z;
-
         if (myRotation > 2 && myRotation < 358) {
-            if (myRotation > 180) transform.Rotate(Vector3.forward * buttHitRotationSpeed * Time.deltaTime);
-            else transform.Rotate(Vector3.back * buttHitRotationSpeed * Time.deltaTime);
-            transform.position = buttHitStartingPos;
+            if (myRotation > 180)
+                transform.Rotate(Vector3.forward * buttHitRotationSpeed * Time.deltaTime);
+            else 
+                transform.Rotate(Vector3.back * buttHitRotationSpeed * Time.deltaTime);
+
+            if(buttHitStartingPos != null)
+                transform.position = (Vector2)buttHitStartingPos;
         }
+        // ==========================dive
         else {
+           // done only first time
             if (!isPerformingButtHit) {
                 isPerformingButtHit = true;
                 isPerformingButtHitRotation = false;
-
+                touchedGroundAfterButtHit = false;
                 stopAllSounds();
                 culataAudioSource.Play();
+                buttHitStartingPos = null;
             }
             transform.up = Vector2.up;
             rb.velocity = new Vector2(0, -buttHitSpeed);
-            rb.angularVelocity = 0;
             if (!buttHitParticles.isPlaying) buttHitParticles.Play();
         }
     }
@@ -194,11 +200,15 @@ public class Player : MonoBehaviour {
         lastButtHitEndTime = Time.time;
         isPerformingButtHit = false;
         isPerformingButtHitRotation = false;
+        buttHitStartingPos = null;
         buttHitParticles.Stop();
+        culataAudioSource.Stop();
     }
 
     public void Bounce(Collision2D other) {
         if (IsAlive) {
+            touchedGroundAfterButtHit = true;
+            Debug.Log("bounce");
             // handling mushrooms bounciness directly
             float mushroomBounceForce;
             if (other.gameObject.tag == "Mushroom") {

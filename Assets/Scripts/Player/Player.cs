@@ -41,6 +41,7 @@ public class Player : MonoBehaviour {
     [SerializeField] GenericAudioSource superjumpAudioSource;
     [SerializeField] GenericAudioSource culataAudioSource;
     [SerializeField] GenericAudioSource blinkAudioSource;
+    [SerializeField] GenericAudioSource hammerHitAudioSource;
 
     //private
     private Vector3 initialPosition;
@@ -215,6 +216,7 @@ public class Player : MonoBehaviour {
             }
 
             if (isPerformingButtHit) {
+                hammerHitAudioSource.Play();
                 EndButtHit();
             }
             tricksDetector.Reset();

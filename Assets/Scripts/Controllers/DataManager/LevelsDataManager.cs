@@ -74,8 +74,6 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
 
     // ----------------------------------------------------------------------------------------------------------private methods
     private void CreateNewDB() {
-        Debug.Log("a");
-        DebugText.Instance.Log("started creating db");
         levelsData = new List<LevelData>();
 
         for (int i = 0; i < GameController.Instance.NumWorlds; i++) {
@@ -85,7 +83,6 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
         }
         levelsData[0].Unlocked = true;
         FileHandler.SaveToJSON<LevelData>(levelsData, DB_FILE_NAME);
-        DebugText.Instance.Log("db created");
     }
     private void LoadData() {
         levelsData = FileHandler.ReadListFromJSON<LevelData>(DB_FILE_NAME);

@@ -15,6 +15,7 @@ public class AudioManager : MonoSingleton<AudioManager> {
     [Header("Audiosources")]
     [SerializeField] public GenericAudioSource GameoverAudioSource;
     [SerializeField] public GenericAudioSource ConcreteBreakAudioSource;
+    [SerializeField] public GenericAudioSource FishGotAudioSource;
 
     // Start is called before the first frame update
     void Start() {

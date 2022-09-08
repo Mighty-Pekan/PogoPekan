@@ -26,7 +26,7 @@ public class TraversablePlatform : MonoBehaviour {
         if (other.gameObject.tag == "PlayerHeadSpotter") return;
 
         Player otherPlayer = other.transform.root.GetComponent<Player>();
-        if ((otherPlayer != null && otherPlayer.IsPerformingButtHit())
+        if ((otherPlayer != null && otherPlayer.IsPerformingButtHitDive())
             ||
             (other.gameObject.transform.root.GetComponent<Rigidbody2D>() != null &&
             other.gameObject.transform.root.GetComponent<Rigidbody2D>().velocity.y > 0 &&

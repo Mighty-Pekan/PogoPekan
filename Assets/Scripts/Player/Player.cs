@@ -53,7 +53,7 @@ public class Player : MonoBehaviour {
     private Vector2? buttHitStartingPos = null;
 
     private bool isPerformingButtHitRotation = false;
-    private bool isPerformingButtHit = false;
+    private bool isPerformingButtHitDive = false;
     private bool isSuperjumpActive = false;
     private ParticleSystem superjumpParticles;
 
@@ -119,7 +119,7 @@ public class Player : MonoBehaviour {
             }
             else {
 
-                if (isPerformingButtHit || isPerformingButtHitRotation) {
+                if (isPerformingButtHitDive || isPerformingButtHitRotation) {
                     EndButtHit();
                 }
 
@@ -153,7 +153,7 @@ public class Player : MonoBehaviour {
 
         // ============================rotation
         // done only first time
-        if (!isPerformingButtHit && !isPerformingButtHitRotation) {
+        if (!isPerformingButtHitDive && !isPerformingButtHitRotation) {
             isPerformingButtHitRotation = true;
             buttHitStartingPos = transform.position;
             rb.velocity = Vector2.zero;
@@ -182,8 +182,8 @@ public class Player : MonoBehaviour {
         // ==========================dive
         else {
            // done only first time
-            if (!isPerformingButtHit) {
-                isPerformingButtHit = true;
+            if (!isPerformingButtHitDive) {
+                isPerformingButtHitDive = true;
                 isPerformingButtHitRotation = false;
                 touchedGroundAfterButtHit = false;
                 stopAllSounds();
@@ -205,7 +205,7 @@ public class Player : MonoBehaviour {
     private void EndButtHit() {
         rb.angularVelocity = 0;
         lastButtHitEndTime = Time.time;
-        isPerformingButtHit = false;
+        isPerformingButtHitDive = false;
         isPerformingButtHitRotation = false;
         buttHitStartingPos = null;
         buttHitParticles.Stop();
@@ -214,8 +214,6 @@ public class Player : MonoBehaviour {
 
     public void Bounce(Collision2D other) {
         if (IsAlive) {
-            touchedGroundAfterButtHit = true;
-            Debug.Log("bounce");
             // handling mushrooms bounciness directly
             float mushroomBounceForce;
             if (other.gameObject.tag == "Mushroom") {
@@ -237,10 +235,17 @@ public class Player : MonoBehaviour {
                 }
             }
 
-            if (isPerformingButtHit) {
-                hammerHitAudioSource.Play();
+            if (IsPerformingButtHitDive() || IsPerformingButtHitRotation()) {
+                if (isPerformingButtHitDive) {
+                    hammerHitAudioSource.Play();
+                }
                 EndButtHit();
             }
+
+            if (!(other.gameObject.tag == "BreakablePlatform" && IsPerformingButtHitDive())) {
+                touchedGroundAfterButtHit = true;
+            }
+
             tricksDetector.Reset();
         }
     }
@@ -274,8 +279,11 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public bool IsPerformingButtHit() {
-        return isPerformingButtHit || isPerformingButtHitRotation;
+    public bool IsPerformingButtHitDive() {
+        return isPerformingButtHitDive;
+    }
+    public bool IsPerformingButtHitRotation() {
+        return isPerformingButtHitRotation;
     }
     //================================================ activations/deactivations
 

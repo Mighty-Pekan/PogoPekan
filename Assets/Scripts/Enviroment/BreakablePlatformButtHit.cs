@@ -26,13 +26,14 @@ public class BreakablePlatformButtHit : MonoBehaviour
         GetComponent<BoxCollider2D>().size = new Vector2(mySpriteRenderer.size.x, mySpriteRenderer.size.y);
     }
 
-
     private void OnCollisionStay2D(Collision2D collision) {
-        if (collision.collider.gameObject.tag == "BouncingTip" && GameController.Instance.GetPlayer().IsPerformingButtHit()) {
+        if (collision.collider.gameObject.tag == "BouncingTip" && GameController.Instance.GetPlayer().IsPerformingButtHitDive()) {
             Instantiate(destructionParticles, collision.contacts[0].point,Quaternion.identity);
             AudioManager.Instance.ConcreteBreakAudioSource.Play();
             Destroy(gameObject);
         }
-
     }
+
+
+
 }

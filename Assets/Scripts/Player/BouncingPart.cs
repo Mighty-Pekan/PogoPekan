@@ -21,7 +21,7 @@ public class BouncingPart : MonoBehaviour
     }
 
     private void HandleBounce(Collision2D other) {
-        if (other.gameObject.tag != "Player" && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHit()) && isAlive) {
+        if (other.gameObject.tag != "Player" && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHitDive()) && isAlive) {
 
             if (canBounce) {
                 player.Bounce(other);

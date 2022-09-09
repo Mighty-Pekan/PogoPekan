@@ -5,6 +5,6 @@ using UnityEngine;
 public class SurveyButton : MonoBehaviour
 {
     public void OnClick() {
-        Application.OpenURL("https://docs.google.com/forms/d/1Jdntp2Cx8-1V-_RIvJqM5gd-JBbO5aWKb7KaBevvvgw/prefill");
+        Application.OpenURL("https://docs.google.com/forms/d/12fkjzmodjoWwn9AU-eaTYuJbe0MvCX7OkqNEg7HGbhw/edit");
     }
 }

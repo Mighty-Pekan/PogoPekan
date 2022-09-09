@@ -7665,13 +7665,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 400185742}
     m_Modifications:
+    - target: {fileID: 7373659638403334444, guid: ca7ba22005511d64daa25b3017e4d066, type: 3}
+      propertyPath: m_Text
+      value: TO THE SURVEY
+      objectReference: {fileID: 0}
     - target: {fileID: 7373659639283829488, guid: ca7ba22005511d64daa25b3017e4d066, type: 3}
       propertyPath: m_Name
       value: SurveyButton
       objectReference: {fileID: 0}
     - target: {fileID: 7373659639283829488, guid: ca7ba22005511d64daa25b3017e4d066, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7373659639283829502, guid: ca7ba22005511d64daa25b3017e4d066, type: 3}
       propertyPath: m_Colors.m_NormalColor.b

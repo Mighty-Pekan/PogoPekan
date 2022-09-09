@@ -6573,6 +6573,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7459935106593307536, guid: 13e270389e336c04496974e2cc78b3d7, type: 3}
+      propertyPath: isMobileBuild
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7459935106593307542, guid: 13e270389e336c04496974e2cc78b3d7, type: 3}
       propertyPath: m_Name
       value: GameController

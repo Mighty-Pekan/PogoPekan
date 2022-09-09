@@ -50,5 +50,5 @@ MonoBehaviour:
   ShowLevelsPanel: 0
   numLevelsPerWorld: 8
   numWorlds: 4
-  isMobileBuild: 0
-  unlockAllLevels: 0
+  isMobileBuild: 1
+  unlockAllLevels: 1

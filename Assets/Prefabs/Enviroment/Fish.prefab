@@ -185,6 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185f21ba7b6ddf74c87c89b5de698480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
   fishParticle: {fileID: 5613222764432102430, guid: 18d53d4166107cd44be258a5a7ee2418, type: 3}
+  id: 1
   GrayFishPrefab: {fileID: 3991951547809854689, guid: 975062526ea911746827416106bdb911, type: 3}

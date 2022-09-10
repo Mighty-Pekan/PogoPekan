@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fish : MonoBehaviour
+public class Fish : GrayFish
 {
     public enum FishId {ONE = 1,TWO =2};
     [SerializeField] FishId id = FishId.ONE;
-    [SerializeField] GameObject fishParticle;
 
     [SerializeField] GameObject GrayFishPrefab;
 
@@ -17,11 +16,9 @@ public class Fish : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    protected override void OnTriggerEnter2D(Collider2D collision) {
         LevelsDataManager.Instance.SetFishFound(id);
-        AudioManager.Instance.FishGotAudioSource.Play();
-        Instantiate(fishParticle, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        base.OnTriggerEnter2D(collision);
     }
 
 }

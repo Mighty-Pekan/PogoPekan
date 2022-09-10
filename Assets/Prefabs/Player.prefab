@@ -808,12 +808,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 902860265179117757, guid: 02419f4e45b9fb04ba4864b5f05990f3, type: 3}
       propertyPath: m_Volume
-      value: 0.03
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 902860265179117757, guid: 02419f4e45b9fb04ba4864b5f05990f3, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 779bbf6ed2d47bf47a6204fafee5b1e9, type: 3}
+      objectReference: {fileID: 8300000, guid: 56d3a44f90a47754a8126f2b20fafee8, type: 3}
     - target: {fileID: 902860265179117758, guid: 02419f4e45b9fb04ba4864b5f05990f3, type: 3}
       propertyPath: m_Name
       value: SuperJumpAudioSource
@@ -966,12 +966,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 902860265179117757, guid: 02419f4e45b9fb04ba4864b5f05990f3, type: 3}
       propertyPath: m_Volume
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 902860265179117757, guid: 02419f4e45b9fb04ba4864b5f05990f3, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 24cd1ed9dbfe4b54398c24f788d493ee, type: 3}
+      objectReference: {fileID: 8300000, guid: 48804e04fd877ef49b5cc0a59d7f6d00, type: 3}
     - target: {fileID: 902860265179117758, guid: 02419f4e45b9fb04ba4864b5f05990f3, type: 3}
       propertyPath: m_Name
       value: BlinkAudioSource

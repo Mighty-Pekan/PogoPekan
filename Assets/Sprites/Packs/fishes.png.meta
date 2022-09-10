@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: -145550893284083936
     second: fish
+  - first:
+      213: -43424163271399821
+    second: fish gray
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -122,6 +125,27 @@ TextureImporter:
       bones: []
       spriteID: 027bf05db36eafdf0800000000000000
       internalID: -145550893284083936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish gray
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3762a8d14f9b56ff0800000000000000
+      internalID: -43424163271399821
       vertices: []
       indices: 
       edges: []

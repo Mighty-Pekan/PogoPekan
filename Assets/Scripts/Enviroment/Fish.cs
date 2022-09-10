@@ -8,8 +8,13 @@ public class Fish : MonoBehaviour
     [SerializeField] FishId id = FishId.ONE;
     [SerializeField] GameObject fishParticle;
 
+    [SerializeField] GameObject GrayFishPrefab;
+
     private void Start() {
-        if(LevelsDataManager.Instance.IsFishFound(id))Destroy(gameObject);
+        if (LevelsDataManager.Instance.IsFishFound(id)) {
+            Instantiate(GrayFishPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

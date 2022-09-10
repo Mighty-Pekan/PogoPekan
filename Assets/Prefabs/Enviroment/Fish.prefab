@@ -187,3 +187,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   fishParticle: {fileID: 5613222764432102430, guid: 18d53d4166107cd44be258a5a7ee2418, type: 3}
+  GrayFishPrefab: {fileID: 3991951547809854689, guid: 975062526ea911746827416106bdb911, type: 3}

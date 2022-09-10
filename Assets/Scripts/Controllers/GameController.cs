@@ -37,7 +37,6 @@ public class GameController : MonoSingleton<GameController> {
     }
 
     private void Update() {
-        Debug.Log("selected world: " + SelectedWorld);
         if (IsPause) {
             Time.timeScale = 0;
         }

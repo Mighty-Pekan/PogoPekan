@@ -167,7 +167,7 @@ public class Player : MonoBehaviour {
             float rotationSpeed = buttHitRotationSpeed;
             if (myRotation < 20 || myRotation > 340) rotationSpeed = buttHitRotationSpeed / 4;
 
-            Debug.Log("rotation: " + myRotation);
+            //Debug.Log("rotation: " + myRotation);
             if (myRotation > 180)
                 rb.angularVelocity = rotationSpeed;
             //transform.Rotate(Vector3.forward * buttHitRotationSpeed * Time.deltaTime);
@@ -271,6 +271,7 @@ public class Player : MonoBehaviour {
             if (other.gameObject.tag != "Player" && other.gameObject.tag != "BouncingTip") {
                 if (other.contacts[0].point.y < transform.position.y) {
                     DeactivateSuperjump();
+                    Debug.Log("deactivating superjump");
                 }
             }
         }
@@ -306,6 +307,7 @@ public class Player : MonoBehaviour {
         animator.SetBool("SuperJump", false);
         stopAllSounds();
         isSuperjumpActive = false;
+        tricksDetector.Reset();
 
         if(superjumpTrailEnabled)superjumpTray.SetActive(false);
         if(superjumpSpeedEnabled)superjumpParticles.Stop();

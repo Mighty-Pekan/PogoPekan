@@ -26,14 +26,6 @@ public class VolumeBar : MonoBehaviour {
 
         slider = GetComponent<Slider>();
 
-        if (!PlayerPrefs.HasKey(volumeKey)) {
-            if(volumeKey == GameController.Instance.MASTER_VOLUME_KEY)
-                PlayerPrefs.SetFloat(volumeKey, 1f);
-            if(volumeKey == GameController.Instance.MUSIC_VOLUME_KEY)
-                PlayerPrefs.SetFloat(volumeKey, 0.5f);
-            else
-                PlayerPrefs.SetFloat(volumeKey, 1f);
-        }
         LoadVolume();
     }
 

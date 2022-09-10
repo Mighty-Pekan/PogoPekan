@@ -5495,9 +5495,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Onokolisa
+  m_text: 'Anokolisa
 
-    Brullov Art'
+    Free Game Assets'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
   m_sharedMaterial: {fileID: -5886020581555721959, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
@@ -6925,19 +6925,19 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Nicolo'' Bertoli (gameplay, DB, UI)
 
-    
 
-    Pietro A. Di Giovanni
-    (UI, cameras, background)
 
-    
+    Pietro A. Di Giovanni (UI,
+    cameras, background)
+
+
 
     Enrico Lin (UI)
 
-    
 
-    Alessandro
-    Giacomini (testing, bug fixing)'
+
+    Alessandro Giacomini (testing,
+    bug fixing)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
   m_sharedMaterial: {fileID: -5886020581555721959, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
@@ -6964,7 +6964,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19
+  m_fontSize: 15.95
   m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7604,7 +7604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 574817294883438828, guid: e27b3166f813a514eae3b2952e70ecd8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.404892
+      value: -13.404907
       objectReference: {fileID: 0}
     - target: {fileID: 574817294883438828, guid: e27b3166f813a514eae3b2952e70ecd8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

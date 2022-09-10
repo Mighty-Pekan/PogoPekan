@@ -602,8 +602,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -92.61342}
-  m_SizeDelta: {x: 348.16003, y: 32.30671}
+  m_AnchoredPosition: {x: 174.08, y: -79.164505}
+  m_SizeDelta: {x: 348.16003, y: 25.582253}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &254148033
 MonoBehaviour:
@@ -1522,8 +1522,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -37.39671}
-  m_SizeDelta: {x: 348.16003, y: 55.21671}
+  m_AnchoredPosition: {x: 174.08, y: -30.672253}
+  m_SizeDelta: {x: 348.16003, y: 48.492252}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &480717432
 MonoBehaviour:
@@ -1545,9 +1545,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'MARCO TRAPANI
+  m_text: 'Marco Trapani
 
-    KEVIN TONINELLI'
+    Kevin Toninelli'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
   m_sharedMaterial: {fileID: -5886020581555721959, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
@@ -3385,7 +3385,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 174.08, y: -0}
-  m_SizeDelta: {x: 348.16003, y: 37.39671}
+  m_SizeDelta: {x: 348.16003, y: 30.672253}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &933227398
 MonoBehaviour:
@@ -3795,8 +3795,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -124.92013}
-  m_SizeDelta: {x: 348.16003, y: 31.03671}
+  m_AnchoredPosition: {x: 174.08, y: -104.74676}
+  m_SizeDelta: {x: 348.16003, y: 24.312254}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1002477146
 MonoBehaviour:
@@ -3818,7 +3818,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MARCO TRAPANI
+  m_text: Marco Trapani
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
   m_sharedMaterial: {fileID: -5886020581555721959, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
@@ -5472,8 +5472,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -188.26355}
-  m_SizeDelta: {x: 348.16003, y: 55.21671}
+  m_AnchoredPosition: {x: 174.08, y: -154.64127}
+  m_SizeDelta: {x: 348.16003, y: 48.492252}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1648645489
 MonoBehaviour:
@@ -5495,9 +5495,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'ONOKOLISA
+  m_text: 'Onokolisa
 
-    BRULLOV ART'
+    Brullov Art'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
   m_sharedMaterial: {fileID: -5886020581555721959, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
@@ -6507,8 +6507,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -155.95683}
-  m_SizeDelta: {x: 348.16003, y: 32.30671}
+  m_AnchoredPosition: {x: 174.08, y: -129.059}
+  m_SizeDelta: {x: 348.16003, y: 25.582253}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1728226149
 MonoBehaviour:
@@ -6900,8 +6900,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -8.312775, y: -49.683548}
-  m_SizeDelta: {x: 384.5256, y: -123.7729}
+  m_AnchoredPosition: {x: -5.1501, y: -49.683548}
+  m_SizeDelta: {x: 390.8509, y: -123.7729}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1987262563
 MonoBehaviour:
@@ -6923,19 +6923,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'NICOLO'' BERTOLI (gameplay, UI, input system, DB system, sound system)
+  m_text: 'Nicolo'' Bertoli (gameplay, DB, UI)
 
+    
 
-    PIETRO
-    A. DI GIOVANNI (UI, input system, cameras and background handling)
+    Pietro A. Di Giovanni
+    (UI, cameras, background)
 
+    
 
-    ENRICO
-    LIN (UI interface, UI animations)
+    Enrico Lin (UI)
 
+    
 
-    ALESSANDRO GIACOMINI (bug fixing, testing,
-    pekan sprite, animations)'
+    Alessandro
+    Giacomini (testing, bug fixing)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
   m_sharedMaterial: {fileID: -5886020581555721959, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
@@ -6962,7 +6964,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17.15
+  m_fontSize: 19
   m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7602,7 +7604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 574817294883438828, guid: e27b3166f813a514eae3b2952e70ecd8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.404877
+      value: -13.404892
       objectReference: {fileID: 0}
     - target: {fileID: 574817294883438828, guid: e27b3166f813a514eae3b2952e70ecd8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -14,6 +14,7 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField] GameObject TimerPanel;
     [SerializeField] TextMeshProUGUI LevelCompletedTimeText;
     [SerializeField] Image [] FishIndicators;
+    [SerializeField] GenericAudioSource buttonClickAudioSource;
 
     [SerializeField] List<string> funnyTexts = new List<string>();
 
@@ -65,6 +66,10 @@ public class UIManager : MonoSingleton<UIManager>
         LevelCompletedPanel.SetActive(false);
         TimerPanel.SetActive(true);
         PauseButton.gameObject.SetActive(true);
+    }
+
+    public void MakeButtonSound() {
+        buttonClickAudioSource.Play();
     }
 
 }

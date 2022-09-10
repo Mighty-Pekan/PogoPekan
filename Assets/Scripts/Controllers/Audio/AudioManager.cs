@@ -83,12 +83,16 @@ public class AudioManager : MonoSingleton<AudioManager> {
 
         foreach (string key in keys) {
             if (!PlayerPrefs.HasKey(key)) {
-                if (key == GameController.Instance.MASTER_VOLUME_KEY)
-                    PlayerPrefs.SetFloat(key, 1f);
-                if (key == GameController.Instance.MUSIC_VOLUME_KEY)
+                if (key == GameController.Instance.MASTER_VOLUME_KEY) {
                     PlayerPrefs.SetFloat(key, 0.5f);
-                else
+                }
+                else if (key == GameController.Instance.MUSIC_VOLUME_KEY) {
+                    PlayerPrefs.SetFloat(key, 0.5f);
+                }
+                else {
                     PlayerPrefs.SetFloat(key, 1f);
+                }
+                    
             }
             float value = PlayerPrefs.GetFloat(key);
             SetMixerVolume(key, value);

@@ -13,7 +13,6 @@ public class ParallaxScript : MonoBehaviour
 
     void Start()
     {
-        
         lastCameraPosition = cam.transform.position;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
     }

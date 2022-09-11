@@ -7673,7 +7673,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7373659639283829488, guid: ca7ba22005511d64daa25b3017e4d066, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7373659639283829499, guid: ca7ba22005511d64daa25b3017e4d066, type: 3}
+      propertyPath: url
+      value: https://docs.google.com/forms/d/12fkjzmodjoWwn9AU-eaTYuJbe0MvCX7OkqNEg7HGbhw/edit
       objectReference: {fileID: 0}
     - target: {fileID: 7373659639283829502, guid: ca7ba22005511d64daa25b3017e4d066, type: 3}
       propertyPath: m_Colors.m_NormalColor.b

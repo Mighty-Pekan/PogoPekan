@@ -23,7 +23,7 @@ public class InputManager : MonoSingleton<InputManager>
 
     private void Update()
     {
-        if (GameController.Instance.isMobileBuild)
+        if (GameController.Instance.IsMobileBuild())
             MobileInput();
         else
             KeyboardInput();

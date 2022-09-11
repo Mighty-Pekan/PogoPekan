@@ -28,9 +28,11 @@ public class GameController : MonoSingleton<GameController> {
     [Header("Settings")]
     [SerializeField] int numLevelsPerWorld;
     [SerializeField] int numWorlds;
-    [SerializeField] public bool isMobileBuild;
     [SerializeField] public bool unlockAllLevels;
 
+    public bool IsMobileBuild() {
+        return Application.platform == RuntimePlatform.Android;
+    }
     private void Start() {
 
         Screen.orientation = ScreenOrientation.LandscapeLeft; //or right for right landscape

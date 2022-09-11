@@ -4,7 +4,7 @@ using UnityEngine;
 using Cinemachine;
 public class ParallaxScript : MonoBehaviour
 {
-    CinemachineVirtualCamera cam;
+    [SerializeField] CinemachineVirtualCamera cam;
 
     [SerializeField] Vector2 backgroundSpeed;
     Vector3 lastCameraPosition;
@@ -13,7 +13,7 @@ public class ParallaxScript : MonoBehaviour
 
     void Start()
     {
-        cam = GameObject.FindGameObjectWithTag("Camera").GetComponent<CinemachineVirtualCamera>();
+        transform.parent.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, transform.parent.transform.position.z);
         lastCameraPosition = cam.transform.position;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
     }

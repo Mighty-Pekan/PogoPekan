@@ -13,7 +13,7 @@ public class ParallaxScript : MonoBehaviour
 
     void Start()
     {
-        transform.parent.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, transform.parent.transform.position.z);
+        
         lastCameraPosition = cam.transform.position;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
     }
@@ -21,7 +21,7 @@ public class ParallaxScript : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 deltaMovement = cam.transform.position - lastCameraPosition;
-        transform.position += new Vector3(deltaMovement.x * backgroundSpeed.x, deltaMovement.y * backgroundSpeed.y);
+        transform.position += new Vector3(deltaMovement.x * backgroundSpeed.x,0);
         lastCameraPosition = cam.transform.position;
 
         //Sposta il background a Destra o a Sinistra in base alla posizione della telecamera

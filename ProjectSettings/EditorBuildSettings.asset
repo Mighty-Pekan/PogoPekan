@@ -8,11 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 70c1d96f35827bc42906267a34d08c7a
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Worlds/World 1/1.1 vertical slice.unity
-    guid: 510a8482311e24e469a6c2e5f341c925
-  - enabled: 1
-    path: Assets/Scenes/Worlds/World 1/1.1.unity
+    path: Assets/Scenes/Worlds/World 1/1.1 vero.unity
     guid: ed9a38f4db5bd764a88dc06d53bea869
   - enabled: 1
     path: Assets/Scenes/Worlds/World 1/1.2.unity
@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Worlds/World 1/1.8.unity
     guid: bc62ab548089a8c478626e1b0f2bd62a
+  - enabled: 1
+    path: Assets/Scenes/Worlds/World 1/1.1.unity
+    guid: 27430d3b5076b934687285955baf420b
   m_configObjects: {}

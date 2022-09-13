@@ -99,7 +99,7 @@ public class GameController : MonoSingleton<GameController> {
 
     //=============================================================== CUSTOM SCENE MANAGER
     public void ExitReached() {
-        if (timer.GetTime() < fishMaxTimeSetter.MaxTimeForFish) {
+        if (timer.GetTime() <= fishMaxTimeSetter.MaxTimeForFish) {
             LevelsDataManager.Instance.SetTimeFishFound();
         }
         LevelsDataManager.Instance.RegisterNewTime(timer.GetTime());

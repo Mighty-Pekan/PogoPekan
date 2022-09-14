@@ -21,7 +21,7 @@ public class Whater : MonoBehaviour
     float? lastTimeParticlesInstantiated = null;
     private void OnTriggerEnter2D(Collider2D collision) {
 
-        if (collision.gameObject.GetComponent<Player>() && (lastTimeParticlesInstantiated==null || Time.time - lastTimeParticlesInstantiated>1f)) {
+        if (collision.gameObject.GetComponent<Player>() && collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 3) {
             Instantiate(WhaterParticle, collision.gameObject.transform.position, Quaternion.identity);
             audioSource.Play();
             lastTimeParticlesInstantiated = Time.time;

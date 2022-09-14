@@ -29,11 +29,7 @@ public class LoadLevelsButton : MonoBehaviour
             myButton.image.color = Color.white;
             myButton.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
             GetComponent<Hover>().CanExpand = true;
-            for (int i = 0; i < fishIndicators.Length; i++) {
-                if (i < LevelsDataManager.Instance.GetNumFishFound(GameController.Instance.SelectedWorld, level))
-                    fishIndicators[i].color = Color.white;
-                else fishIndicators[i].color = Color.black;
-            }
+            evaluateFishesIndicatorsColor();
             int bestTime = LevelsDataManager.Instance.GetBestTime(GameController.Instance.SelectedWorld, level);
             if (bestTime == -1) bestTimeText.text = "----";
             else {
@@ -43,7 +39,18 @@ public class LoadLevelsButton : MonoBehaviour
             bestTimePanel.color = Color.white;
         }
         else {
+            myButton.image.color = GameController.Instance.GetLockedColor();
+            myButton.GetComponentInChildren<TextMeshProUGUI>().color = GameController.Instance.GetLockedTextColor();
+            evaluateFishesIndicatorsColor();
             GetComponent<Hover>().CanExpand = false;
+        }
+    }
+
+    private void evaluateFishesIndicatorsColor() {
+        for (int i = 0; i < fishIndicators.Length; i++) {
+            if (i < LevelsDataManager.Instance.GetNumFishFound(GameController.Instance.SelectedWorld, level))
+                fishIndicators[i].color = Color.white;
+            else fishIndicators[i].color = Color.black;
         }
     }
 

@@ -23,6 +23,8 @@ public class SelectWorldButton : MonoBehaviour
             GetComponent<Hover>().CanExpand = true;
         }
         else {
+            myButton.image.color = GameController.Instance.GetLockedColor();
+            myButton.GetComponentInChildren<TextMeshProUGUI>().color = GameController.Instance.GetLockedTextColor();
             GetComponent<Hover>().CanExpand = false;
         }
     }

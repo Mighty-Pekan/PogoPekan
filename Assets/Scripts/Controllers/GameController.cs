@@ -55,6 +55,12 @@ public class GameController : MonoSingleton<GameController> {
         }
             
     }
+    public Color GetLockedColor() {
+        return new Color32(164, 164, 164,255);
+    }
+    public Color GetLockedTextColor() {
+        return new Color32(64, 64, 64,255);
+    }
     private IEnumerator GameOverCor() {
         AudioManager.Instance.StopMusic();
         AudioManager.Instance.GameoverAudioSource.Play();

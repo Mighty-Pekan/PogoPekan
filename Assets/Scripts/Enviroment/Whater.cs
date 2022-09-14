@@ -16,11 +16,15 @@ public class Whater : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+
+
+    float? lastTimeParticlesInstantiated = null;
     private void OnTriggerEnter2D(Collider2D collision) {
 
-        if (collision.gameObject.GetComponent<Player>()) {
+        if (collision.gameObject.GetComponent<Player>() && (lastTimeParticlesInstantiated==null || Time.time - lastTimeParticlesInstantiated>1f)) {
             Instantiate(WhaterParticle, collision.gameObject.transform.position, Quaternion.identity);
             audioSource.Play();
+            lastTimeParticlesInstantiated = Time.time;
         }
             
 

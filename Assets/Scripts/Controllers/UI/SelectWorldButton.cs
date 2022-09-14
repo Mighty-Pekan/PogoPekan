@@ -8,6 +8,7 @@ public class SelectWorldButton : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] int world = 1;
+    [SerializeField] GameObject panelToActivate;
 
     private Button myButton;
 
@@ -28,5 +29,6 @@ public class SelectWorldButton : MonoBehaviour
 
     public void SelectWorld() {
         GameController.Instance.SelectedWorld = world;
+        panelToActivate.SetActive(true);
     }
 }

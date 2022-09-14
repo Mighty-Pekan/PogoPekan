@@ -16,17 +16,24 @@ public class LoadLevelsButton : MonoBehaviour
     [SerializeField] Image bestTimePanel;
     [SerializeField] TextMeshProUGUI bestTimeText;
 
-    private void Start() {
-
+    private void Awake() {
         myButton = GetComponent<Button>();
         myButton.GetComponentInChildren<TextMeshProUGUI>().text = "Level " + level;
+    }
+
+    private void OnEnable() {
+        if(level ==1)Debug.Log("enable called with world: "+ GameController.Instance.SelectedWorld);
 
         if (LevelsDataManager.Instance.IsLevelUnlocked(GameController.Instance.SelectedWorld, level)) {
             myButton.interactable = true;
             myButton.image.color = Color.white;
             myButton.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
             GetComponent<Hover>().CanExpand = true;
-            for (int i = 0; i < LevelsDataManager.Instance.GetNumFishFound(GameController.Instance.SelectedWorld, level); i++) fishIndicators[i].color = Color.white;
+            for (int i = 0; i < fishIndicators.Length; i++) {
+                if (i < LevelsDataManager.Instance.GetNumFishFound(GameController.Instance.SelectedWorld, level))
+                    fishIndicators[i].color = Color.white;
+                else fishIndicators[i].color = Color.black;
+            }
             int bestTime = LevelsDataManager.Instance.GetBestTime(GameController.Instance.SelectedWorld, level);
             if (bestTime == -1) bestTimeText.text = "----";
             else {

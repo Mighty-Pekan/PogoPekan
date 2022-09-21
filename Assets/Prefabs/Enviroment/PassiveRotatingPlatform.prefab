@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341022799872, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -36.918106
+      value: 9.86
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341022799872, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.0673265
+      value: -40.77
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341022799872, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -65,11 +65,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341491973577, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 3.3368068
+      value: 2.197301
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341491973578, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_Size.x
-      value: 3.3368068
+      value: 2.197301
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341491973581, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_LocalScale.x
@@ -83,9 +83,17 @@ PrefabInstance:
       propertyPath: rotatingSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9165492342408679176, guid: 294bee6b06615694599df53015b985ca, type: 3}
+      propertyPath: m_Size.y
+      value: 0.95825046
+      objectReference: {fileID: 0}
     - target: {fileID: 9165492342408679183, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165492342408679183, guid: 294bee6b06615694599df53015b985ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.306
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 294bee6b06615694599df53015b985ca, type: 3}
@@ -109,7 +117,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -36.918106, y: -3.5839844}
+  m_ConnectedAnchor: {x: 9.86, y: -39.28666}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

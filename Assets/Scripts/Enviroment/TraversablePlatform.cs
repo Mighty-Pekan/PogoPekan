@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TraversablePlatform : MonoBehaviour {
+public class TraversablePlatform : GenericSlicedPlatform {
 
     [SerializeField] private GameObject topPosition;
 
@@ -16,9 +16,7 @@ public class TraversablePlatform : MonoBehaviour {
             if (bc.isTrigger) myTrigger = bc;
             else myCollider = bc;
         }
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        myCollider.size = new Vector2(spriteRenderer.size.x, spriteRenderer.size.y);
-        myTrigger.size = new Vector2(spriteRenderer.size.x + 0.2f, spriteRenderer.size.y+0.2f);
+        myTrigger.size = new Vector2(mySpriteRenderer.size.x + 0.2f, mySpriteRenderer.size.y+0.2f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

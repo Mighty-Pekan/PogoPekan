@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotatingPlatform : MonoBehaviour
+public class RotatingPlatform : GenericSlicedPlatform
 {
     [SerializeField] float rotatingSpeed;
     Rigidbody2D rb;
 
-    private void Start() {
+    protected void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
 

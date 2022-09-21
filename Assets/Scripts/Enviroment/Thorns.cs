@@ -12,6 +12,5 @@ public class Thorns : MonoBehaviour
                 GameController.Instance.GameOver();
             }
         }
-
     }
 }

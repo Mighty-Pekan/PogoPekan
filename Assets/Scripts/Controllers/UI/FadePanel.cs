@@ -18,6 +18,8 @@ public class FadePanel : MonoBehaviour
     }
 
     public IEnumerator Apear() {
+        Debug.Log("apear called");
+        GameController.Instance.canPauseBeCalled = false;
         while (canvasGroup.alpha < 1) {
             canvasGroup.alpha += 0.03f;
             yield return new WaitForSeconds(1 / fadeSpeed);
@@ -27,11 +29,13 @@ public class FadePanel : MonoBehaviour
     }
 
     public IEnumerator Disapear() {
+        GameController.Instance.canPauseBeCalled = false;
         while (canvasGroup.alpha > 0) {
             canvasGroup.alpha -= 0.03f;
             yield return new WaitForSeconds(1/fadeSpeed);
             if (canvasGroup == null) yield break;
         }
         canvasGroup.alpha = 0;
+        GameController.Instance.canPauseBeCalled = true;
     }
 }

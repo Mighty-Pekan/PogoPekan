@@ -19,12 +19,13 @@ public class GameController : MonoSingleton<GameController> {
     public int NumWorlds { get => numWorlds; }
     public int SelectedWorld { get; set; } = 1;
 
+    
+
     [HideInInspector] public string SFX_VOLUME_KEY = "SfxVolume";
     [HideInInspector] public string MASTER_VOLUME_KEY = "MasterVolume";
     [HideInInspector] public string MUSIC_VOLUME_KEY = "MusicVolume";
-    [HideInInspector] public bool IsPause;
     [HideInInspector] public bool ShowLevelsPanel = false;
-
+    [HideInInspector] public bool IsPause = false;
     [Header("Settings")]
     [SerializeField] int numLevelsPerWorld;
     [SerializeField] int numWorlds;
@@ -39,6 +40,7 @@ public class GameController : MonoSingleton<GameController> {
     }
 
     private void Update() {
+        Debug.Log("can pause be called: " + canPauseBeCalled);
         //Debug.Log(SelectedWorld);
         if (IsPause) {
             Time.timeScale = 0;
@@ -47,10 +49,12 @@ public class GameController : MonoSingleton<GameController> {
             Time.timeScale = 1;
         }
     }
-    private bool wasGameoverCalled = false;
+    public bool wasGameoverCalled { get; private set; } = false;
+    public bool canPauseBeCalled { get; set; } = true;
     public void GameOver() {
         if (!wasGameoverCalled) {
             wasGameoverCalled = true;
+            canPauseBeCalled = false;
             StartCoroutine(GameOverCor());
         }
             

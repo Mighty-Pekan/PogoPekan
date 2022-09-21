@@ -32,15 +32,16 @@ public class UIManager : MonoSingleton<UIManager>
 
     public void OpenPausePanel(bool isOpen)
     {
-        if (PausePanel != null)
-            PausePanel.SetActive(isOpen);
-        if (PausePanel != null)
-            PauseButton.SetActive(!isOpen);
+        if (GameController.Instance.canPauseBeCalled) {
+            if (PausePanel != null)
+                PausePanel.SetActive(isOpen);
+            if (PausePanel != null)
+                PauseButton.SetActive(!isOpen);
 
-        GameController.Instance.IsPause = isOpen;
+            GameController.Instance.IsPause = isOpen;
 
-        FunnyText.text = GetRandomText();
-
+            FunnyText.text = GetRandomText();
+        }
     }
 
     public void ReturnToMainMenu()

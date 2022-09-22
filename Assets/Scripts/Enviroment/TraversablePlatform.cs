@@ -9,15 +9,17 @@ public class TraversablePlatform : GenericSlicedPlatform {
     BoxCollider2D myCollider;
     BoxCollider2D myTrigger;
 
-    private void Awake() {
-        BoxCollider2D [] boxColliders = GetComponents<BoxCollider2D>();
+    protected override void Start() {
+        base.Start();
+        BoxCollider2D[] boxColliders = GetComponents<BoxCollider2D>();
 
         foreach (BoxCollider2D bc in boxColliders) {
             if (bc.isTrigger) myTrigger = bc;
             else myCollider = bc;
         }
-        myTrigger.size = new Vector2(mySpriteRenderer.size.x + 0.2f, mySpriteRenderer.size.y+0.2f);
+        myTrigger.size = new Vector2(mySpriteRenderer.size.x + 0.2f, mySpriteRenderer.size.y + 0.2f);
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {

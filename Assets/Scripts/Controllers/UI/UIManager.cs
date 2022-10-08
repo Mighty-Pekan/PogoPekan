@@ -11,6 +11,7 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField] GameObject PauseButton;
     [SerializeField] TextMeshProUGUI FunnyText;
     [SerializeField] GameObject LevelCompletedPanel;
+    [SerializeField] TextMeshProUGUI LevelCompletedText;
     [SerializeField] GameObject TimerPanel;
     [SerializeField] TextMeshProUGUI LevelCompletedTimeText;
     [SerializeField] Image [] FishIndicators;
@@ -55,6 +56,7 @@ public class UIManager : MonoSingleton<UIManager>
     }
 
     public void ShowLevelCompletedPanel(int levelTime) {
+        LevelCompletedText.text = "LEVEL " + GameController.Instance.GetCurrentLevel()[0] +"." + GameController.Instance.GetCurrentLevel()[1] + " COMPLETED";
         LevelCompletedPanel.SetActive(true );
         TimerPanel.SetActive(false);
         PauseButton.gameObject.SetActive(false);

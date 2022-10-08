@@ -2622,6 +2622,7 @@ MonoBehaviour:
   PauseButton: {fileID: 8401782212386103092}
   FunnyText: {fileID: 8401782211613081689}
   LevelCompletedPanel: {fileID: 727406905}
+  LevelCompletedText: {fileID: 112966316}
   TimerPanel: {fileID: 1353399865}
   LevelCompletedTimeText: {fileID: 1424683580}
   FishIndicators:
@@ -3442,7 +3443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8549398900439595226, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.44794482
+      value: 0.448
       objectReference: {fileID: 0}
     - target: {fileID: 8549398900439595226, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3450,7 +3451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8549398900984728153, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.44794482
+      value: 0.448
       objectReference: {fileID: 0}
     - target: {fileID: 8549398900984728153, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3458,7 +3459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8549398900984728153, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.44794482
+      value: 0.448
       objectReference: {fileID: 0}
     - target: {fileID: 8549398900984728154, guid: fbc311bd849dd4843bb2156e5e7b8b2a, type: 3}
       propertyPath: m_Sprite

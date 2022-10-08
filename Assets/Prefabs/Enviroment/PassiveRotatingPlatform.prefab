@@ -7,17 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 374569792216746789, guid: 294bee6b06615694599df53015b985ca, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 8924039838365878716, guid: 31dcede3342633444a15de4fa43fec74, type: 2}
     - target: {fileID: 9165492341022799872, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341022799872, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38.43
+      value: -64.8998
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341022799872, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.94
+      value: 5.612464
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341022799872, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -121,7 +125,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -38.43, y: 5.423342}
+  m_ConnectedAnchor: {x: -64.8998, y: 7.095806}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

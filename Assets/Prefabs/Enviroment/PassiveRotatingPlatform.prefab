@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341022799872, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -66.17
+      value: -38.43
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341022799872, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.73
+      value: 3.94
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341022799872, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -69,11 +69,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341491973577, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 3.0568092
+      value: 1.9543775
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341491973578, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_Size.x
-      value: 3.0568092
+      value: 1.9543775
       objectReference: {fileID: 0}
     - target: {fileID: 9165492341491973581, guid: 294bee6b06615694599df53015b985ca, type: 3}
       propertyPath: m_LocalScale.x
@@ -121,7 +121,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -66.17, y: 6.213342}
+  m_ConnectedAnchor: {x: -38.43, y: 5.423342}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

@@ -15,7 +15,7 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
             Debug.Log("creating new db");
             CreateNewDB();
         }
-        else Debug.Log("existing db loaded");
+        //else Debug.Log("existing db loaded");
     }
     //==============================================================================setter
     public void UnlockLevel(int world, int level) {

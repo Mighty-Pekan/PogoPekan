@@ -40,7 +40,7 @@ public class GameController : MonoSingleton<GameController> {
     }
 
     private void Update() {
-        Debug.Log("can pause be called: " + canPauseBeCalled);
+        //Debug.Log("can pause be called: " + canPauseBeCalled);
         //Debug.Log(SelectedWorld);
         if (IsPause) {
             Time.timeScale = 0;
@@ -74,6 +74,7 @@ public class GameController : MonoSingleton<GameController> {
         wasGameoverCalled=false;
     }
     public void ReloadLevel() {
+        UIManager.Instance.HideLevelCompletedPanel();
         UIManager.Instance.OpenPausePanel(false);
         IsPause = false;
         int[] level = GetCurrentLevel();
@@ -122,6 +123,7 @@ public class GameController : MonoSingleton<GameController> {
     }
 
     public void LoadNextLevel() {
+        UIManager.Instance.HideLevelCompletedPanel();
         int[] nextLevel = GetNextLevel();
         LoadLevel(nextLevel[0], nextLevel[1]);
     }
@@ -140,7 +142,7 @@ public class GameController : MonoSingleton<GameController> {
     public void LoadLevel(int world, int level) {StartCoroutine(LoadLevelCor(world.ToString() + "." + level.ToString()));}
 
     private IEnumerator LoadLevelCor(string levelName) {
-        yield return StartCoroutine(fadePanel.Apear());
+        yield return StartCoroutine(fadePanel.Apear(levelName));
         if(timer!=null)timer.Reset();
         SceneManager.LoadScene(levelName);
         if (UIManager.Instance != null) {

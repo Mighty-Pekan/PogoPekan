@@ -24,6 +24,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private GameObject superjumpActBackLight;
     [SerializeField] private ParticleSystem buttHitParticles;
     [SerializeField] private Animator blinkAnimator;
+    [SerializeField] private Sprite gameoverSprite;
 
     [Header("Sprites")]
     [SerializeField] private Sprite upSprite;
@@ -69,6 +70,8 @@ public class Player : MonoBehaviour {
                 stopAllSounds();
                 DeactivateSuperjump();
                 EndButtHit();
+                animator.enabled = false;
+                GetComponent<SpriteRenderer>().sprite = gameoverSprite;
             }
         }
     }

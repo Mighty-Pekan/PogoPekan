@@ -658,8 +658,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -79.164505}
-  m_SizeDelta: {x: 348.16003, y: 25.582253}
+  m_AnchoredPosition: {x: 174.08, y: -86.383064}
+  m_SizeDelta: {x: 348.16003, y: 29.19153}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &254148033
 MonoBehaviour:
@@ -1478,8 +1478,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -30.672253}
-  m_SizeDelta: {x: 348.16003, y: 48.492252}
+  m_AnchoredPosition: {x: 174.08, y: -34.281532}
+  m_SizeDelta: {x: 348.16003, y: 52.101532}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &480717432
 MonoBehaviour:
@@ -3326,7 +3326,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 174.08, y: -0}
-  m_SizeDelta: {x: 348.16003, y: 30.672253}
+  m_SizeDelta: {x: 348.16003, y: 34.281532}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &933227398
 MonoBehaviour:
@@ -4178,8 +4178,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -104.74676}
-  m_SizeDelta: {x: 348.16003, y: 24.312254}
+  m_AnchoredPosition: {x: 174.08, y: -115.57459}
+  m_SizeDelta: {x: 348.16003, y: 27.921532}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1002477146
 MonoBehaviour:
@@ -4925,7 +4925,7 @@ GameObject:
   - component: {fileID: 1262789488}
   - component: {fileID: 1262789487}
   m_Layer: 5
-  m_Name: CreditsPanel_Temp
+  m_Name: CreditsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4974,8 +4974,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 7ad9a3e0e80c3d24881c3023557db5ae, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5681,8 +5681,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -154.64127}
-  m_SizeDelta: {x: 348.16003, y: 48.492252}
+  m_AnchoredPosition: {x: 174.08, y: -172.68765}
+  m_SizeDelta: {x: 348.16003, y: 52.101532}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1648645489
 MonoBehaviour:
@@ -6519,8 +6519,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -129.059}
-  m_SizeDelta: {x: 348.16003, y: 25.582253}
+  m_AnchoredPosition: {x: 174.08, y: -143.49612}
+  m_SizeDelta: {x: 348.16003, y: 29.19153}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1728226149
 MonoBehaviour:
@@ -6919,20 +6919,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Nicolo'' Bertoli (gameplay, DB)
+  m_text: 'Nicolo'' Bertoli (gameplay, DB, sounds handling, UI)
 
 
 
-    Pietro A. Di Giovanni (UI, cameras)
+    Pietro A.
+    Di Giovanni (UI, cameras)
 
 
 
-    Enrico
-    Lin (UI)
+    Enrico Lin (UI)
 
 
 
-    Alessandro Giacomini (testing, bug fixing)'
+    Alessandro Giacomini
+    (testing, bug fixing)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
   m_sharedMaterial: {fileID: -5886020581555721959, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
@@ -6959,7 +6960,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17.4
+  m_fontSize: 17.35
   m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 1

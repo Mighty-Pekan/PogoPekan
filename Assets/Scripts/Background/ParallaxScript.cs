@@ -19,19 +19,19 @@ public class ParallaxScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 deltaMovement = cam.transform.position - lastCameraPosition;
-        transform.position += new Vector3(deltaMovement.x * backgroundSpeed.x,0);
-        lastCameraPosition = cam.transform.position;
+        if (!GameController.Instance.wasGameoverCalled) {
+            Vector3 deltaMovement = cam.transform.position - lastCameraPosition;
+            transform.position += new Vector3(deltaMovement.x * backgroundSpeed.x, 0);
+            lastCameraPosition = cam.transform.position;
 
-        //Sposta il background a Destra o a Sinistra in base alla posizione della telecamera
-        if (cam.transform.position.x - transform.position.x > length / 2)
-        {
-            transform.position = new Vector3(transform.position.x + length, transform.position.y);
-        }
-        else if (cam.transform.position.x - transform.position.x < -length / 2)
-        {
-            transform.position = new Vector3(transform.position.x - length, transform.position.y);
+            //Sposta il background a Destra o a Sinistra in base alla posizione della telecamera
+            if (cam.transform.position.x - transform.position.x > length / 2) {
+                transform.position = new Vector3(transform.position.x + length, transform.position.y);
+            }
+            else if (cam.transform.position.x - transform.position.x < -length / 2) {
+                transform.position = new Vector3(transform.position.x - length, transform.position.y);
 
+            }
         }
     }
 }

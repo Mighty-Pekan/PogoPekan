@@ -313,7 +313,7 @@ MonoBehaviour:
   superjumpActBackLight: {fileID: 980297694384325157}
   buttHitParticles: {fileID: 7974843085980441086}
   blinkAnimator: {fileID: 521079929}
-  gameoverSprite: {fileID: 21300000, guid: 8f2ea99233325444e822ea895562069a, type: 3}
+  gameoverSprite: {fileID: 7084227504650091113, guid: 8f2ea99233325444e822ea895562069a, type: 3}
   upSprite: {fileID: -8453460545386370777, guid: 4131a5baf63f26e499f2b22b7bd48fa6, type: 3}
   downSprite: {fileID: -7645928061125962244, guid: 4131a5baf63f26e499f2b22b7bd48fa6, type: 3}
   superjumpTrailEnabled: 0

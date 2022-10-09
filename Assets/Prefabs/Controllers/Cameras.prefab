@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5242227836118978128}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -44, y: -5.7299995, z: -10}
+  m_LocalPosition: {x: -32.26, y: 6.42, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5367684871432978586}
@@ -374,6 +374,8 @@ GameObject:
   - component: {fileID: 8401782212208590318}
   - component: {fileID: 6811961217195050158}
   - component: {fileID: 4649523518674220798}
+  - component: {fileID: 8572852210526046000}
+  - component: {fileID: 4824537713893747022}
   m_Layer: 0
   m_Name: SuperJumpZoom
   m_TagString: Camera
@@ -389,7 +391,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5242227837103126425}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -44, y: -4.93, z: -10}
+  m_LocalPosition: {x: -32.26, y: 7.2200003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5242227837022957325}
@@ -485,6 +487,40 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!114 &8572852210526046000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242227837103126425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 0}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
+--- !u!114 &4824537713893747022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242227837103126425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 0}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!1001 &4531639202031655982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -502,11 +538,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8512858454418068502, guid: 3c18f33a328be0d46a3b8b46404b32bf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44
+      value: -32.26
       objectReference: {fileID: 0}
     - target: {fileID: 8512858454418068502, guid: 3c18f33a328be0d46a3b8b46404b32bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.7299995
+      value: 6.42
       objectReference: {fileID: 0}
     - target: {fileID: 8512858454418068502, guid: 3c18f33a328be0d46a3b8b46404b32bf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -547,11 +583,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8512858454418068496, guid: 3c18f33a328be0d46a3b8b46404b32bf, type: 3}
   m_PrefabInstance: {fileID: 4531639202031655982}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5242227836891285560 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8512858454418068502, guid: 3c18f33a328be0d46a3b8b46404b32bf, type: 3}
-  m_PrefabInstance: {fileID: 4531639202031655982}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5242227836891285567 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8512858454418068497, guid: 3c18f33a328be0d46a3b8b46404b32bf, type: 3}
@@ -563,6 +594,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5242227836891285560 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8512858454418068502, guid: 3c18f33a328be0d46a3b8b46404b32bf, type: 3}
+  m_PrefabInstance: {fileID: 4531639202031655982}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &5242227836554376760
 Animator:
   serializedVersion: 3
@@ -599,6 +635,23 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!114 &1621422934978916293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242227836891285566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 0}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!114 &5242227836554376762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,6 +664,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d474883b95d1349a758f7c0a711e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &809278517475261630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242227836891285566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 0}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!1001 &5242227835016587237
 PrefabInstance:
   m_ObjectHideFlags: 0

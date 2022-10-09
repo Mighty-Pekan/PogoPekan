@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -48}
+  m_AnchoredPosition: {x: 0, y: -94}
   m_SizeDelta: {x: 291.4665, y: 48.47522}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &118026339
@@ -368,8 +368,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -279.24298}
-  m_SizeDelta: {x: 705.8216, y: 47.475204}
+  m_AnchoredPosition: {x: -0.6983, y: -279.24298}
+  m_SizeDelta: {x: 1099.2666, y: 47.4752}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &532871363
 MonoBehaviour:
@@ -391,9 +391,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Thanks for playing pogo pekan
+  m_text: 'Nice job, You completed Pogo Pekan!
 
-'
+    Thanks for playing!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 624a19ab4102a47a688e4961b4546c76, type: 2}
   m_sharedMaterial: {fileID: -5886020581555721959, guid: 624a19ab4102a47a688e4961b4546c76, type: 2}

@@ -21,11 +21,11 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
     public void UnlockLevel(int world, int level) {
         if (world <= 0) throw new Exception("world index < 1");
         if (level <= 0) throw new Exception("level < 1");
-
-        if(!GetLevelData(world,level).Unlocked) {
-            GetLevelData(world,level).Unlocked = true;
-            SaveData();
-        }
+        
+            if (!GetLevelData(world, level).Unlocked) {
+                GetLevelData(world, level).Unlocked = true;
+                SaveData();
+            }
     }
 
     public void SetFishFound(Fish.FishId fishId) {

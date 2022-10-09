@@ -20,7 +20,8 @@ public class FadePanel : MonoBehaviour
     }
 
     public IEnumerator Apear(string levelName) {
-        levelTextIndication.text = "LEVEL " + levelName;
+        if(levelName != "Ringraziamenti")
+            levelTextIndication.text = "LEVEL " + levelName;
         GameController.Instance.canPauseBeCalled = false;
         while (canvasGroup.alpha < 1) {
             canvasGroup.alpha += 0.03f;

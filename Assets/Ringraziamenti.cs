@@ -10,7 +10,7 @@ public class Ringraziamenti : MonoBehaviour
     }
 
     private IEnumerator ReturnToMainMenu() {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
         GameController.Instance.ReturnToMainMenu();
     }
 }

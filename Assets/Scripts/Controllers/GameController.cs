@@ -123,6 +123,8 @@ public class GameController : MonoSingleton<GameController> {
         }
         LevelsDataManager.Instance.RegisterNewTime(timer.GetTime());
         int[] nextLevel = GetNextLevel();
+
+        if (GetCurrentLevel()[0]<=numWorlds && GetCurrentLevel()[1]<NumLevelsPerWorld)
         LevelsDataManager.Instance.UnlockLevel(nextLevel[0], nextLevel[1]);
 
         Destroy(player.gameObject);
@@ -132,7 +134,8 @@ public class GameController : MonoSingleton<GameController> {
     public void LoadNextLevel() {
         UIManager.Instance.HideLevelCompletedPanel();
         int[] nextLevel = GetNextLevel();
-        LoadLevel(nextLevel[0], nextLevel[1]);
+        if (GetCurrentLevel()[0] == 4 && GetCurrentLevel()[1] == 8) LoadLevel("Ringraziamenti");
+        else LoadLevel(nextLevel[0], nextLevel[1]);
     }
 
     public void ReturnToMainMenu(bool _ShowLevelsPanel = false) {

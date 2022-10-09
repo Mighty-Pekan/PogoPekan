@@ -55,7 +55,10 @@ public class LoadLevelsButton : MonoBehaviour
     }
 
     public void LoadLevel() {
-        GameController.Instance.LoadLevel(GameController.Instance.SelectedWorld + "."+level);
+        if (GameController.Instance.CanLevelButtonsBePressed){
+            GameController.Instance.CanLevelButtonsBePressed = false;
+            GameController.Instance.LoadLevel(GameController.Instance.SelectedWorld + "." + level);
+        } 
     }
 
 }

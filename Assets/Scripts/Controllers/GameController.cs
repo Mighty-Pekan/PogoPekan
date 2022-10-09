@@ -18,13 +18,14 @@ public class GameController : MonoSingleton<GameController> {
     public int NumLevelsPerWorld { get => numLevelsPerWorld; }
     public int NumWorlds { get => numWorlds; }
     public int SelectedWorld { get; set; } = 1;
+    public bool CanLevelButtonsBePressed { get; set; } = true;
 
     
 
     [HideInInspector] public string SFX_VOLUME_KEY = "SfxVolume";
     [HideInInspector] public string MASTER_VOLUME_KEY = "MasterVolume";
     [HideInInspector] public string MUSIC_VOLUME_KEY = "MusicVolume";
-    [HideInInspector] public bool ShowLevelsPanel = false;
+    [SerializeField]public bool ShowLevelsPanel = false;
     [HideInInspector] public bool IsPause = false;
     [Header("Settings")]
     [SerializeField] int numLevelsPerWorld;
@@ -136,13 +137,12 @@ public class GameController : MonoSingleton<GameController> {
 
     public void ReturnToMainMenu(bool _ShowLevelsPanel = false) {
         Debug.Log("return to main menu called with value: "+_ShowLevelsPanel);
+        CanLevelButtonsBePressed = true;
         ShowLevelsPanel = _ShowLevelsPanel;
         SceneManager.LoadScene("Menu");
         UIManager.Instance.OpenPausePanel(false);
         AudioManager.Instance.ChangeMusic();
     }
-
-    
 
     public void LoadLevel(string levelName) {StartCoroutine(LoadLevelCor(levelName));}
     public void LoadLevel(int world, int level) {StartCoroutine(LoadLevelCor(world.ToString() + "." + level.ToString()));}

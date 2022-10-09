@@ -5,6 +5,6 @@ using UnityEngine;
 public class ExitButton : MonoBehaviour
 {
     public void MainMenu() {
-        GameController.Instance.ReturnToMainMenu();
+        GameController.Instance.ReturnToMainMenu(false);
     }
 }

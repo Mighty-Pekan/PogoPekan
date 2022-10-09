@@ -30,7 +30,12 @@ public class GameController : MonoSingleton<GameController> {
     [SerializeField] int numLevelsPerWorld;
     [SerializeField] int numWorlds;
     [SerializeField] public bool unlockAllLevels;
+    Animator cameraAnimator;
 
+    public void RegisterCameraAnimator(Animator animator) {
+        Debug.Log("anim registeered");
+        cameraAnimator = animator;
+    }
     public bool IsMobileBuild() {
         return Application.platform == RuntimePlatform.Android;
     }
@@ -55,6 +60,7 @@ public class GameController : MonoSingleton<GameController> {
         if (!wasGameoverCalled) {
             wasGameoverCalled = true;
             canPauseBeCalled = false;
+            if(cameraAnimator)cameraAnimator.SetTrigger("Zoom");
             StartCoroutine(GameOverCor());
         }
             

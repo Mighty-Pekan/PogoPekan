@@ -46,8 +46,9 @@ MonoBehaviour:
   SFX_VOLUME_KEY: SfxVolume
   MASTER_VOLUME_KEY: MasterVolume
   MUSIC_VOLUME_KEY: MusicVolume
-  IsPause: 0
   ShowLevelsPanel: 0
+  IsPause: 0
   numLevelsPerWorld: 8
   numWorlds: 4
   unlockAllLevels: 1
+  cameraAnimator: {fileID: 0}

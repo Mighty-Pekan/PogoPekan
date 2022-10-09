@@ -28,7 +28,7 @@ public class FadePanel : MonoBehaviour
             if (canvasGroup == null) yield break;
         }
         canvasGroup.alpha = 1;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
     }
 
     public IEnumerator Disapear() {

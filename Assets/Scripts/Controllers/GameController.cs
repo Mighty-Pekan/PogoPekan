@@ -124,7 +124,7 @@ public class GameController : MonoSingleton<GameController> {
         LevelsDataManager.Instance.RegisterNewTime(timer.GetTime());
         int[] nextLevel = GetNextLevel();
 
-        if (GetCurrentLevel()[0]<=numWorlds && GetCurrentLevel()[1]<NumLevelsPerWorld)
+        if (GetCurrentLevel()[0]<=numWorlds && GetCurrentLevel()[1]<=NumLevelsPerWorld)
         LevelsDataManager.Instance.UnlockLevel(nextLevel[0], nextLevel[1]);
 
         Destroy(player.gameObject);

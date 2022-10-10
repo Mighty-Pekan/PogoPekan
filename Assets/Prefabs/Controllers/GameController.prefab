@@ -50,4 +50,4 @@ MonoBehaviour:
   IsPause: 0
   numLevelsPerWorld: 8
   numWorlds: 4
-  unlockAllLevels: 0
+  unlockAllLevels: 1

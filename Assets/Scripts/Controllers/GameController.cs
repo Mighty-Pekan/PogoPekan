@@ -41,7 +41,7 @@ public class GameController : MonoSingleton<GameController> {
         return Application.platform == RuntimePlatform.Android;
     }
     private void Start() {
-
+        Application.targetFrameRate = 60;
         Screen.orientation = ScreenOrientation.LandscapeLeft; //or right for right landscape
     }
 

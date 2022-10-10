@@ -50,5 +50,4 @@ MonoBehaviour:
   IsPause: 0
   numLevelsPerWorld: 8
   numWorlds: 4
-  unlockAllLevels: 1
-  cameraAnimator: {fileID: 0}
+  unlockAllLevels: 0

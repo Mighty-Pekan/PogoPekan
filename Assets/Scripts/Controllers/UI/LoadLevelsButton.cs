@@ -22,9 +22,10 @@ public class LoadLevelsButton : MonoBehaviour
     }
 
     private void OnEnable() {
-        if(level ==1)Debug.Log("enable called with world: "+ GameController.Instance.SelectedWorld);
+        //if(level ==1)Debug.Log("enable called with world: "+ GameController.Instance.SelectedWorld);
 
         if (LevelsDataManager.Instance.IsLevelUnlocked(GameController.Instance.SelectedWorld, level)) {
+            Debug.Log("level "+GameController.Instance.SelectedWorld+"."+level+" is UNLOCKED");
             myButton.interactable = true;
             myButton.image.color = Color.white;
             myButton.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
@@ -39,6 +40,8 @@ public class LoadLevelsButton : MonoBehaviour
             bestTimePanel.color = Color.white;
         }
         else {
+            Debug.Log("level " + GameController.Instance.SelectedWorld + "." + level + " is locked");
+            myButton.interactable = false;
             myButton.image.color = GameController.Instance.GetLockedColor();
             myButton.GetComponentInChildren<TextMeshProUGUI>().color = GameController.Instance.GetLockedTextColor();
             evaluateFishesIndicatorsColor();

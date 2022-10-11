@@ -19,7 +19,7 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
     }
     //==============================================================================setter
     public void UnlockLevel(int world, int level) {
-        if (world > 0 && world <= GameController.Instance.NumWorlds && level>0 && level<GameController.Instance.NumLevelsPerWorld) {
+        if (world > 0 && world <= GameController.Instance.NumWorlds && level>0 && level<=GameController.Instance.NumLevelsPerWorld) {
             Debug.Log(world + "." + level + " unlocked");
             if (!GetLevelData(world, level).Unlocked) {
                 GetLevelData(world, level).Unlocked = true;

@@ -41,6 +41,7 @@ public class LoadLevelsButton : MonoBehaviour
         }
         else {
             Debug.Log("level " + GameController.Instance.SelectedWorld + "." + level + " is locked");
+            bestTimeText.text = "----";
             myButton.interactable = false;
             myButton.image.color = GameController.Instance.GetLockedColor();
             myButton.GetComponentInChildren<TextMeshProUGUI>().color = GameController.Instance.GetLockedTextColor();

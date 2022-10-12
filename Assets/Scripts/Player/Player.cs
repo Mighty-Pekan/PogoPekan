@@ -70,8 +70,10 @@ public class Player : MonoBehaviour {
                 stopAllSounds();
                 DeactivateSuperjump();
                 EndButtHit();
-                animator.enabled = false;
+                //animator.enabled = false;
+                animator.SetTrigger("Death");
                 GetComponent<SpriteRenderer>().sprite = gameoverSprite;
+                
             }
         }
     }

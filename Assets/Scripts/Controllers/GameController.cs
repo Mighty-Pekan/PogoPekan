@@ -62,7 +62,7 @@ public class GameController : MonoSingleton<GameController> {
         if (!wasGameoverCalled) {
             wasGameoverCalled = true;
             canPauseBeCalled = false;
-            if(cameraAnimator)cameraAnimator.SetTrigger("Zoom");
+            //if(cameraAnimator)cameraAnimator.SetTrigger("Zoom");
             StartCoroutine(GameOverCor());
         }
             

@@ -25,8 +25,9 @@ public class GameController : MonoSingleton<GameController> {
     [HideInInspector] public string SFX_VOLUME_KEY = "SfxVolume";
     [HideInInspector] public string MASTER_VOLUME_KEY = "MasterVolume";
     [HideInInspector] public string MUSIC_VOLUME_KEY = "MusicVolume";
-    [SerializeField]public bool ShowLevelsPanel = false;
+    [HideInInspector]public bool ShowLevelsPanel = false;
     [HideInInspector] public bool IsPause = false;
+
     [Header("Settings")]
     [SerializeField] int numLevelsPerWorld;
     [SerializeField] int numWorlds;
@@ -133,9 +134,13 @@ public class GameController : MonoSingleton<GameController> {
 
     public void LoadNextLevel() {
         UIManager.Instance.HideLevelCompletedPanel();
-        int[] nextLevel = GetNextLevel();
+        
         if (GetCurrentLevel()[0] == 4 && GetCurrentLevel()[1] == 8) LoadLevel("Ringraziamenti");
-        else LoadLevel(nextLevel[0], nextLevel[1]);
+        else {
+            int[] nextLevel = GetNextLevel();
+            LoadLevel(nextLevel[0], nextLevel[1]);
+        }
+        
     }
 
     public void ReturnToMainMenu(bool _ShowLevelsPanel = false) {

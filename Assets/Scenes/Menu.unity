@@ -496,8 +496,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -106.59402}
-  m_SizeDelta: {x: 348.16003, y: 39.29701}
+  m_AnchoredPosition: {x: 174.08, y: -106.65333}
+  m_SizeDelta: {x: 348.16003, y: 39.326664}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &254148033
 MonoBehaviour:
@@ -1983,8 +1983,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -44.38701}
-  m_SizeDelta: {x: 348.16003, y: 62.20701}
+  m_AnchoredPosition: {x: 174.08, y: -44.416664}
+  m_SizeDelta: {x: 348.16003, y: 62.236664}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &480717432
 MonoBehaviour:
@@ -3507,7 +3507,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 174.08, y: -0}
-  m_SizeDelta: {x: 348.16003, y: 44.38701}
+  m_SizeDelta: {x: 348.16003, y: 44.416664}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &933227398
 MonoBehaviour:
@@ -4035,8 +4035,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -145.89102}
-  m_SizeDelta: {x: 348.16003, y: 38.02701}
+  m_AnchoredPosition: {x: 174.08, y: -145.98}
+  m_SizeDelta: {x: 348.16003, y: 38.056664}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1002477146
 MonoBehaviour:
@@ -5370,8 +5370,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -223.21504}
-  m_SizeDelta: {x: 348.16003, y: 62.20701}
+  m_AnchoredPosition: {x: 174.08, y: -223.36331}
+  m_SizeDelta: {x: 348.16003, y: 62.236664}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1648645489
 MonoBehaviour:
@@ -6213,8 +6213,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.08, y: -183.91803}
-  m_SizeDelta: {x: 348.16003, y: 39.29701}
+  m_AnchoredPosition: {x: 174.08, y: -184.03665}
+  m_SizeDelta: {x: 348.16003, y: 39.326664}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1728226149
 MonoBehaviour:
@@ -6947,12 +6947,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Nicolo'' Bertoli (gameplay, DB, sounds handling, UI)
+  m_text: 'Nicolo'' Bertoli (gameplay, DB handlng, sounds handling, UI logic)
 
 
 
-    Pietro A.
-    Di Giovanni (UI, cameras handling)
+    Pietro
+    A. Di Giovanni (UI, cameras handling)
 
 
 
@@ -6960,8 +6960,8 @@ MonoBehaviour:
 
 
 
-    Alessandro Giacomini
-    (testing, bug fixing, animations)'
+    Alessandro
+    Giacomini (testing, animations)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
   m_sharedMaterial: {fileID: -5886020581555721959, guid: d383f59dd3ccc49158dba86319278d0a, type: 2}
@@ -6988,7 +6988,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19
+  m_fontSize: 18.3
   m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 1

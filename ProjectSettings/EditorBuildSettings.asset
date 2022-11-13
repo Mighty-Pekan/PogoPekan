@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 70c1d96f35827bc42906267a34d08c7a
   - enabled: 1
+    path: Assets/Scenes/parco giochi.unity
+    guid: 0c6274641c7b30642af52e558a9cc431
+  - enabled: 1
     path: Assets/Scenes/Ringraziamenti.unity
     guid: 3536d3fba7140d74a9dfd049cb4d2aa8
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Worlds/World 1/1.1.unity
+    guid: ed9a38f4db5bd764a88dc06d53bea869
   - enabled: 1
     path: Assets/Scenes/Worlds/World 1/1.2.unity
     guid: f7e178c73362b2343a337a103c4c8a48

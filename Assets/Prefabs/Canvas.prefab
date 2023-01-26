@@ -1,5 +1,40 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6721264817205523619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 526156531024158326, guid: 564c3ab7f256d7c459fa434d0778cdab, type: 3}
+  m_PrefabInstance: {fileID: 6054115239070522608}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1814273213443685000}
+  m_Layer: 0
+  m_Name: 'Stars (Missing Prefab with guid: 564c3ab7f256d7c459fa434d0778cdab)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1814273213443685000
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 5560008594692433528, guid: 564c3ab7f256d7c459fa434d0778cdab, type: 3}
+  m_PrefabInstance: {fileID: 6054115239070522608}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721264817205523619}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3817357131373167654}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8046919073298180727
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,6 +146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stars
       objectReference: {fileID: 0}
+    - target: {fileID: 526156531024158326, guid: 564c3ab7f256d7c459fa434d0778cdab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5560008594692433528, guid: 564c3ab7f256d7c459fa434d0778cdab, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -197,8 +236,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 564c3ab7f256d7c459fa434d0778cdab, type: 3}
---- !u!224 &1814273213443685000 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5560008594692433528, guid: 564c3ab7f256d7c459fa434d0778cdab, type: 3}
-  m_PrefabInstance: {fileID: 6054115239070522608}
-  m_PrefabAsset: {fileID: 0}

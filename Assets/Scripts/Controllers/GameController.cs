@@ -131,6 +131,7 @@ public class GameController : MonoSingleton<GameController> {
 
         Destroy(player.gameObject);
         UIManager.Instance.ShowLevelCompletedPanel(timer.GetTime());
+        canPauseBeCalled = false;
     }
 
     public void LoadNextLevel() {

@@ -10,6 +10,13 @@ public class SelectWorldButton : MonoBehaviour
     [SerializeField] int world = 1;
     [SerializeField] GameObject panelToActivate;
 
+    [SerializeField] GameObject mainBackground;
+    [SerializeField] GameObject backgroundW1;
+    [SerializeField] GameObject backgroundW2;
+    [SerializeField] GameObject backgroundW3;
+    [SerializeField] GameObject backgroundW4;
+
+
     private Button myButton;
 
     private void Start() {
@@ -32,6 +39,38 @@ public class SelectWorldButton : MonoBehaviour
     public void SelectWorld() {
         GameController.Instance.SelectedWorld = world;
         panelToActivate.SetActive(true);
+        switch (world)
+        {
+            case 1: backgroundW1.SetActive(true);
+                    backgroundW2.SetActive(false);
+                    backgroundW3.SetActive(false);
+                    backgroundW4.SetActive(false);
+                    mainBackground.SetActive(false);
+                    break;
+            case 2:
+                    backgroundW1.SetActive(false);
+                    backgroundW2.SetActive(true);
+                    backgroundW3.SetActive(false);
+                    backgroundW4.SetActive(false);
+                    mainBackground.SetActive(false);
+                    break;
+
+            case 3:
+                    backgroundW1.SetActive(false);
+                    backgroundW2.SetActive(false);
+                    backgroundW3.SetActive(true);
+                    backgroundW4.SetActive(false);
+                    mainBackground.SetActive(false);
+                    break;
+
+            case 4:
+                    backgroundW1.SetActive(false);
+                    backgroundW2.SetActive(false);
+                    backgroundW3.SetActive(false);
+                    backgroundW4.SetActive(true);
+                    mainBackground.SetActive(false);
+                    break;
+        }
     }
 
     //private void IEN

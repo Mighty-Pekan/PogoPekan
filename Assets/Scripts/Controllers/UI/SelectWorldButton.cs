@@ -20,12 +20,12 @@ public class SelectWorldButton : MonoBehaviour
             myButton.interactable = true;
             myButton.image.color = Color.white;
             myButton.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
-            GetComponent<Hover>().CanExpand = true;
+            GetComponent<ButtonUIHover>().IsInteractable = true;
         }
         else {
             myButton.image.color = GameController.Instance.GetLockedColor();
             myButton.GetComponentInChildren<TextMeshProUGUI>().color = GameController.Instance.GetLockedTextColor();
-            GetComponent<Hover>().CanExpand = false;
+            GetComponent<ButtonUIHover>().IsInteractable = false;
         }
     }
 

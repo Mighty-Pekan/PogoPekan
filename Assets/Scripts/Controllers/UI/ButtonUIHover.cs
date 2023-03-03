@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Hover : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
+public class ButtonUIHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public bool CanExpand { get; set; } = true;
+    public bool IsInteractable { get; set; } = true;
 
     // Start is called before the first frame update
     [SerializeField] bool isHover;
     [SerializeField] float scaleSpeed = 24;
-    [SerializeField]Vector3 scaleFactor = new Vector3(1.3f, 1.3f, 1.3f);
+    [SerializeField] Vector3 scaleFactor = new Vector3(1.3f, 1.3f, 1.3f);
     Vector3 initialScale;
 
     void Start()
@@ -18,12 +18,14 @@ public class Hover : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
         initialScale = transform.localScale;
     }
 
-    public void OnEnable() {
+    public void OnEnable()
+    {
         isHover = false;
     }
 
-    public void OnPointerEnter(PointerEventData eventData) {
-        if(CanExpand)
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (IsInteractable)
             isHover = true;
     }
     public void OnPointerExit(PointerEventData eventData)

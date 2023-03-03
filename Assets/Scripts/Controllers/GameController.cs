@@ -26,6 +26,7 @@ public class GameController : MonoSingleton<GameController>
     [Header("Settings")]
     [SerializeField] int numLevelsPerWorld;
     [SerializeField] int numWorlds;
+
     Animator cameraAnimator;
 
     public void RegisterCameraAnimator(Animator animator)
@@ -48,8 +49,6 @@ public class GameController : MonoSingleton<GameController>
 
     private void Update()
     {
-        //Debug.Log("can pause be called: " + canPauseBeCalled);
-        //Debug.Log(SelectedWorld);
         if (IsPause)
         {
             Time.timeScale = 0;
@@ -59,6 +58,7 @@ public class GameController : MonoSingleton<GameController>
             Time.timeScale = 1;
         }
     }
+
     public bool wasGameoverCalled { get; private set; } = false;
     public bool canPauseBeCalled { get; set; } = true;
 
@@ -205,8 +205,7 @@ public class GameController : MonoSingleton<GameController>
     }
     public int GetMaxTimeForFish() { return fishMaxTimeSetter.MaxTimeForFish; }
 
-    //note: if you have more than 8 levels per world / and more than 4 worlds you have to modify this -Nicolò 
-    // I'm not sure about that -Pietro
+    //note: if you have more than 8 levels per world and/or more than 4 worlds you have to modify this 
 
     /// <summary>
     /// returns [current world, current level]

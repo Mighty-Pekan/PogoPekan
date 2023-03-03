@@ -38,7 +38,7 @@ public class AudioManager : MonoSingleton<AudioManager> {
 
         yield return new WaitForSeconds(0.1f);
 
-        if (GameController.Instance.isStartMenu()) {
+        if (GameController.Instance.IsMainMenu()) {
             while (true) {
                 yield return new WaitForSeconds(0.2f);
                 if (!musicAudioSource.isPlaying) {

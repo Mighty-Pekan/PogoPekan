@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-//using UnityEngine.WSA;
 using UnityEngine;
 
 public static class FileHandler {
@@ -59,7 +58,6 @@ public static class FileHandler {
 
     }
 
-    //----------------------------------------------------------------------------------private methods
     private static string GetPath(string filename) {
         return UnityEngine.Application.persistentDataPath + "/" + filename;
     }

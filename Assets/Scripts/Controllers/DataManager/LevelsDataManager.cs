@@ -17,7 +17,7 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
         }
         else
         {
-            Debug.Log("Loaded existed DB");
+            Debug.Log("Loaded existing DB");
         }
 
         LoadData();
@@ -132,23 +132,24 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
             return true;
         }
     }
-}
 
-[Serializable]
-public class LevelData
-{
-    public int World;
-    public int Level;
-    public bool Unlocked;
-    public bool[] Fishes;
-    public int BestTime;
-
-    public LevelData(int _world, int _level)
+    [Serializable]
+    private class LevelData
     {
-        World = _world;
-        Level = _level;
-        Unlocked = false;
-        Fishes = new bool[3] { false, false, false };
-        BestTime = -1;
+        public int World;
+        public int Level;
+        public bool Unlocked;
+        public bool[] Fishes;
+        public int BestTime;
+
+        public LevelData(int _world, int _level)
+        {
+            World = _world;
+            Level = _level;
+            Unlocked = false;
+            Fishes = new bool[3] { false, false, false };
+            BestTime = -1;
+        }
     }
 }
+

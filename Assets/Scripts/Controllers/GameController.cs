@@ -4,85 +4,94 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-public class GameController : MonoSingleton<GameController> {
-    
-
-
+public class GameController : MonoSingleton<GameController>
+{
     private Player player;
     private InputManager inputManager;
     private FadePanel fadePanel;
     private Timer timer;
     private FishMaxTimeSetter fishMaxTimeSetter;
 
-    
     public int NumLevelsPerWorld { get => numLevelsPerWorld; }
     public int NumWorlds { get => numWorlds; }
     public int SelectedWorld { get; set; } = 1;
     public bool CanLevelButtonsBePressed { get; set; } = true;
 
-    
-
     [HideInInspector] public string SFX_VOLUME_KEY = "SfxVolume";
     [HideInInspector] public string MASTER_VOLUME_KEY = "MasterVolume";
     [HideInInspector] public string MUSIC_VOLUME_KEY = "MusicVolume";
-    [HideInInspector]public bool ShowLevelsPanel = false;
+    [HideInInspector] public bool ShowLevelsPanel = false;
     [HideInInspector] public bool IsPause = false;
 
     [Header("Settings")]
     [SerializeField] int numLevelsPerWorld;
     [SerializeField] int numWorlds;
-    [SerializeField] public bool unlockAllLevels;
+
     Animator cameraAnimator;
 
-    public void RegisterCameraAnimator(Animator animator) {
+    public void RegisterCameraAnimator(Animator animator)
+    {
         Debug.Log("anim registeered");
         cameraAnimator = animator;
     }
-    public bool IsMobileBuild() {
+    public bool IsMobileBuild()
+    {
         return Application.platform == RuntimePlatform.Android;
     }
-    private void Start() {
+
+    private void Start()
+    {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 90;
+        Application.targetFrameRate = 60;
+
         Screen.orientation = ScreenOrientation.LandscapeLeft; //or right for right landscape
     }
 
-    private void Update() {
-        //Debug.Log("can pause be called: " + canPauseBeCalled);
-        //Debug.Log(SelectedWorld);
-        if (IsPause) {
+    private void Update()
+    {
+        if (IsPause)
+        {
             Time.timeScale = 0;
         }
-        else {
+        else
+        {
             Time.timeScale = 1;
         }
     }
+
     public bool wasGameoverCalled { get; private set; } = false;
     public bool canPauseBeCalled { get; set; } = true;
-    public void GameOver() {
-        if (!wasGameoverCalled) {
+
+    public void GameOver()
+    {
+        if (!wasGameoverCalled)
+        {
             wasGameoverCalled = true;
             canPauseBeCalled = false;
             //if(cameraAnimator)cameraAnimator.SetTrigger("Zoom");
             StartCoroutine(GameOverCor());
         }
-            
+
     }
-    public Color GetLockedColor() {
-        return new Color32(164, 164, 164,255);
+    public Color GetLockedColor()
+    {
+        return new Color32(164, 164, 164, 255);
     }
-    public Color GetLockedTextColor() {
-        return new Color32(64, 64, 64,255);
+    public Color GetLockedTextColor()
+    {
+        return new Color32(64, 64, 64, 255);
     }
-    private IEnumerator GameOverCor() {
+    private IEnumerator GameOverCor()
+    {
         AudioManager.Instance.StopMusic();
         AudioManager.Instance.GameoverAudioSource.Play();
         player.IsAlive = false;
         yield return new WaitForSeconds(1.5f);
         ReloadLevel();
-        wasGameoverCalled=false;
+        wasGameoverCalled = false;
     }
-    public void ReloadLevel() {
+    public void ReloadLevel()
+    {
         UIManager.Instance.HideLevelCompletedPanel();
         UIManager.Instance.OpenPausePanel(false);
         IsPause = false;
@@ -90,129 +99,154 @@ public class GameController : MonoSingleton<GameController> {
         LoadLevel(level[0], level[1]);
     }
 
-    public Player GetPlayer() {
+    public Player GetPlayer()
+    {
         return player;
     }
     //==============================================================registering objects
-    public void RegisterInputManager(InputManager _inputManager) {
+    public void RegisterInputManager(InputManager _inputManager)
+    {
         inputManager = _inputManager;
     }
-    public void RegisterPlayer(Player _player) {
+    public void RegisterPlayer(Player _player)
+    {
         player = _player;
     }
-    public void RegisterFadePanel(FadePanel _fadePanel) {
+    public void RegisterFadePanel(FadePanel _fadePanel)
+    {
         fadePanel = _fadePanel;
     }
-    public void RegisterTimer(Timer _timer) {
+    public void RegisterTimer(Timer _timer)
+    {
         timer = _timer;
     }
-    public void RegisterFishTimeSetter(FishMaxTimeSetter fts) {
+    public void RegisterFishTimeSetter(FishMaxTimeSetter fts)
+    {
         fishMaxTimeSetter = fts;
     }
     //============================================================== getters
 
-    public InputManager GetInputManager() {
+    public InputManager GetInputManager()
+    {
         return inputManager;
     }
-    public void ResetPlayerPosition() {
+
+    public void ResetPlayerPosition()
+    {
         player.ResetInitialPosition();
     }
 
     //=============================================================== CUSTOM SCENE MANAGER
-    public void ExitReached() {
-        if (timer.GetTime() <= fishMaxTimeSetter.MaxTimeForFish) {
+    public void ExitReached()
+    {
+        if (timer.GetTime() <= fishMaxTimeSetter.MaxTimeForFish)
+        {
             LevelsDataManager.Instance.SetTimeFishFound();
         }
+
         LevelsDataManager.Instance.RegisterNewTime(timer.GetTime());
         int[] nextLevel = GetNextLevel();
 
-        if (GetCurrentLevel()[0]<=numWorlds && GetCurrentLevel()[1]<=NumLevelsPerWorld)
-        LevelsDataManager.Instance.UnlockLevel(nextLevel[0], nextLevel[1]);
+        if (GetCurrentLevel()[0] <= numWorlds && GetCurrentLevel()[1] <= numLevelsPerWorld)
+            LevelsDataManager.Instance.UnlockLevel(nextLevel[0], nextLevel[1]);
 
         Destroy(player.gameObject);
         UIManager.Instance.ShowLevelCompletedPanel(timer.GetTime());
         canPauseBeCalled = false;
     }
 
-    public void LoadNextLevel() {
+    public void LoadNextLevel()
+    {
         UIManager.Instance.HideLevelCompletedPanel();
-        
-        if (GetCurrentLevel()[0] == 4 && GetCurrentLevel()[1] == 8) LoadLevel("Ringraziamenti");
-        else {
+
+        if (GetCurrentLevel()[0] == numLevelsPerWorld && GetCurrentLevel()[1] == numWorlds) LoadLevel("Ringraziamenti");
+        else
+        {
             int[] nextLevel = GetNextLevel();
             LoadLevel(nextLevel[0], nextLevel[1]);
         }
-        
+
     }
 
-    public void ReturnToMainMenu(bool _ShowLevelsPanel = false) {
-        Debug.Log("return to main menu called with value: "+_ShowLevelsPanel);
+    public void ReturnToMainMenu(bool _ShowLevelsPanel = false)
+    {
+        Debug.Log("return to main menu called with value: " + _ShowLevelsPanel);
         CanLevelButtonsBePressed = true;
-        ShowLevelsPanel = _ShowLevelsPanel;
+       // ShowLevelsPanel = _ShowLevelsPanel;
         SceneManager.LoadScene("Menu");
         UIManager.Instance.OpenPausePanel(false);
         AudioManager.Instance.ChangeMusic();
     }
 
-    public void LoadLevel(string levelName) {StartCoroutine(LoadLevelCor(levelName));}
-    public void LoadLevel(int world, int level) {StartCoroutine(LoadLevelCor(world.ToString() + "." + level.ToString()));}
+    public void LoadLevel(string levelName) { StartCoroutine(LoadLevelCor(levelName)); }
+    public void LoadLevel(int world, int level) { StartCoroutine(LoadLevelCor(world.ToString() + "." + level.ToString())); }
 
-    private IEnumerator LoadLevelCor(string levelName) {
+    private IEnumerator LoadLevelCor(string levelName)
+    {
         yield return StartCoroutine(fadePanel.Apear(levelName));
-        if(timer!=null)timer.Reset();
+        if (timer != null) timer.Reset();
         SceneManager.LoadScene(levelName);
-        if (UIManager.Instance != null) {
+        if (UIManager.Instance != null)
+        {
             UIManager.Instance.OpenPausePanel(false);
             UIManager.Instance.HideLevelCompletedPanel();
         }
         AudioManager.Instance.ChangeMusic();
     }
 
-    public int GetLevelsCount() {
+    public int GetLevelsCount()
+    {
         return SceneManager.sceneCountInBuildSettings;
     }
 
-    public bool isStartMenu() {
+    public bool IsMainMenu()
+    {
         return SceneManager.GetActiveScene().buildIndex == 0;
     }
     public int GetMaxTimeForFish() { return fishMaxTimeSetter.MaxTimeForFish; }
 
-    //note: if you have more than 9 levels per world / worlds you have to modify this
+    //note: if you have more than 8 levels per world and/or more than 4 worlds you have to modify this 
+
     /// <summary>
     /// returns [current world, current level]
     /// </summary>
     /// <returns></returns>
-    public int[] GetCurrentLevel() {
-        if (isStartMenu()) return (new int [2] {-1,-1});
-        int[] ris = new int[2] { 
+    public int[] GetCurrentLevel()
+    {
+        if (IsMainMenu()) return (new int[2] { -1, -1 });
+
+        // Example scene names for levels: 1.1 - 2.5 - 4.8
+
+        int[] currentLevel = new int[2] {
             (int)Char.GetNumericValue(SceneManager.GetActiveScene().name.ToCharArray()[0]),
             (int)Char.GetNumericValue(SceneManager.GetActiveScene().name.ToCharArray()[2])
         };
-        return ris;
+
+        return currentLevel;
     }
 
     /// <summary>
     /// returns [next level world, next level]
     /// </summary>
     /// <returns></returns>
-    public int[] GetNextLevel() {
-
+    public int[] GetNextLevel()
+    {
         int[] ris = new int[2];
 
-        int [] currentLevelComlete = GetCurrentLevel();
-        int currentLevel = currentLevelComlete[1];
-        int currentWorld = currentLevelComlete[0];
+        int[] currentLevelComplete = GetCurrentLevel();
+        int currentLevel = currentLevelComplete[1];
+        int currentWorld = currentLevelComplete[0];
 
-        if(currentLevel == NumLevelsPerWorld) {
+        if (currentLevel == numLevelsPerWorld)
+        {
             ris[0] = currentWorld + 1;
             ris[1] = 1;
         }
-        else {
+        else
+        {
             ris[0] = currentWorld;
-            ris[1] = currentLevel+1;
+            ris[1] = currentLevel + 1;
         }
         return ris;
     }
-
-
 }

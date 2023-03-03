@@ -12,23 +12,29 @@ public class BouncingPart : MonoBehaviour
     private bool canGenerateParticles;
     public bool isAlive = true;
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    private void OnCollisionEnter2D(Collision2D other)
+    {
         HandleBounce(other);
     }
 
-    private void OnCollisionStay2D(Collision2D other) {
+    private void OnCollisionStay2D(Collision2D other)
+    {
         HandleBounce(other);
     }
 
-    private void HandleBounce(Collision2D other) {
-        if (other.gameObject.tag != "Player" && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHitDive()) && isAlive) {
+    private void HandleBounce(Collision2D other)
+    {
+        if (other.gameObject.tag != "Player" && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHitDive()) && isAlive)
+        {
 
-            if (canBounce) {
+            if (canBounce)
+            {
                 player.Bounce(other);
                 canBounce = false;
                 StartCoroutine(enableBounceCor());
             }
-            if (canGenerateParticles) {
+            if (canGenerateParticles)
+            {
                 HandleParticlesGeneration(other);
                 canGenerateParticles = false;
                 StartCoroutine(enableParticlesCor());
@@ -36,25 +42,30 @@ public class BouncingPart : MonoBehaviour
         }
     }
 
-    private void HandleParticlesGeneration(Collision2D other) {
+    private void HandleParticlesGeneration(Collision2D other)
+    {
         ParticlesEmitterIfHit otherEmitter = other.gameObject.GetComponent<ParticlesEmitterIfHit>();
-        if(otherEmitter != null) {
+        if (otherEmitter != null)
+        {
             GameObject particles = Instantiate(otherEmitter.getParticles(), transform.position, Quaternion.identity);
             particles.transform.up = transform.up;
             particles.GetComponent<ParticleSystem>().Play();
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision) {
+    private void OnCollisionExit2D(Collision2D collision)
+    {
         canBounce = true;
         canGenerateParticles = true;
     }
 
-    private IEnumerator enableBounceCor() {
+    private IEnumerator enableBounceCor()
+    {
         yield return new WaitForSeconds(resetBounceTime);
         canBounce = true;
     }
-    private IEnumerator enableParticlesCor() {
+    private IEnumerator enableParticlesCor()
+    {
         yield return new WaitForSeconds(resetBounceTime);
         canGenerateParticles = true;
     }

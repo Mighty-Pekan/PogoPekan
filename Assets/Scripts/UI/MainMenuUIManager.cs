@@ -8,16 +8,19 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] GameObject LevelsSelectionPanel;
     [SerializeField] AudioSource buttonClickAudioSource;
 
-    private void Start() {
+    private void Start()
+    {
         MainMenuPanel.SetActive(!GameController.Instance.ShowLevelsPanel);
         LevelsSelectionPanel.SetActive(GameController.Instance.ShowLevelsPanel);
     }
 
-    public void MakeButtonSound() {
+    public void MakeButtonSound()
+    {
         buttonClickAudioSource.Play();
     }
 
-    public void QuitGame() {
+    public void QuitGame()
+    {
         Application.Quit();
     }
 

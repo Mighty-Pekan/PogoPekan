@@ -26,7 +26,6 @@ public class GameController : MonoSingleton<GameController>
     [Header("Settings")]
     [SerializeField] int numLevelsPerWorld;
     [SerializeField] int numWorlds;
-    [SerializeField] public bool unlockAllLevels;
     Animator cameraAnimator;
 
     public void RegisterCameraAnimator(Animator animator)

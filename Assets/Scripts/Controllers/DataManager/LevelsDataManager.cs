@@ -17,7 +17,7 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
         }
         else
         {
-            Debug.Log("Loaded already existed DB");
+            Debug.Log("Loaded existed DB");
         }
 
         LoadData();
@@ -100,11 +100,6 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
             }
         }
         levelsData[0].Unlocked = true;
-
-        if (GameController.Instance.unlockAllLevels)
-        {
-            foreach (LevelData l in levelsData) l.Unlocked = true;
-        }
 
         FileHandler.SaveToJSON<LevelData>(levelsData, DB_FILE_NAME);
     }

@@ -76,6 +76,7 @@ public class InputManager : MonoSingleton<InputManager>
                         rotationDirection = -1;
                     else
                         rotationDirection = 1;
+
                     if (touch.phase == TouchPhase.Ended)
                         rotationDirection = 0;
                 }
@@ -135,15 +136,8 @@ public class InputManager : MonoSingleton<InputManager>
     {
         return rotationDirection;
     }
-
     
     public bool IsDoubleHold() {
         return isDoubleHold;
     }
-
-    //public void ToggleTouchInput()
-    //{
-    //    touchInputEnabled = !touchInputEnabled;
-    //    Debug.Log("touch input switched: " + touchInputEnabled);
-    //}
 }

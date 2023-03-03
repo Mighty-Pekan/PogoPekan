@@ -42,7 +42,7 @@ public class GameController : MonoSingleton<GameController>
     private void Start()
     {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 90;
+        Application.targetFrameRate = 60;
 
         Screen.orientation = ScreenOrientation.LandscapeLeft; //or right for right landscape
     }

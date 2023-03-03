@@ -12,16 +12,15 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
     {
         if (IsDBNull())
         {
-            Debug.Log("creating new db");
+            Debug.Log("New DB Created");
             CreateNewDB();
         }
         else
         {
-            Debug.Log("existing db loaded");
+            Debug.Log("Loaded already existed DB");
         }
 
         LoadData();
-
     }
 
     public void UnlockLevel(int world, int level)
@@ -109,14 +108,17 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
 
         FileHandler.SaveToJSON<LevelData>(levelsData, DB_FILE_NAME);
     }
+
     private void LoadData()
     {
         levelsData = FileHandler.ReadListFromJSON<LevelData>(DB_FILE_NAME);
     }
+
     private void SaveData()
     {
         FileHandler.SaveToJSON<LevelData>(levelsData, DB_FILE_NAME);
     }
+
     private LevelData GetLevelData(int world, int level)
     {
         Debug.Log("get level data called with world: " + world + " level: " + level);
@@ -135,23 +137,23 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
             return true;
         }
     }
+}
 
-    [Serializable]
-    private class LevelData
+[Serializable]
+public class LevelData
+{
+    public int World;
+    public int Level;
+    public bool Unlocked;
+    public bool[] Fishes;
+    public int BestTime;
+
+    public LevelData(int _world, int _level)
     {
-        public int World;
-        public int Level;
-        public bool Unlocked;
-        public bool[] Fishes;
-        public int BestTime;
-
-        public LevelData(int _world, int _level)
-        {
-            World = _world;
-            Level = _level;
-            Unlocked = false;
-            Fishes = new bool[3] { false, false, false };
-            BestTime = -1;
-        }
+        World = _world;
+        Level = _level;
+        Unlocked = false;
+        Fishes = new bool[3] { false, false, false };
+        BestTime = -1;
     }
 }

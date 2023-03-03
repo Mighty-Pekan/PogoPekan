@@ -10,4 +10,16 @@ public class CustomMenuItems : Editor
     {
         PlayerPrefs.DeleteAll();
     }
+
+    [MenuItem("Custom Debug/Unlock All Levels")]
+    static void UnlockAllLevels()
+    {
+        for (int level = 0; level <= GameController.Instance.NumLevelsPerWorld; level++)
+        {
+            for (int world = 0; world <= GameController.Instance.NumWorlds; world++)
+            {
+                LevelsDataManager.Instance.UnlockLevel(world, level);
+            }
+        }
+    }
 }

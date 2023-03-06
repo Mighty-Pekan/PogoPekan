@@ -9,8 +9,7 @@ public class Player : MonoBehaviour
     //serialized fields
     [Header("Properties")]
     [SerializeField] private float rotationSpeed = 2f;
-    [SerializeField] private float baseBounceSpeed;
-    [SerializeField] private float boostBounceSpeed;
+
     [SerializeField] private float buttHitRotationSpeed = 600f;
     [SerializeField] private float buttHitSpeed = 10f;
     [SerializeField] private float buttHitTimer = 2f;
@@ -19,16 +18,15 @@ public class Player : MonoBehaviour
     [SerializeField] private float superjumpParticlesMinSpeed = 8;
 
     [Header("References")]
-    [SerializeField] private BouncingPart bouncingPart;
     [SerializeField] private GameObject superjumpParticlesObj;
     [SerializeField] private GameObject superjumpTray;
     [SerializeField] private GameObject superjumpActLight;
     [SerializeField] private GameObject superjumpActBackLight;
     [SerializeField] private ParticleSystem buttHitParticles;
     [SerializeField] private Animator blinkAnimator;
-    [SerializeField] private Sprite gameoverSprite;
 
     [Header("Sprites")]
+    [SerializeField] private Sprite gameoverSprite;
     [SerializeField] private Sprite upSprite;
     [SerializeField] private Sprite downSprite;
 
@@ -43,9 +41,10 @@ public class Player : MonoBehaviour
     [SerializeField] GenericAudioSource blinkAudioSource;
     [SerializeField] GenericAudioSource hammerHitAudioSource;
 
-    [SerializeField] private UnityEvent onSuperJump;
+    [SerializeField] public UnityEvent onSuperJump;
 
-    //private
+    private float bounceForce;
+
     private Vector3 initialPosition;
 
     private TricksDetector tricksDetector;
@@ -56,7 +55,7 @@ public class Player : MonoBehaviour
 
     private bool isPerformingButtHitRotation = false;
     private bool isPerformingButtHitDive = false;
-    private bool isSuperjumpActive = false;
+    private bool canPerformSuperJump = false;
     private ParticleSystem superjumpParticles;
 
     private bool isAlive;
@@ -69,13 +68,11 @@ public class Player : MonoBehaviour
         set
         {
             isAlive = value;
-            bouncingPart.isAlive = value;
             if (value == false)
             {
                 StopAllSounds();
-                DeactivateSuperjump();
+                SuperJumpFailed();
                 EndButtHit();
-                //animator.enabled = false;
                 animator.SetTrigger("Death");
                 GetComponent<SpriteRenderer>().sprite = gameoverSprite;
 
@@ -87,13 +84,14 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
         tricksDetector = new TricksDetector(this);
     }
-
 
     private void Start()
     {
         IsAlive = true;
+
         GameController.Instance.RegisterPlayer(this);
         initialPosition = transform.position;
 
@@ -109,14 +107,18 @@ public class Player : MonoBehaviour
     {
         if (!isAlive) return;
 
+        if (tricksDetector.TrickDetected())
+        {
+            PerformSuperJump();
+        }
+
         HandleRotation();
         HandleSuperjumpParticles();
     }
     private void HandleSuperjumpParticles()
     {
-        if (isSuperjumpActive)
+        if (canPerformSuperJump)
         {
-
             superjumpParticlesObj.transform.position = transform.position + (Vector3)rb.velocity.normalized * superjumpParticlesDistance;
             superjumpParticlesObj.transform.up = rb.velocity.normalized;
 
@@ -179,7 +181,7 @@ public class Player : MonoBehaviour
             isPerformingButtHitRotation = true;
             buttHitStartingPos = transform.position;
             rb.velocity = Vector2.zero;
-            DeactivateSuperjump();
+            SuperJumpFailed();
             tricksDetector.Reset();
         }
 
@@ -232,7 +234,7 @@ public class Player : MonoBehaviour
 
     private void StopAllSounds()
     {
-     //   superjumpAudioSource.Stop();
+        //superjumpAudioSource.Stop();
         culataAudioSource.Stop();
     }
 
@@ -247,51 +249,32 @@ public class Player : MonoBehaviour
         culataAudioSource.Stop();
     }
 
-    public void Bounce(Collision2D other)
+    public void ApplyBounceForce(float force)
+    {
+        bounceForce = force;
+    }
+
+    public void Bounce()
     {
         if (!IsAlive) return;
-            // handling mushrooms bounciness directly
-            float mushroomBounceForce;
-            if (other.gameObject.tag == "Mushroom")
-            {
-                mushroomBounceForce = other.gameObject.GetComponent<Mushroom>().GetBounciness();
-            }
-            else
-            {
-                mushroomBounceForce = 0f;
-            }
 
-            //============================================================================
-
-            if (tricksDetector.TrickDetected())
+        if (IsPerformingButtHitDive() || IsPerformingButtHitRotation())
+        {
+            if (isPerformingButtHitDive)
             {
-                onSuperJump?.Invoke();
-                ActivateSuperjump(mushroomBounceForce);
+                hammerHitAudioSource.Play();
             }
-            else
-            {
-                rb.velocity = transform.up * (baseBounceSpeed + mushroomBounceForce);
-                if (bouncingPart.transform.position.y < transform.position.y)
-                {
-                    DeactivateSuperjump();
-                }
-            }
+            EndButtHit();
+        }
 
-            if (IsPerformingButtHitDive() || IsPerformingButtHitRotation())
-            {
-                if (isPerformingButtHitDive)
-                {
-                    hammerHitAudioSource.Play();
-                }
-                EndButtHit();
-            }
+        rb.velocity = transform.up * bounceForce;
 
-            if (!(other.gameObject.tag == "BreakablePlatform" && IsPerformingButtHitDive()))
-            {
-                touchedGroundAfterButtHit = true;
-            }
+      /*  if (!(other.gameObject.tag == "BreakablePlatform" && IsPerformingButtHitDive()))
+         {
+             touchedGroundAfterButtHit = true;
+         } */
 
-            tricksDetector.Reset();
+        tricksDetector.Reset();
     }
 
     public void ResetInitialPosition()
@@ -306,10 +289,9 @@ public class Player : MonoBehaviour
     {
         if (other.contacts[0].point.y < transform.position.y)
         {
-            DeactivateSuperjump();
-            Debug.Log("deactivating superjump");
+            SuperJumpFailed();
+            Debug.Log("Super Jump Failed");
         }
-
     }
 
     private void OnCollisionStay2D(Collision2D other)
@@ -325,23 +307,20 @@ public class Player : MonoBehaviour
     {
         return isPerformingButtHitRotation;
     }
-    //================================================ activations/deactivations
 
-    private void ActivateSuperjump(float speedupFactor = 1f)
+    private void PerformSuperJump()
     {
-        rb.velocity = transform.up * (boostBounceSpeed + speedupFactor);
         animator.SetBool("SuperJump", true);
-        isSuperjumpActive = true;
-        //superjumpAudioSource.Play();
-        Debug.Log("sono qui");
+        canPerformSuperJump = true;
         if (superjumpTrailEnabled) superjumpTray.SetActive(true);
         if (superjumpSpeedEnabled) superjumpParticles.Play();
     }
-    private void DeactivateSuperjump()
+
+    private void SuperJumpFailed()
     {
         animator.SetBool("SuperJump", false);
         StopAllSounds();
-        isSuperjumpActive = false;
+        canPerformSuperJump = false;
         tricksDetector.Reset();
 
         if (superjumpTrailEnabled) superjumpTray.SetActive(false);
@@ -366,12 +345,8 @@ public class Player : MonoBehaviour
         superjumpActBackLight.SetActive(false);
     }
 
-    public void DebugText()
+    public bool HasSuperJump()
     {
-        Debug.Log("Super jump called from event");
+        return canPerformSuperJump;
     }
-
 }
-
-
-

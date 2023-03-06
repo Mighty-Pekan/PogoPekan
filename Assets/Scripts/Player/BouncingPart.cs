@@ -12,6 +12,9 @@ public class BouncingPart : MonoBehaviour
     private bool canGenerateParticles;
     public bool isAlive = true;
 
+    [SerializeField] private float baseBounceSpeed;
+    [SerializeField] private float boostBounceSpeed;
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         HandleBounce(other);
@@ -24,11 +27,30 @@ public class BouncingPart : MonoBehaviour
 
     private void HandleBounce(Collision2D other)
     {
-        if (other.gameObject.tag != "Player" && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHitDive()) && isAlive)
+        float bounceForceModifier;
+
+        if (player.HasSuperJump())
+        {
+            bounceForceModifier = boostBounceSpeed;
+            player.onSuperJump?.Invoke();
+        }
+        else
+        {
+            bounceForceModifier = baseBounceSpeed;
+        }
+
+        if (other.gameObject.TryGetComponent(out Mushroom mushroom))
+        {
+            bounceForceModifier += mushroom.GetBounciness();
+        }
+
+        if (!(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHitDive()) && isAlive)
         {
             if (canBounce)
             {
-                player.Bounce(other);
+                player.ApplyBounceForce(bounceForceModifier);
+                player.Bounce();
+
                 canBounce = false;
                 StartCoroutine(enableBounceCor());
             }

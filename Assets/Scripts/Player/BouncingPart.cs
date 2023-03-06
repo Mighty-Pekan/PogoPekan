@@ -26,7 +26,6 @@ public class BouncingPart : MonoBehaviour
     {
         if (other.gameObject.tag != "Player" && !(other.gameObject.tag == "BreakablePlatform" && player.IsPerformingButtHitDive()) && isAlive)
         {
-
             if (canBounce)
             {
                 player.Bounce(other);

@@ -116,7 +116,7 @@ public class LevelsDataManager : MonoSingleton<LevelsDataManager>
 
     private LevelData GetLevelData(int world, int level)
     {
-        Debug.Log("get level data called with world: " + world + " level: " + level);
+        // Debug.Log("get level data called with world: " + world + " level: " + level);
 
         return levelsData[(GameController.Instance.NumLevelsPerWorld * (world - 1)) + level - 1];
     }

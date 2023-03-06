@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-
     //serialized fields
     [Header("Properties")]
     [SerializeField] private float rotationSpeed = 2f;
@@ -37,13 +38,12 @@ public class Player : MonoBehaviour
     [SerializeField] private bool superjumpActLightEnabled;
     [SerializeField] private bool kevinBlinkAnimationEnabled;
 
-
-
     [Header("AudioSources")]
-    [SerializeField] GenericAudioSource superjumpAudioSource;
     [SerializeField] GenericAudioSource culataAudioSource;
     [SerializeField] GenericAudioSource blinkAudioSource;
     [SerializeField] GenericAudioSource hammerHitAudioSource;
+
+    [SerializeField] private UnityEvent onSuperJump;
 
     //private
     private Vector3 initialPosition;
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
             bouncingPart.isAlive = value;
             if (value == false)
             {
-                stopAllSounds();
+                StopAllSounds();
                 DeactivateSuperjump();
                 EndButtHit();
                 //animator.enabled = false;
@@ -211,7 +211,7 @@ public class Player : MonoBehaviour
                 isPerformingButtHitDive = true;
                 isPerformingButtHitRotation = false;
                 touchedGroundAfterButtHit = false;
-                stopAllSounds();
+                StopAllSounds();
                 culataAudioSource.Play();
                 buttHitStartingPos = null;
                 rb.angularVelocity = 0;
@@ -230,9 +230,9 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(0, -buttHitSpeed);
     }
 
-    private void stopAllSounds()
+    private void StopAllSounds()
     {
-        superjumpAudioSource.Stop();
+     //   superjumpAudioSource.Stop();
         culataAudioSource.Stop();
     }
 
@@ -249,8 +249,7 @@ public class Player : MonoBehaviour
 
     public void Bounce(Collision2D other)
     {
-        if (IsAlive)
-        {
+        if (!IsAlive) return;
             // handling mushrooms bounciness directly
             float mushroomBounceForce;
             if (other.gameObject.tag == "Mushroom")
@@ -266,6 +265,7 @@ public class Player : MonoBehaviour
 
             if (tricksDetector.TrickDetected())
             {
+                onSuperJump?.Invoke();
                 ActivateSuperjump(mushroomBounceForce);
             }
             else
@@ -292,7 +292,6 @@ public class Player : MonoBehaviour
             }
 
             tricksDetector.Reset();
-        }
     }
 
     public void ResetInitialPosition()
@@ -333,14 +332,15 @@ public class Player : MonoBehaviour
         rb.velocity = transform.up * (boostBounceSpeed + speedupFactor);
         animator.SetBool("SuperJump", true);
         isSuperjumpActive = true;
+        //superjumpAudioSource.Play();
+        Debug.Log("sono qui");
         if (superjumpTrailEnabled) superjumpTray.SetActive(true);
         if (superjumpSpeedEnabled) superjumpParticles.Play();
-        superjumpAudioSource.Play();
     }
     private void DeactivateSuperjump()
     {
         animator.SetBool("SuperJump", false);
-        stopAllSounds();
+        StopAllSounds();
         isSuperjumpActive = false;
         tricksDetector.Reset();
 
@@ -364,6 +364,11 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         superjumpActLight.SetActive(false);
         superjumpActBackLight.SetActive(false);
+    }
+
+    public void DebugText()
+    {
+        Debug.Log("Super jump called from event");
     }
 
 }

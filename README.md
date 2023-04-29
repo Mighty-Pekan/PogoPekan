@@ -14,7 +14,6 @@ There are 32 levels in total, in each one you can collect 3 fish: you can find 2
 Pogo pekan was created as team project at the Digital Game Bros Academy.
 
 **Developers**:
-* Nicolò: https://github.com/nico-bertoli / https://nicobertoli.itch.io/ (gameplay,  DB handling, sounds handling, particles logic)
 * Pietro: https://hcyan.itch.io/ (UI, cameras)
 * Enrico: https://itch.io/profile/kirenil (UI)
 * Alessandro: https://itch.io/profile/chaiko-13 (Testing, pekan animations)

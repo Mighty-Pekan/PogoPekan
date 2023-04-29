@@ -1,4 +1,3 @@
-Try Pogo Pekan here: https://nicobertoli.itch.io/pogo-pekan
 ## Game description
 In this platformer game, you are a pekan that has to reach the exit of the level by jumping on his jackhammer.
 
